@@ -51,28 +51,28 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 relative">
+    <section id="contact" className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               <span className="gradient-text">Get In Touch</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-4">
               Have a project in mind or just want to chat? I'd love to hear from you. Let's create something amazing together.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
-            <div className="glass-card p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold mb-6 text-foreground">
+            <div className="glass-card p-6 md:p-8 rounded-2xl">
+              <h3 className="text-xl md:text-2xl font-semibold mb-6 text-foreground">
                 <i className="fas fa-paper-plane text-primary mr-3"></i>
                 Send Message
               </h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                     Full Name
@@ -84,7 +84,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-foreground placeholder-muted-foreground"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-input border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-foreground placeholder-muted-foreground text-sm md:text-base"
                     placeholder="Your full name"
                   />
                 </div>

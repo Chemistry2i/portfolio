@@ -77,21 +77,21 @@ const Skills = () => {
   );
 
   return (
-    <section id="skills" className="py-20 relative">
+    <section id="skills" className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               <span className="gradient-text">Skills & Expertise</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-4">
               A comprehensive toolkit for building modern web applications and user experiences
             </p>
           </div>
 
           {/* Skills Grid */}
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
             <SkillCard title="MERN Stack Development" skills={mernSkills} delay={200} />
             <SkillCard title="UI/UX Design" skills={uiuxSkills} delay={400} />
           </div>

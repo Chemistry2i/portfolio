@@ -28,13 +28,13 @@ const Footer = () => {
 
   return (
     <footer className="relative border-t border-border">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
             <div>
-              <h3 className="text-2xl font-bold gradient-text mb-2">Wambogo Hassan</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl md:text-2xl font-bold gradient-text mb-2">Wambogo Hassan</h3>
+              <p className="text-muted-foreground text-sm md:text-base">
                 MERN Stack Developer & UI/UX Designer crafting clean code and beautiful user experiences.
               </p>
             </div>

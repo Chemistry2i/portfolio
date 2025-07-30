@@ -27,25 +27,25 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 relative">
+    <section id="services" className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               <span className="gradient-text">Services I Offer</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-4">
               Comprehensive digital solutions to bring your ideas to life with precision and creativity
             </p>
           </div>
 
           {/* Services Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
             {services.map((service, index) => (
               <div 
                 key={index}
-                className="glass-card p-8 rounded-2xl hover:scale-105 transition-all duration-300 animate-fade-in group"
+                className="glass-card p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-300 animate-fade-in group"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 {/* Icon */}
@@ -57,7 +57,7 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-semibold text-foreground">{service.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground">{service.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                   
                   {/* Features */}

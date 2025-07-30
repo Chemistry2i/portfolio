@@ -1,26 +1,26 @@
 const About = () => {
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               <span className="gradient-text">About Me</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-4">
               Passionate about creating digital solutions that matter
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Content */}
             <div className="space-y-6">
-              <div className="glass-card p-8 rounded-2xl">
-                <h3 className="text-2xl font-semibold mb-4 text-foreground">
+              <div className="glass-card p-6 md:p-8 rounded-2xl">
+                <h3 className="text-xl md:text-2xl font-semibold mb-4 text-foreground">
                   My Journey
                 </h3>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="space-y-3 md:space-y-4 text-sm md:text-base text-muted-foreground leading-relaxed">
                   <p>
                     As a passionate MERN Stack Developer and UI/UX Designer based in Kampala, Uganda, 
                     I specialize in creating seamless digital experiences that bridge the gap between 
@@ -40,8 +40,8 @@ const About = () => {
               </div>
 
               {/* Download CV Button */}
-              <div className="text-center lg:text-left">
-                <button className="hero-btn text-primary-foreground">
+              <div className="text-center lg:text-left px-4">
+                <button className="w-full sm:w-auto hero-btn text-primary-foreground">
                   <i className="fas fa-download mr-2"></i>
                   Download CV
                 </button>
@@ -49,14 +49,14 @@ const About = () => {
             </div>
 
             {/* Stats & Info */}
-            <div className="space-y-6">
+            <div className="space-y-6 mt-8 lg:mt-0">
               {/* Personal Info Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="glass-card p-6 rounded-xl text-center">
-                  <i className="fas fa-map-marker-alt text-primary text-2xl mb-3"></i>
-                  <h4 className="font-semibold text-foreground mb-1">Location</h4>
-                  <p className="text-muted-foreground text-sm">Banda, Kampala</p>
-                  <p className="text-muted-foreground text-sm">Uganda</p>
+                <div className="glass-card p-4 md:p-6 rounded-xl text-center">
+                  <i className="fas fa-map-marker-alt text-primary text-xl md:text-2xl mb-3"></i>
+                  <h4 className="font-semibold text-foreground mb-1 text-sm md:text-base">Location</h4>
+                  <p className="text-muted-foreground text-xs md:text-sm">Banda, Kampala</p>
+                  <p className="text-muted-foreground text-xs md:text-sm">Uganda</p>
                 </div>
 
                 <div className="glass-card p-6 rounded-xl text-center">

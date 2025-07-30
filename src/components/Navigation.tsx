@@ -38,7 +38,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <span className="text-2xl font-bold gradient-text">Wambogo</span>
+            <span className="text-xl md:text-2xl font-bold gradient-text">Wambogo</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -48,7 +48,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-foreground hover:text-primary transition-colors duration-300 font-medium"
+                  className="text-foreground hover:text-primary transition-colors duration-300 font-medium text-sm lg:text-base"
                 >
                   {item.name}
                 </button>
@@ -62,7 +62,7 @@ const Navigation = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary focus:outline-none"
             >
-              <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+              <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-lg md:text-xl`}></i>
             </button>
           </div>
         </div>
@@ -70,12 +70,12 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 glass-card backdrop-blur-md border-t border-white/10">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-3 py-2 text-foreground hover:text-primary transition-colors duration-300 font-medium"
+                  className="block w-full text-left px-3 py-2 text-foreground hover:text-primary transition-colors duration-300 font-medium text-base"
                 >
                   {item.name}
                 </button>
