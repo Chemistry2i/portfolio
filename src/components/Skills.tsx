@@ -104,11 +104,11 @@ const Skills = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {[
                 { name: 'Git', icon: 'fab fa-git-alt' },
-                { name: 'Docker', icon: 'fab fa-docker' },
-                { name: 'AWS', icon: 'fab fa-aws' },
-                { name: 'Tailwind CSS', icon: 'fas fa-wind' },
-                { name: 'GraphQL', icon: 'fas fa-project-diagram' },
-                { name: 'Jest', icon: 'fas fa-vial' },
+                { name: 'Bootstrap', icon: 'fab fa-bootstrap' },
+                { name: 'Vue.js', icon: 'fab fa-vuejs' },
+                { name: 'REST API', icon: 'fas fa-server' },
+                { name: 'WebSockets', icon: 'fas fa-plug' },
+                { name: 'Vercel', icon: 'fas fa-cloud' },
               ].map((tech, index) => (
                 <div 
                   key={tech.name}

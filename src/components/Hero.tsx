@@ -37,10 +37,10 @@ const Hero = () => {
           <div className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="space-y-6 md:space-y-8">
-              <div className="space-y-4 md:space-y-6">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight font-poppins">
-                  <span className="text-foreground block mb-2">Hi, I'm </span>
+            <div className="space-y-4 md:space-y-6">
+              <div className="space-y-2 md:space-y-4">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                  <span className="text-foreground block mb-1">Hi, I'm </span>
                   <span className="gradient-text block">Wambogo Hassan</span>
                 </h1>
                 <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground">
