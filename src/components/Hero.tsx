@@ -93,7 +93,7 @@ const Hero = () => {
       </div>
 
       {/* Professional Taglines - Now positioned absolutely at bottom */}
-      <div className="absolute bottom-0 md:bottom-22 left-0 right-0 px-4 z-10">
+      <div className="absolute bottom-5 md:bottom-20 left-0 right-0 px-4 z-10">
         <div className="glass-card p-4 md:p-6 rounded-2xl max-w-3xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-center">
             <div className="space-y-1">
