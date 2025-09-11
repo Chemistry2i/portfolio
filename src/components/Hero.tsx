@@ -39,7 +39,7 @@ const Hero = () => {
           }`}>
             <div className="space-y-4 md:space-y-6">
               <div className="space-y-2 md:space-y-4">
-                <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl font-bold leading-tight">
+                <h1 className="text-2xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl font-bold leading-tight">
                   <span className="text-foreground block mb-1">Hello, I'm </span>
                 </h1>
                 <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-5xl font-bold leading-tight">
@@ -51,9 +51,9 @@ const Hero = () => {
                   <span className="text-accent">UI/UX Designer</span>
                 </div>
               </div>
-{/*Crafting clean code and beautiful user experiences.   */}
+{{/*Crafting clean code and beautiful user experiences.   */}
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-                Turning ideas into interactive interfaces with aesthetic precision.
+                Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.   
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
