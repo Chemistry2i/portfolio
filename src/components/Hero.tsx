@@ -55,7 +55,7 @@ const Hero = () => {
                 Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.   
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
+              <div className="flex flex-col sm:flex-row m-3 gap-4 justify-center items-center px-4">
                 <button 
                   onClick={scrollToContact}
                   className="w-full sm:w-auto hero-btn text-primary-foreground min-w-[160px]"
