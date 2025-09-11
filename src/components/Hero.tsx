@@ -52,7 +52,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
+              <p className="text-sm sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
                 Crafting clean code and beautiful user experiences. Turning ideas into interactive interfaces with aesthetic precision.
               </p>
 
