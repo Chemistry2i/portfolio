@@ -37,7 +37,7 @@ const Hero = () => {
           <div className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="space-y-4 md:space-y-6">
+            <div className="space-y-4 md:space-y-5">
               <div className="space-y-2 md:space-y-4">
                 <h1 className="text-2xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl font-bold leading-tight">
                   <span className="text-foreground block mb-1">Hello, I'm </span>
