@@ -51,7 +51,6 @@ const Hero = () => {
                   <span className="text-accent">UI/UX Designer</span>
                 </div>
               </div>
-{{/*Crafting clean code and beautiful user experiences.   */}
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
                 Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.   
               </p>
