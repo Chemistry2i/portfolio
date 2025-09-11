@@ -96,7 +96,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-space-grotesk;
+    @apply bg-background text-foreground;
     background: var(--gradient-background);
     min-height: 100vh;
   }

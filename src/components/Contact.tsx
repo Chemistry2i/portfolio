@@ -32,8 +32,8 @@ const Contact = () => {
     {
       icon: 'fas fa-envelope',
       title: 'Email',
-      details: 'hello@wambogohassan.com',
-      href: 'mailto:hello@wambogohassan.com'
+      details: 'wambogohassan63@gmail.com',
+      href: 'mailto:wambogohassan63@gmail.com'
     },
     {
       icon: 'fas fa-map-marker-alt',

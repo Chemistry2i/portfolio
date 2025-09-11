@@ -77,7 +77,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-envelope text-primary"></i>
-                <span className="text-muted-foreground">hello@wambogohassan.com</span>
+                <span className="text-muted-foreground">wambogohassan63@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fas fa-map-marker-alt text-primary"></i>

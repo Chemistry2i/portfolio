@@ -38,7 +38,7 @@ const Hero = () => {
           }`}>
             <div className="space-y-6 md:space-y-8">
               <div className="space-y-4 md:space-y-6">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight font-poppins">
                   <span className="text-foreground block mb-2">Hi, I'm </span>
                   <span className="gradient-text block">Wambogo Hassan</span>
                 </h1>
