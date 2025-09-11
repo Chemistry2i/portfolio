@@ -22,7 +22,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
+    <section id="home" className="h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-primary/20 rounded-full blur-3xl animate-float"></div>
@@ -30,8 +30,9 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl animate-float" style={{animationDelay: '0.8s'}}></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Main Content Container */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center justify-center h-full">
+        <div className="text-center">
           {/* Content */}
           <div className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -71,7 +72,7 @@ const Hero = () => {
               </div>
 
               {/* Social Links */}
-              <div className="flex justify-center space-x-4 md:space-x-6 pt-6 md:pt-8">
+              <div className="flex justify-center space-x-4 md:space-x-6 pt-4 md:pt-6">
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300">
                   <i className="fab fa-github text-xl md:text-2xl"></i>
                 </a>
@@ -85,43 +86,43 @@ const Hero = () => {
                   <i className="fab fa-twitter text-xl md:text-2xl"></i>
                 </a>
               </div>
-
-              {/* Professional Taglines */}
-              <div className="pt-8 md:pt-12">
-                <div className="glass-card p-6 md:p-8 rounded-2xl max-w-2xl mx-auto">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center">
-                    <div className="space-y-2">
-                      <i className="fas fa-lightbulb text-primary text-2xl"></i>
-                      <p className="text-sm md:text-base text-muted-foreground font-medium">
-                        Turning Ideas into Interactive Interfaces
-                      </p>
-                    </div>
-                    <div className="space-y-2">
-                      <i className="fas fa-eye text-accent text-2xl"></i>
-                      <p className="text-sm md:text-base text-muted-foreground font-medium">
-                        Full-Stack Developer with a Designer's Eye
-                      </p>
-                    </div>
-                    <div className="space-y-2">
-                      <i className="fas fa-cogs text-primary text-2xl"></i>
-                      <p className="text-sm md:text-base text-muted-foreground font-medium">
-                        Delivering Functionality with Aesthetic Precision
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 text-center">
-          <div className="animate-bounce">
-            <i className="fas fa-chevron-down text-primary text-lg md:text-xl"></i>
+      {/* Professional Taglines - Now positioned absolutely at bottom */}
+      <div className="absolute bottom-20 md:bottom-24 left-0 right-0 px-4 z-10">
+        <div className="glass-card p-4 md:p-6 rounded-2xl max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-center">
+            <div className="space-y-1">
+              <i className="fas fa-lightbulb text-primary text-xl"></i>
+              <p className="text-xs md:text-sm text-muted-foreground font-medium">
+                Turning Ideas into Interactive Interfaces
+              </p>
+            </div>
+            <div className="space-y-1">
+              <i className="fas fa-eye text-accent text-xl"></i>
+              <p className="text-xs md:text-sm text-muted-foreground font-medium">
+                Full-Stack Developer with a Designer's Eye
+              </p>
+            </div>
+            <div className="space-y-1">
+              <i className="fas fa-cogs text-primary text-xl"></i>
+              <p className="text-xs md:text-sm text-muted-foreground font-medium">
+                Delivering Functionality with Aesthetic Precision
+              </p>
+            </div>
           </div>
-          <p className="text-xs md:text-sm text-muted-foreground mt-2">Scroll to explore</p>
         </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 text-center z-10">
+        <div className="animate-bounce">
+          <i className="fas fa-chevron-down text-primary text-lg md:text-xl"></i>
+        </div>
+        <p className="text-xs md:text-sm text-muted-foreground mt-2">Scroll to explore</p>
       </div>
     </section>
   );
