@@ -31,7 +31,7 @@ const Hero = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center justify-center h-full">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center justify-center min-h-full">
         <div className="text-center">
           {/* Content */}
           <div className={`transition-all duration-1000 ${
