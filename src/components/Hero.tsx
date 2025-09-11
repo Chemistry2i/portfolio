@@ -45,8 +45,8 @@ const Hero = () => {
                 <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-5xl font-bold leading-tight">
                   <span className="gradient-text block">Wambogo Hassan Sadat</span>
                 </h1>
-                <div className="text-lg sm:text-xl md:text-1xl lg:text-2xl font-medium text-muted-foreground">
-                  <span className="text-primary">MERN Stack Developer</span>
+                <div className="text-lg sm:text-2xl md:text-2xl lg:text-2xl font-medium text-muted-foreground">
+                  <span className="text-primary">MERN Stack Dev</span>
                   <span className="text-foreground"> & </span>
                   <span className="text-accent">UI/UX Designer</span>
                 </div>
