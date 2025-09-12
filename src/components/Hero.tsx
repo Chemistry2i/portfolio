@@ -22,7 +22,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex flex-col relative overflow-hidden">
+    <section id="home" className="h-screen flex flex-col relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -41,13 +41,17 @@ const Hero = () => {
             <div className="space-y-6 md:space-y-7">
               {/* Name and Title */}
               <div className="space-y-3 lg:space-y-4">
-                <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight transition-all duration-500 delay-100 ${
+                <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl font-bold leading-tight transition-all duration-500 delay-100 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
                   <span className="text-foreground block mb-2">Hello, I'm </span>
+                </h1>
+                <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight transition-all duration-500 delay-100 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}>
                   <span className="gradient-text block">Wambogo Hassan Sadat</span>
                 </h1>
-                <div className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-medium text-muted-foreground transition-all duration-500 delay-200 ${
+                <div className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl font-medium text-muted-foreground transition-all duration-500 delay-200 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
                   <span className="text-primary">MERN Stack Dev</span>
@@ -57,10 +61,10 @@ const Hero = () => {
               </div>
               
               {/* Description */}
-              <p className={`text-base sm:text-lg md:text-xl xl:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 transition-all duration-500 delay-300 ${
+              <p className={`text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 transition-all duration-500 delay-300 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
-                Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.    
+                Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.   
               </p>
 
               {/* Buttons */}
