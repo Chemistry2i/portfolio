@@ -30,14 +30,15 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-96 md:h-96 bg-primary/5 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Main Content Container - Takes full height minus tagline */}
+      {/* Main Content Container */}
       <div className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center justify-center">
         <div className="text-center w-full max-w-5xl">
           {/* Content */}
           <div className={`transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
-            <div className="space-y-6 lg:space-y-8">
+            {/* Main content with consistent spacing */}
+            <div className="space-y-6 md:space-y-7">
               {/* Name and Title */}
               <div className="space-y-3 lg:space-y-4">
                 <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight transition-all duration-500 delay-100 ${
@@ -63,7 +64,7 @@ const Hero = () => {
               </p>
 
               {/* Buttons */}
-              <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center px-4 pt-2 transition-all duration-500 delay-400 ${
+              <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center px-4 transition-all duration-500 delay-400 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
                 <button 
@@ -83,7 +84,7 @@ const Hero = () => {
               </div>
 
               {/* Social Links */}
-              <div className={`flex justify-center space-x-6 lg:space-x-8 pt-2 transition-all duration-500 delay-500 ${
+              <div className={`flex justify-center space-x-6 lg:space-x-8 transition-all duration-500 delay-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
@@ -99,34 +100,34 @@ const Hero = () => {
                   <i className="fab fa-twitter text-xl md:text-2xl"></i>
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Professional Taglines - Fixed at bottom */}
-      <div className={`relative z-10 pb-16 md:pb-20 px-4 transition-all duration-700 delay-600 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-      }`}>
-        <div className="glass-card p-4 md:p-6 rounded-2xl max-w-4xl mx-auto backdrop-blur-md">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-center">
-            <div className="space-y-1 transition-all duration-300 hover:scale-105">
-              <i className="fas fa-lightbulb text-primary text-xl"></i>
-              <p className="text-xs md:text-sm text-muted-foreground font-medium">
-                Turning Ideas into Interactive Interfaces
-              </p>
-            </div>
-            <div className="space-y-1 transition-all duration-300 hover:scale-105">
-              <i className="fas fa-eye text-accent text-xl"></i>
-              <p className="text-xs md:text-sm text-muted-foreground font-medium">
-                Full-Stack Developer with a Designer's Eye
-              </p>
-            </div>
-            <div className="space-y-1 transition-all duration-300 hover:scale-105">
-              <i className="fas fa-cogs text-primary text-xl"></i>
-              <p className="text-xs md:text-sm text-muted-foreground font-medium">
-                Delivering Functionality with Aesthetic Precision
-              </p>
+              {/* Professional Taglines - Now with balanced spacing */}
+              <div className={`pt-2 transition-all duration-700 delay-600 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
+                <div className="glass-card p-4 md:p-6 rounded-2xl max-w-4xl mx-auto backdrop-blur-md">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-center">
+                    <div className="space-y-1 transition-all duration-300 hover:scale-105">
+                      <i className="fas fa-lightbulb text-primary text-xl"></i>
+                      <p className="text-xs md:text-sm text-muted-foreground font-medium">
+                        Turning Ideas into Interactive Interfaces
+                      </p>
+                    </div>
+                    <div className="space-y-1 transition-all duration-300 hover:scale-105">
+                      <i className="fas fa-eye text-accent text-xl"></i>
+                      <p className="text-xs md:text-sm text-muted-foreground font-medium">
+                        Full-Stack Developer with a Designer's Eye
+                      </p>
+                    </div>
+                    <div className="space-y-1 transition-all duration-300 hover:scale-105">
+                      <i className="fas fa-cogs text-primary text-xl"></i>
+                      <p className="text-xs md:text-sm text-muted-foreground font-medium">
+                        Delivering Functionality with Aesthetic Precision
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
