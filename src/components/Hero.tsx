@@ -88,7 +88,7 @@ const Hero = () => {
               </div>
 
               {/* Social Links */}
-              <div className={`flex justify-center space-x-6 lg:space-x-8 transition-all duration-500 delay-500 ${
+{/*               <div className={`flex justify-center space-x-6 lg:space-x-8 transition-all duration-500 delay-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
@@ -103,7 +103,7 @@ const Hero = () => {
                 <a href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
                   <i className="fab fa-twitter text-xl md:text-2xl"></i>
                 </a>
-              </div>
+              </div> */}
 
               {/* Professional Taglines - Now with balanced spacing */}
               <div className={`pt-2 transition-all duration-700 delay-600 ${
