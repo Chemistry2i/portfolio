@@ -45,13 +45,9 @@ const Hero = () => {
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
                   <span className="text-foreground block mb-2">Hello, I'm </span>
-                </h1>
-                <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight transition-all duration-500 delay-100 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
                   <span className="gradient-text block">Wambogo Hassan Sadat</span>
                 </h1>
-                <div className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl font-medium text-muted-foreground transition-all duration-500 delay-200 ${
+                <div className={`text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-medium text-muted-foreground transition-all duration-500 delay-200 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
                   <span className="text-primary">MERN Stack Dev</span>
@@ -64,7 +60,7 @@ const Hero = () => {
               <p className={`text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 transition-all duration-500 delay-300 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
-                Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.   
+                Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.    
               </p>
 
               {/* Buttons */}
