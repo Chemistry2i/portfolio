@@ -41,10 +41,14 @@ const Hero = () => {
             <div className="space-y-6 md:space-y-7">
               {/* Name and Title */}
               <div className="space-y-3 lg:space-y-4">
-                <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight transition-all duration-500 delay-100 ${
+                <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl font-bold leading-tight transition-all duration-500 delay-100 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
                   <span className="text-foreground block mb-2">Hello, I'm </span>
+                </h1>
+                <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight transition-all duration-500 delay-100 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}>
                   <span className="gradient-text block">Wambogo Hassan Sadat</span>
                 </h1>
                 <div className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl font-medium text-muted-foreground transition-all duration-500 delay-200 ${
