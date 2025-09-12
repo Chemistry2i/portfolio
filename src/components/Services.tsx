@@ -1,4 +1,30 @@
+import { useEffect, useRef, useState } from 'react';
+
 const Services = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const services = [
     {
       icon: 'fas fa-code',
@@ -27,15 +53,17 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-12 md:py-20 relative">
+    <section ref={sectionRef} id="services" className="py-12 md:py-20 lg:py-24 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+          <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               <span className="gradient-text">Services I Offer</span>
             </h2>
-            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-4">
+            <p className="text-muted-foreground text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-4">
               Comprehensive digital solutions to bring your ideas to life with precision and creativity
             </p>
           </div>
@@ -45,8 +73,12 @@ const Services = () => {
             {services.map((service, index) => (
               <div 
                 key={index}
-                className="glass-card p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-300 animate-fade-in group"
-                style={{ animationDelay: `${index * 200}ms` }}
+                className={`glass-card p-6 md:p-8 lg:p-10 rounded-2xl hover:scale-105 transition-all duration-500 group ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ 
+                  transitionDelay: `${index * 150}ms`,
+                }}
               >
                 {/* Icon */}
                 <div className="mb-6">

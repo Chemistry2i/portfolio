@@ -39,13 +39,13 @@ const Hero = () => {
           }`}>
             <div className="space-y-4 md:space-y-5">
               <div className="space-y-2 md:space-y-4">
-                <h1 className="text-2xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl font-bold leading-tight">
+                <h1 className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-bold leading-tight">
                   <span className="text-foreground block mb-1">Hello, I'm </span>
                 </h1>
-                <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-5xl font-bold leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
                   <span className="gradient-text block">Wambogo Hassan Sadat</span>
                 </h1>
-                <div className="text-lg sm:text-2xl md:text-2xl lg:text-2xl font-medium text-muted-foreground">
+                <div className="text-lg sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl font-medium text-muted-foreground">
                   <span className="text-primary">MERN Stack Dev</span>
                   <span className="text-foreground"> & </span>
                   <span className="text-accent">UI/UX Designer</span>

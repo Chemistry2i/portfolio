@@ -1,8 +1,32 @@
+import { useEffect, useRef, useState } from 'react';
 import projectMernApp from '@/assets/project-mern-app.jpg';
 import projectUiuxDesign from '@/assets/project-uiux-design.jpg';
 import projectEcommerce from '@/assets/project-ecommerce.jpg';
 
 const Projects = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
   const projects = [
     {
       id: 1,
@@ -37,15 +61,17 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-12 md:py-20 relative">
+    <section ref={sectionRef} id="projects" className="py-12 md:py-20 lg:py-24 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+          <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               <span className="gradient-text">Featured Projects</span>
             </h2>
-            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-4">
+            <p className="text-muted-foreground text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-4">
               A showcase of my recent work, demonstrating expertise in both development and design
             </p>
           </div>
@@ -55,8 +81,10 @@ const Projects = () => {
             {projects.map((project, index) => (
               <div 
                 key={project.id}
-                className="project-card group animate-fade-in"
-                style={{ animationDelay: `${index * 200}ms` }}
+                className={`project-card group transition-all duration-500 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
                 {/* Project Image */}
                 <div className="relative overflow-hidden rounded-xl mb-6">
