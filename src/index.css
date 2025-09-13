@@ -96,7 +96,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
     background: var(--gradient-background);
     min-height: 100vh;
   }
