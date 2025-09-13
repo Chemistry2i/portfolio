@@ -61,7 +61,10 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
               className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary focus:outline-none"
+              title={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-lg md:text-xl`}></i>
             </button>
@@ -70,8 +73,11 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-t border-border">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div
+            id="mobile-menu"
+            className="md:hidden fixed top-16 left-0 right-0 z-[60] w-full bg-background/95 backdrop-blur-md border-t border-border max-h-[calc(100vh-4rem)] overflow-y-auto"
+          >
+            <div className="px-4 py-3 space-y-1">
               {navItems.map((item) => (
                 <button
                   key={item.name}
