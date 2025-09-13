@@ -103,6 +103,7 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 }
 
@@ -157,5 +158,13 @@
   
   .project-card:hover {
     box-shadow: var(--shadow-glow), var(--shadow-card);
+  }
+}
+
+@layer utilities {
+  /* Prevent content hugging device notches and keep symmetric padding on mobile */
+  .safe-px {
+    padding-left: max(env(safe-area-inset-left), 1rem);
+    padding-right: max(env(safe-area-inset-right), 1rem);
   }
 }
