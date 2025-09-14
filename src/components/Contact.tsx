@@ -60,8 +60,8 @@ const Contact = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="contact" className="py-12 md:py-20 lg:py-24 relative overflow-visible">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-8">
+    <section ref={sectionRef} id="contact" className="py-12 md:py-20 lg:py-24 relative overflow-visible scroll-mt-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-28 md:pb-12 safe-pb">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
