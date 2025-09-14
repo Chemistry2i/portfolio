@@ -60,7 +60,7 @@ const Contact = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="contact" className="py-12 md:py-20 lg:py-24 relative overflow-visible scroll-mt-20">
+    <section ref={sectionRef} id="contact" className="py-12 md:py-20 lg:py-24 relative overflow-visible scroll-mt-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-28 md:pb-12 safe-pb">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
