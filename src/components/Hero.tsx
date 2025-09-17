@@ -22,7 +22,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-[130vh] flex flex-col relative overflow-x-hidden overflow-y-visible">
+    <section id="home" className="min-h-[120vh] flex flex-col relative overflow-x-hidden overflow-y-visible">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
