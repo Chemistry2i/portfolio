@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import wambogoPortrait from '@/assets/wambogo-portrait.jpg';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,104 +33,109 @@ const Hero = () => {
 
       {/* Main Content Container */}
       <div className="flex-1 w-full safe-px sm:px-6 lg:px-8 relative z-10 flex items-center justify-center">
-        <div className="text-center w-full max-w-5xl mx-auto">
-          {/* Content */}
-          <div className={`transition-all duration-700 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}>
-            {/* Main content with consistent spacing */}
-            <div className="space-y-6 md:space-y-7">
-              {/* Name and Title */}
-              <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl font-bold leading-tight transition-all duration-500 delay-100 ${
+        <div className="w-full max-w-6xl mx-auto">
+          {/* Two Column Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Text Content */}
+            <div className={`text-center lg:text-left transition-all duration-700 ease-out ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
+              {/* Main content with consistent spacing */}
+              <div className="space-y-6 md:space-y-7">
+                {/* Name and Title */}
+                <div className="space-y-2 sm:space-y-3 lg:space-y-4">
+                  <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl font-bold leading-tight transition-all duration-500 delay-100 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}>
+                    <span className="text-foreground block mb-1 sm:mb-2">Hello, I'm </span>
+                  </h1>
+                  <h1 className={`text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight transition-all duration-500 delay-100 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}>
+                    <span className="gradient-text block">Wambogo Hassan Sadat</span>
+                  </h1>
+                  <div className={`text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium text-muted-foreground transition-all duration-500 delay-200 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}>
+                    <span className="text-primary">MERN Stack Dev</span>
+                    <span className="text-foreground"> & </span>
+                    <span className="text-accent">UI/UX Designer</span>
+                  </div>
+                </div>
+                
+                {/* Description */}
+                <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto lg:mx-0 leading-relaxed transition-all duration-500 delay-300 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
-                  <span className="text-foreground block mb-1 sm:mb-2">Hello, I'm </span>
-                </h1>
-                <h1 className={`text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight transition-all duration-500 delay-100 ${
+                  Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.   
+                </p>
+
+                {/* Buttons */}
+                <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center transition-all duration-500 delay-400 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
-                  <span className="gradient-text block">Wambogo Hassan Sadat</span>
-                </h1>
-                <div className={`text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium text-muted-foreground transition-all duration-500 delay-200 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
-                  <span className="text-primary">MERN Stack Dev</span>
-                  <span className="text-foreground"> & </span>
-                  <span className="text-accent">UI/UX Designer</span>
+                  <button 
+                    onClick={scrollToContact}
+                    className="w-full sm:w-auto hero-btn text-primary-foreground min-w-[140px] sm:min-w-[160px] transform transition-all duration-300 hover:scale-105 py-3 px-6"
+                  >
+                    <i className="fas fa-paper-plane mr-2"></i>
+                    Hire Me
+                  </button>
+                  <button 
+                    onClick={scrollToProjects}
+                    className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold bg-secondary hover:bg-secondary/80 text-secondary-foreground transition-all duration-300 border border-border min-w-[140px] sm:min-w-[160px] transform hover:scale-105"
+                  >
+                    <i className="fas fa-eye mr-2"></i>
+                    View Projects
+                  </button>
                 </div>
               </div>
-              
-              {/* Description */}
-              <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed transition-all duration-500 delay-300 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}>
-                Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.   
-              </p>
+            </div>
 
-              {/* Buttons */}
-              <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center transition-all duration-500 delay-400 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}>
-                <button 
-                  onClick={scrollToContact}
-                  className="w-full sm:w-auto hero-btn text-primary-foreground min-w-[140px] sm:min-w-[160px] transform transition-all duration-300 hover:scale-105 py-3 px-6"
-                >
-                  <i className="fas fa-paper-plane mr-2"></i>
-                  Hire Me
-                </button>
-                <button 
-                  onClick={scrollToProjects}
-                  className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold bg-secondary hover:bg-secondary/80 text-secondary-foreground transition-all duration-300 border border-border min-w-[140px] sm:min-w-[160px] transform hover:scale-105"
-                >
-                  <i className="fas fa-eye mr-2"></i>
-                  View Projects
-                </button>
+            {/* Profile Image */}
+            <div className={`flex justify-center lg:justify-end transition-all duration-700 delay-300 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            }`}>
+              <div className="relative">
+                {/* Glow effect behind image */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-2xl scale-110"></div>
+                {/* Image container with border */}
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
+                  <img 
+                    src={wambogoPortrait} 
+                    alt="Wambogo Hassan Sadat" 
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                {/* Decorative ring */}
+                <div className="absolute inset-0 rounded-full border-2 border-accent/20 scale-125 animate-pulse"></div>
               </div>
+            </div>
+          </div>
 
-              {/* Social Links */}
-{/*               <div className={`flex justify-center space-x-6 lg:space-x-8 transition-all duration-500 delay-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
-                  <i className="fab fa-github text-xl md:text-2xl"></i>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
-                  <i className="fab fa-linkedin text-xl md:text-2xl"></i>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
-                  <i className="fab fa-dribbble text-xl md:text-2xl"></i>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:scale-110">
-                  <i className="fab fa-twitter text-xl md:text-2xl"></i>
-                </a>
-              </div> */}
-
-              {/* Professional Taglines - Now with balanced spacing */}
-              <div className={`pt-2 transition-all duration-700 delay-600 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}>
-                <div className="glass-card p-3 sm:p-4 md:p-6 rounded-2xl max-w-4xl mx-auto backdrop-blur-md">
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 text-center">
-                    <div className="space-y-1 transition-all duration-300 hover:scale-105">
-                      <i className="fas fa-lightbulb text-primary text-lg sm:text-xl"></i>
-                      <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-                        Turning Ideas into Interactive Interfaces
-                      </p>
-                    </div>
-                    <div className="space-y-1 transition-all duration-300 hover:scale-105">
-                      <i className="fas fa-eye text-accent text-lg sm:text-xl"></i>
-                      <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-                        Full-Stack Developer with a Designer's Eye
-                      </p>
-                    </div>
-                    <div className="space-y-1 transition-all duration-300 hover:scale-105">
-                      <i className="fas fa-cogs text-primary text-lg sm:text-xl"></i>
-                      <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-                        Delivering Functionality with Aesthetic Precision
-                      </p>
-                    </div>
-                  </div>
+          {/* Professional Taglines - Below both columns */}
+          <div className={`pt-8 md:pt-12 transition-all duration-700 delay-600 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
+            <div className="glass-card p-3 sm:p-4 md:p-6 rounded-2xl max-w-4xl mx-auto backdrop-blur-md">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 text-center">
+                <div className="space-y-1 transition-all duration-300 hover:scale-105">
+                  <i className="fas fa-lightbulb text-primary text-lg sm:text-xl"></i>
+                  <p className="text-xs sm:text-sm text-muted-foreground font-medium">
+                    Turning Ideas into Interactive Interfaces
+                  </p>
+                </div>
+                <div className="space-y-1 transition-all duration-300 hover:scale-105">
+                  <i className="fas fa-eye text-accent text-lg sm:text-xl"></i>
+                  <p className="text-xs sm:text-sm text-muted-foreground font-medium">
+                    Full-Stack Developer with a Designer's Eye
+                  </p>
+                </div>
+                <div className="space-y-1 transition-all duration-300 hover:scale-105">
+                  <i className="fas fa-cogs text-primary text-lg sm:text-xl"></i>
+                  <p className="text-xs sm:text-sm text-muted-foreground font-medium">
+                    Delivering Functionality with Aesthetic Precision
+                  </p>
                 </div>
               </div>
             </div>
