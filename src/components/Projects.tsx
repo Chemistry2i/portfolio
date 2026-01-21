@@ -30,28 +30,28 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'TaskFlow - Project Management App',
-      description: 'A comprehensive project management application built with the MERN stack, featuring real-time collaboration, task tracking, and team analytics.',
+      title: 'Campus Ballot - Online Voting System',
+      description: 'A secure and transparent online voting platform designed for campus elections, featuring real-time results, voter authentication, and election management.',
       image: projectMernApp,
-      tech: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-      liveUrl: '#',
+      tech: ['React', 'Node.js', 'MongoDB', 'Authentication'],
+      liveUrl: 'https://campusballot.tech',
       githubUrl: '#',
       category: 'Full Stack Development'
     },
     {
       id: 2,
-      title: 'FinanceTracker Mobile App UI',
-      description: 'Modern mobile app interface design for personal finance tracking with intuitive navigation and data visualization components.',
+      title: 'Agri Buddy - Agricultural Solution',
+      description: 'An innovative online agricultural platform connecting farmers with resources, market insights, and expert advice for improved farming practices.',
       image: projectUiuxDesign,
-      tech: ['Figma', 'Adobe XD', 'Prototyping', 'User Research'],
-      liveUrl: '#',
+      tech: ['React', 'Node.js', 'Database', 'API Integration'],
+      liveUrl: 'https://agri-buddy.onrender.com',
       githubUrl: '#',
-      category: 'UI/UX Design'
+      category: 'Full Stack Development'
     },
     {
       id: 3,
-      title: 'EcoShop E-commerce Platform',
-      description: 'Sustainable e-commerce platform with eco-friendly product focus, featuring advanced filtering, payment integration, and inventory management.',
+      title: 'Quick Cart - E-commerce Platform',
+      description: 'A modern e-commerce platform with seamless shopping experience, featuring advanced filtering, secure payment integration, and inventory management.',
       image: projectEcommerce,
       tech: ['React', 'Express', 'MongoDB', 'Stripe'],
       liveUrl: '#',
