@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import projectMernApp from '@/assets/project-mern-app.jpg';
-import projectUiuxDesign from '@/assets/project-uiux-design.jpg';
-import projectEcommerce from '@/assets/project-ecommerce.jpg';
+import projectCampusBallot from '@/assets/project-campus-ballot.jpg';
+import projectAgriBuddy from '@/assets/project-agri-buddy.jpg';
+import projectQuickCart from '@/assets/project-quick-cart.jpg';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,7 +32,7 @@ const Projects = () => {
       id: 1,
       title: 'Campus Ballot - Online Voting System',
       description: 'A secure and transparent online voting platform designed for campus elections, featuring real-time results, voter authentication, and election management.',
-      image: projectMernApp,
+      image: projectCampusBallot,
       tech: ['React', 'Node.js', 'MongoDB', 'Authentication'],
       liveUrl: 'https://campusballot.tech',
       githubUrl: '#',
@@ -42,7 +42,7 @@ const Projects = () => {
       id: 2,
       title: 'Agri Buddy - Agricultural Solution',
       description: 'An innovative online agricultural platform connecting farmers with resources, market insights, and expert advice for improved farming practices.',
-      image: projectUiuxDesign,
+      image: projectAgriBuddy,
       tech: ['React', 'Node.js', 'Database', 'API Integration'],
       liveUrl: 'https://agri-buddy.onrender.com',
       githubUrl: '#',
@@ -52,7 +52,7 @@ const Projects = () => {
       id: 3,
       title: 'Quick Cart - E-commerce Platform',
       description: 'A modern e-commerce platform with seamless shopping experience, featuring advanced filtering, secure payment integration, and inventory management.',
-      image: projectEcommerce,
+      image: projectQuickCart,
       tech: ['React', 'Express', 'MongoDB', 'Stripe'],
       liveUrl: '#',
       githubUrl: '#',
