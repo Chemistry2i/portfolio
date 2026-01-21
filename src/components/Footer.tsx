@@ -9,8 +9,8 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: 'fab fa-github', href: '#' },
-    { icon: 'fab fa-linkedin', href: '#' },
+    { icon: 'fab fa-github', href: 'https://github.com/Chemistry2i' },
+    { icon: 'fab fa-linkedin', href: 'https://www.linkedin.com/in/wambogo-hassan-sadat-895544376' },
     { icon: 'fab fa-dribbble', href: '#' },
     { icon: 'fab fa-twitter', href: '#' },
   ];

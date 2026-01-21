@@ -35,7 +35,7 @@ const Projects = () => {
       image: projectCampusBallot,
       tech: ['React', 'Node.js', 'MongoDB', 'Authentication'],
       liveUrl: 'https://campusballot.tech',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/Chemistry2i',
       category: 'Full Stack Development'
     },
     {
@@ -45,7 +45,7 @@ const Projects = () => {
       image: projectAgriBuddy,
       tech: ['React', 'Node.js', 'Database', 'API Integration'],
       liveUrl: 'https://agri-buddy.onrender.com',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/Chemistry2i',
       category: 'Full Stack Development'
     },
     {
@@ -55,7 +55,7 @@ const Projects = () => {
       image: projectQuickCart,
       tech: ['React', 'Express', 'MongoDB', 'Stripe'],
       liveUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/Chemistry2i',
       category: 'Full Stack Development'
     },
   ];
