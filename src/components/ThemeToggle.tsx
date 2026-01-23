@@ -23,6 +23,7 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       className="p-2 rounded-lg bg-secondary hover:bg-secondary/80 text-foreground transition-all duration-300"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      style={{display: 'none'}}
     >
       {isDark ? (
         <i className="fas fa-sun text-lg"></i>
@@ -30,7 +31,6 @@ const ThemeToggle = () => {
         <i className="fas fa-moon text-lg"></i>
       )}
     </button>
-    *
   );
 };
 
