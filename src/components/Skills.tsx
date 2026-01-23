@@ -22,12 +22,11 @@ const Skills = () => {
   }, []);
 
   const mernSkills = [
-    { name: 'MongoDB', level: 85, icon: 'fas fa-database' },
-    { name: 'Express.js', level: 90, icon: 'fas fa-server' },
-    { name: 'React.js', level: 95, icon: 'fab fa-react' },
+    { name: 'MongoDB', level: 80, icon: 'fas fa-database' },
+    { name: 'Express.js', level: 85, icon: 'fas fa-server' },
+    { name: 'React.js', level: 70, icon: 'fab fa-react' },
     { name: 'Node.js', level: 88, icon: 'fab fa-node-js' },
     { name: 'JavaScript', level: 92, icon: 'fab fa-js-square' },
-    { name: 'TypeScript', level: 80, icon: 'fas fa-code' },
   ];
 
   const uiuxSkills = [
