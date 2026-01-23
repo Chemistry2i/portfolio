@@ -17,9 +17,7 @@ const Footer = () => {
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    element?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToTop = () => {
@@ -27,88 +25,98 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative border-t border-border overflow-visible">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 pb-24 md:pb-12 safe-pb">
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {/* Brand Section */}
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold gradient-text mb-2">Wambogo Hassan</h3>
+    <>
+      {/* FOOTER */}
+      <footer className="relative border-t border-border overflow-x-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            {/* Brand */}
+            <div className="space-y-4">
+              <h3 className="text-xl md:text-2xl font-bold gradient-text">
+                Wambogo Hassan
+              </h3>
               <p className="text-muted-foreground text-sm md:text-base">
-                MERN Stack Developer & UI/UX Designer crafting clean code and beautiful user experiences.
+                MERN Stack Developer & UI/UX Designer crafting clean code and
+                beautiful user experiences.
               </p>
+
+              <div className="flex gap-4">
+                {socialLinks.map((social, i) => (
+                  <a
+                    key={i}
+                    href={social.href}
+                    className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center transition md:hover:bg-primary group"
+                  >
+                    <i className={`${social.icon} text-secondary-foreground md:group-hover:text-primary-foreground`} />
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="w-10 h-10 bg-secondary hover:bg-primary rounded-lg flex items-center justify-center transition-colors duration-300 group"
-                >
-                  <i className={`${social.icon} text-secondary-foreground group-hover:text-primary-foreground`}></i>
-                </a>
-              ))}
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+              <div className="grid grid-cols-2 gap-2">
+                {quickLinks.map((link) => (
+                  <button
+                    key={link.name}
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-left text-muted-foreground transition md:hover:text-primary"
+                  >
+                    {link.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
+              <div className="space-y-3 text-muted-foreground text-sm">
+                <div className="flex items-center gap-3">
+                  <i className="fas fa-phone text-primary" />
+                  <span>+256 786021431</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <i className="fas fa-envelope text-primary" />
+                  <span>wambogohassan63@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <i className="fas fa-map-marker-alt text-primary" />
+                  <span>Banda, Kampala, Uganda</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-4">Quick Links</h4>
-            <div className="grid grid-cols-2 gap-2">
-              {quickLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300 text-left"
-                >
-                  {link.name}
-                </button>
-              ))}
-            </div>
-          </div>
+          {/* Bottom */}
+          <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-muted-foreground text-sm text-center md:text-left">
+              © {new Date().getFullYear()} Built by{' '}
+              <span className="text-primary font-medium">Wambogo Hassan</span> |{' '}
+              <span className="text-accent font-medium">Concept Crashers</span>
+            </p>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-4">Get In Touch</h4>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <i className="fas fa-phone text-primary"></i>
-                <span className="text-muted-foreground">+256 786021431</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="fas fa-envelope text-primary"></i>
-                <span className="text-muted-foreground">wambogohassan63@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="fas fa-map-marker-alt text-primary"></i>
-                <span className="text-muted-foreground">Banda, Kampala, Uganda</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="border-t border-border mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-center md:text-left">
-              <p className="text-muted-foreground text-sm">
-                © {new Date().getFullYear()} Built by{' '}
-                <span className="text-primary font-medium">Wambogo Hassan</span> |{' '}
-                <span className="text-accent font-medium">Concept Crashers</span>
-              </p>
-            </div>
-            
-            {/* Back to Top Button */}
+            {/* Desktop back-to-top */}
             <button
               onClick={scrollToTop}
-              className="w-10 h-10 bg-primary hover:bg-primary-glow text-primary-foreground rounded-lg flex items-center justify-center transition-all duration-300 hover:transform hover:-translate-y-1"
+              className="hidden md:flex w-10 h-10 bg-primary text-primary-foreground rounded-lg items-center justify-center transition md:hover:-translate-y-1"
             >
-              <i className="fas fa-arrow-up"></i>
+              <i className="fas fa-arrow-up" />
             </button>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+
+      {/* MOBILE FLOATING BACK TO TOP */}
+      <button
+        onClick={scrollToTop}
+        className="md:hidden fixed bottom-20 right-4 z-50 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-lg transition active:scale-95"
+        aria-label="Back to top"
+      >
+        <i className="fas fa-arrow-up text-lg" />
+      </button>
+    </>
   );
 };
 
