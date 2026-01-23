@@ -1,8 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,14 +25,37 @@ const Contact = () => {
 
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you soon!",
+      });
+      
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error: any) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or email me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -81,12 +108,52 @@ const Contact = () => {
                 Send Message
               </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your full name" className="w-full px-3 py-2 md:px-4 md:py-3 border rounded-xl bg-input text-foreground text-sm md:text-base" />
-                <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="your.email@example.com" className="w-full px-3 py-2 md:px-4 md:py-3 border rounded-xl bg-input text-foreground text-sm md:text-base" />
-                <textarea name="message" value={formData.message} onChange={handleChange} required rows={6} placeholder="Tell me about your project or just say hello..." className="w-full px-3 py-2 md:px-4 md:py-3 border rounded-xl bg-input text-foreground resize-none text-sm md:text-base" />
-                <button type="submit" className="w-full hero-btn text-primary-foreground px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base">
-                  <i className="fas fa-paper-plane mr-2"></i>
-                  Send Message
+                <input 
+                  type="text" 
+                  name="name" 
+                  value={formData.name} 
+                  onChange={handleChange} 
+                  required 
+                  maxLength={100}
+                  placeholder="Your full name" 
+                  className="w-full px-3 py-2 md:px-4 md:py-3 border rounded-xl bg-input text-foreground text-sm md:text-base" 
+                />
+                <input 
+                  type="email" 
+                  name="email" 
+                  value={formData.email} 
+                  onChange={handleChange} 
+                  required 
+                  maxLength={255}
+                  placeholder="your.email@example.com" 
+                  className="w-full px-3 py-2 md:px-4 md:py-3 border rounded-xl bg-input text-foreground text-sm md:text-base" 
+                />
+                <textarea 
+                  name="message" 
+                  value={formData.message} 
+                  onChange={handleChange} 
+                  required 
+                  rows={6} 
+                  maxLength={2000}
+                  placeholder="Tell me about your project or just say hello..." 
+                  className="w-full px-3 py-2 md:px-4 md:py-3 border rounded-xl bg-input text-foreground resize-none text-sm md:text-base" 
+                />
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full hero-btn text-primary-foreground px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <i className="fas fa-spinner fa-spin mr-2"></i>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <i className="fas fa-paper-plane mr-2"></i>
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -118,7 +185,7 @@ const Contact = () => {
                 </h3>
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   {socialLinks.map((social, index) => (
-                    <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-3 sm:p-4 bg-secondary rounded-xl transition-all duration-300">
+                    <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-3 sm:p-4 bg-secondary rounded-xl transition-all duration-300 hover:bg-secondary/80">
                       <i className={`${social.icon} text-xl mr-3`}></i>
                       <span className="text-sm sm:text-base">{social.name}</span>
                     </a>
