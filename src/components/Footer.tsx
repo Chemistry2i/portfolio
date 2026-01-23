@@ -111,7 +111,7 @@ const Footer = () => {
       {/* MOBILE FLOATING BACK TO TOP */}
       <button
         onClick={scrollToTop}
-        className="md:hidden fixed bottom-20 right-4 z-50 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-lg transition active:scale-95"
+        className="md:hidden fixed bottom-10 right-4 z-50 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-lg transition active:scale-95"
         aria-label="Back to top"
       >
         <i className="fas fa-arrow-up text-lg" />
