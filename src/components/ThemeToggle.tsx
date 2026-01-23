@@ -18,7 +18,7 @@ const ThemeToggle = () => {
     document.documentElement.classList.toggle('light', newTheme === 'light');
   };
 
-  return (
+  return ({/*
     <button
       onClick={toggleTheme}
       className="p-2 rounded-lg bg-secondary hover:bg-secondary/80 text-foreground transition-all duration-300"
@@ -30,6 +30,7 @@ const ThemeToggle = () => {
         <i className="fas fa-moon text-lg"></i>
       )}
     </button>
+    */}
   );
 };
 
