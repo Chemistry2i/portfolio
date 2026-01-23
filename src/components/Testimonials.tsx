@@ -26,7 +26,7 @@ const Testimonials = () => {
     {
       id: 1,
       name: 'Dr. Sarah Nakamya',
-      role: 'University Lecturer, Makerere University',
+      role: 'University Lecturer, Kyambogo University',
       content: 'Hassan developed the Campus Ballot system for our student elections. His attention to detail and ability to deliver a secure, user-friendly platform was impressive. The system handled thousands of votes flawlessly.',
       avatar: 'SN',
     },
