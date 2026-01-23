@@ -5,13 +5,11 @@ import ThemeToggle from './ThemeToggle';
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('#home'); // optional: track active section
+  const [activeSection, setActiveSection] = useState('#home');
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      // Optional: update active section while scrolling
       const sections = ['#home', '#about', '#skills', '#projects', '#services', '#contact'];
       for (let section of sections) {
         const el = document.querySelector(section);
@@ -111,19 +109,20 @@ const Navigation = () => {
               onClick={() => setIsMenuOpen(false)}
             />
 
-            {/* Slide-in Menu */}
+            {/* Fullscreen Slide-in Menu */}
             <div
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
-              className="md:hidden fixed top-0 right-0 z-[60] h-full w-3/4 max-w-xs bg-background/95 backdrop-blur-md shadow-lg transform transition-transform duration-300"
+              className="md:hidden fixed top-0 left-0 z-[60] w-full h-full bg-background/95 backdrop-blur-md overflow-y-auto flex flex-col justify-between transition-transform duration-300"
             >
-              <div className="pt-safe pb-safe px-4 py-6 flex flex-col space-y-2">
+              {/* Nav Items */}
+              <div className="pt-safe px-6 py-8 flex flex-col space-y-4">
                 {navItems.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`flex items-center gap-3 w-full text-left px-3 py-3 rounded-md font-medium transition-colors duration-300 ${
+                    className={`flex items-center gap-4 w-full text-left px-4 py-3 rounded-md font-medium transition-colors duration-300 ${
                       activeSection === item.href
                         ? 'bg-primary/10 text-primary'
                         : 'text-foreground hover:bg-primary/5 hover:text-primary'
@@ -133,6 +132,25 @@ const Navigation = () => {
                     {item.name}
                   </button>
                 ))}
+              </div>
+
+              {/* Mobile Footer */}
+              <div className="border-t border-border p-4 text-center text-sm text-muted-foreground space-y-2">
+                <p>© {new Date().getFullYear()} Wambogo Hassan | Concept Crashers</p>
+                <div className="flex justify-center gap-4 mt-2">
+                  <a href="https://github.com/Chemistry2i" className="text-muted-foreground hover:text-primary">
+                    <i className="fab fa-github text-lg" />
+                  </a>
+                  <a href="https://www.linkedin.com/in/wambogo-hassan-sadat-895544376" className="text-muted-foreground hover:text-primary">
+                    <i className="fab fa-linkedin text-lg" />
+                  </a>
+                  <a href="#" className="text-muted-foreground hover:text-primary">
+                    <i className="fab fa-dribbble text-lg" />
+                  </a>
+                  <a href="#" className="text-muted-foreground hover:text-primary">
+                    <i className="fab fa-twitter text-lg" />
+                  </a>
+                </div>
               </div>
             </div>
           </>,
