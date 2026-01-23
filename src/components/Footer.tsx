@@ -99,7 +99,7 @@ const Footer = () => {
               <span className="text-accent font-medium">Concept Crashers</span>
               <br />
               <span className="text-[10px] text-muted-foreground">
-                All rights reserved · Built with React, Tailwind CSS & TypeScript
+                All rights reserved · Built with HTML5, CSS3 & JavaScript
               </span>
             </p>
 
