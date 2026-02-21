@@ -125,8 +125,8 @@ const Footer = () => {
             {/* Left: Branding and accessible info */}
             <div className="flex-1 text-muted-foreground text-[11px] md:text-[12px] text-center md:text-left leading-snug">
               <span>&copy;</span> {new Date().getFullYear()} Built by{' '}
-              <span className="text-primary font-medium">Wambogo Hassan</span> |{' '}
-              <span className="text-accent font-medium">Concept Crashers</span>
+              <span className="text-primary font-medium">Wambogo Hassan Sadat</span> |{' '}
+              <a href="https://conceptcrashers.tech" target="_blank" rel="noopener noreferrer" className="text-accent font-medium underline hover:text-primary">Concept Crashers</a>
               <br />
               <span className="text-[10px] text-green-600 font-semibold">&#x2714; Accessible: This site follows accessibility best practices for inclusive design.</span>
             </div>

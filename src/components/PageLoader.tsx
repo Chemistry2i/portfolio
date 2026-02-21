@@ -32,7 +32,7 @@ const PageLoader = () => {
           </span>
         </div>
         {/* Logo/Name */}
-        <h1 className="text-3xl md:text-4xl font-bold gradient-text">Wambogo</h1>
+        <h1 className="text-3xl md:text-4xl font-bold gradient-text">Welcome !</h1>
         
         {/* Loading bar */}
         <div className="w-48 md:w-64 h-1 bg-secondary rounded-full overflow-hidden">
