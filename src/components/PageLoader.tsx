@@ -26,7 +26,10 @@ const PageLoader = () => {
       <div className="text-center space-y-6">
         {/* Icon above name */}
         <div className="flex justify-center mb-2">
-          <i className="fas fa-lightbulb text-primary text-4xl md:text-5xl animate-scale" />
+          <span className="relative flex items-center justify-center">
+            <span className="absolute w-20 h-20 md:w-28 md:h-28 rounded-full bg-primary/40 blur-[32px] animate-pulse"></span>
+            <i className="fas fa-lightbulb text-primary text-4xl md:text-5xl animate-scale relative z-10" />
+          </span>
         </div>
         {/* Logo/Name */}
         <h1 className="text-3xl md:text-4xl font-bold gradient-text">Wambogo</h1>

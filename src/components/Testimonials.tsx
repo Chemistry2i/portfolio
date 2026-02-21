@@ -77,7 +77,7 @@ const Testimonials = () => {
               </div>
               
               {/* Content */}
-              <p className="text-muted-foreground text-sm md:text-base mb-6 leading-relaxed">
+              <p className="text-muted-foreground text-sm md:text-base mb-6 leading-relaxed italic">
                 "{testimonial.content}"
               </p>
               
