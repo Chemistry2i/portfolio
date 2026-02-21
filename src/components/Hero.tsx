@@ -23,7 +23,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible">
+    <section id="home" className="min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible mb-0">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -48,7 +48,7 @@ const Hero = () => {
                   }`}>
                     <span className="text-foreground">Hello, I'm</span>
                   </h1>
-                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-all duration-500 delay-100 ${
+                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-all duration-500 delay-100 whitespace-nowrap ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}>
                     <span className="gradient-text">Wambogo Hassan Sadat</span>
@@ -93,24 +93,24 @@ const Hero = () => {
                 <div className={`pt-2 transition-all duration-700 delay-600 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
-                  <div className="glass-card p-3 sm:p-4 rounded-2xl backdrop-blur-md">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-                      <div className="space-y-1 transition-all duration-300 hover:scale-105">
-                        <i className="fas fa-lightbulb text-primary text-lg"></i>
-                        <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-                          Ideas to Interfaces
+                  <div className="glass-card p-2 sm:p-4 rounded-2xl backdrop-blur-md">
+                    <div className="grid grid-cols-3 gap-1 sm:gap-3 text-center">
+                      <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
+                        <i className="fas fa-lightbulb text-primary text-sm sm:text-lg"></i>
+                        <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">
+                          Ideas to UI
                         </p>
                       </div>
-                      <div className="space-y-1 transition-all duration-300 hover:scale-105">
-                        <i className="fas fa-eye text-accent text-lg"></i>
-                        <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-                          Designer's Eye
+                      <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
+                        <i className="fas fa-eye text-accent text-sm sm:text-lg"></i>
+                        <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">
+                          Design Eye
                         </p>
                       </div>
-                      <div className="space-y-1 transition-all duration-300 hover:scale-105">
-                        <i className="fas fa-cogs text-primary text-lg"></i>
-                        <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-                          Aesthetic Precision
+                      <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
+                        <i className="fas fa-cogs text-primary text-sm sm:text-lg"></i>
+                        <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">
+                          Clean Code
                         </p>
                       </div>
                     </div>
