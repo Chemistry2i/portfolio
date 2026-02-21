@@ -175,8 +175,9 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 text-center z-10">
-        <div className="animate-bounce">
-          <i className="fas fa-chevron-down text-primary text-lg md:text-xl"></i>
+        <div className="animate-bounce flex flex-col items-center">
+          <i className="fas fa-chevron-down text-primary text-lg md:text-xl mb-1"></i>
+          <i className="fas fa-mouse text-accent text-xl md:text-2xl mt-1"></i>
         </div>
         <p className="text-xs md:text-sm text-muted-foreground mt-2">Scroll to explore</p>
       </div>
