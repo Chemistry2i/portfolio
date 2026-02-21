@@ -24,6 +24,10 @@ const PageLoader = () => {
   return (
     <div className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background transition-opacity duration-500 ${progress >= 100 ? 'opacity-0' : 'opacity-100'}`}>
       <div className="text-center space-y-6">
+        {/* Icon above name */}
+        <div className="flex justify-center mb-2">
+          <i className="fas fa-lightbulb text-primary text-4xl md:text-5xl animate-scale" />
+        </div>
         {/* Logo/Name */}
         <h1 className="text-3xl md:text-4xl font-bold gradient-text">Wambogo</h1>
         
