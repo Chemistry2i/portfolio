@@ -87,9 +87,10 @@ const Hero = () => {
                   </h1>
                   
                   {/* Typing Animation Subtitle */}
-                  <div className={`text-base sm:text-lg md:text-xl lg:text-2xl font-medium h-8 sm:h-10 transition-all duration-500 delay-200 ${
+                  <div className={`text-base sm:text-lg md:text-xl lg:text-2xl font-medium h-8 sm:h-10 transition-all duration-500 delay-200 mb-1 ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}>
+                    <span className="text-foreground mr-2">And I am a</span>
                     <span className={currentRole.className}>
                       {currentRole.text.slice(0, charIndex)}
                     </span>
