@@ -29,6 +29,24 @@ const Footer = () => {
     <>
       {/* FOOTER */}
       <footer className="relative border-t border-border overflow-x-hidden bg-background">
+        {/* Glowing Banner with Quick Action - Move to Top */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
+          <div className="mb-8 flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-6 sm:px-8 sm:py-10 md:px-12 md:py-12 rounded-xl hero-btn shadow-lg animate-glow">
+            <div className="text-white text-lg md:text-xl font-semibold drop-shadow-md">
+              Ready to start your next project? Let's build something amazing together!
+              <p className="mt-2 text-white text-xs sm:text-sm md:text-[13px] font-normal drop-shadow-sm">
+                I’m passionate about transforming ideas into digital solutions. Reach out and let’s collaborate on your vision!
+              </p>
+            </div>
+            <button
+              className="mt-3 md:mt-0 px-6 py-2 bg-gray-500 text-white font-bold rounded-md md:rounded-full shadow-md hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary flex items-center gap-2"
+              onClick={() => scrollToSection('#contact')}
+            >
+              <i className="fas fa-paper-plane"></i>
+              Contact Me
+            </button>
+          </div>
+        </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {/* Brand */}
