@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import portraitImg from '@/assets/wambogo-portrait.jpg';
+import portraitImg from '@/assets/Wambogo.jpg';
 
 const TYPING_ROLES = [
   { text: 'MERN Stack Dev', className: 'text-primary' },
@@ -128,7 +128,7 @@ const Hero = () => {
                 <div className={`pt-2 transition-all duration-700 delay-600 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
-                  <div className="glass-card p-2 sm:p-4 rounded-2xl backdrop-blur-md">
+                  <div className="glass-card p-2 sm:p-4 rounded-2xl backdrop-blur-md mx-auto lg:max-w-3xl xl:max-w-4xl">
                     <div className="grid grid-cols-3 gap-1 sm:gap-3 text-center">
                       <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
                         <i className="fas fa-lightbulb text-primary text-sm sm:text-lg"></i>
