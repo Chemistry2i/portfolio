@@ -78,7 +78,7 @@ const Hero = () => {
                   <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold leading-tight transition-all duration-500 delay-100 ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}>
-                    <span className="text-foreground">Hello, I'm</span>
+                    <span className="text-foreground">Hello, It's Me</span>
                   </h1>
                   <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-all duration-500 delay-100 whitespace-nowrap ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
