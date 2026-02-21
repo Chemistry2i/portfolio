@@ -1,34 +1,66 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import portraitImg from '@/assets/wambogo-portrait.jpg';
+
+const TYPING_ROLES = [
+  { text: 'MERN Stack Dev', className: 'text-primary' },
+  { text: 'UI/UX Designer', className: 'text-accent' },
+  { text: 'Frontend Engineer', className: 'text-primary' },
+  { text: 'Creative Coder', className: 'text-accent' },
+];
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const scrollToProjects = () => {
-    const element = document.querySelector('#projects');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  // Typing animation
+  useEffect(() => {
+    const current = TYPING_ROLES[roleIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!isDeleting && charIndex < current.text.length) {
+      timeout = setTimeout(() => setCharIndex(c => c + 1), 80);
+    } else if (!isDeleting && charIndex === current.text.length) {
+      timeout = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && charIndex > 0) {
+      timeout = setTimeout(() => setCharIndex(c => c - 1), 40);
+    } else if (isDeleting && charIndex === 0) {
+      setIsDeleting(false);
+      setRoleIndex(i => (i + 1) % TYPING_ROLES.length);
     }
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, roleIndex]);
+
+  const scrollToProjects = () => {
+    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToContact = () => {
-    const element = document.querySelector('#contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const currentRole = TYPING_ROLES[roleIndex];
 
   return (
     <section id="home" className="min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible mb-0">
-      {/* Background Elements */}
+      {/* Dot Grid Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 md:w-80 md:h-80 bg-accent/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-96 md:h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage: 'radial-gradient(hsl(var(--primary)) 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        {/* Subtle glow accents */}
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-primary/8 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 md:w-80 md:h-80 bg-accent/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
       </div>
 
       {/* Main Content Container */}
@@ -53,12 +85,15 @@ const Hero = () => {
                   }`}>
                     <span className="gradient-text">Wambogo Hassan Sadat</span>
                   </h1>
-                  <div className={`text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-muted-foreground transition-all duration-500 delay-200 ${
+                  
+                  {/* Typing Animation Subtitle */}
+                  <div className={`text-base sm:text-lg md:text-xl lg:text-2xl font-medium h-8 sm:h-10 transition-all duration-500 delay-200 ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}>
-                    <span className="text-primary">MERN Stack Dev</span>
-                    <span className="text-foreground"> & </span>
-                    <span className="text-accent">UI/UX Designer</span>
+                    <span className={currentRole.className}>
+                      {currentRole.text.slice(0, charIndex)}
+                    </span>
+                    <span className="inline-block w-[2px] h-5 sm:h-6 bg-primary ml-0.5 align-middle animate-pulse" />
                   </div>
                 </div>
                 
@@ -97,21 +132,15 @@ const Hero = () => {
                     <div className="grid grid-cols-3 gap-1 sm:gap-3 text-center">
                       <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
                         <i className="fas fa-lightbulb text-primary text-sm sm:text-lg"></i>
-                        <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">
-                          Ideas to UI
-                        </p>
+                        <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">Ideas to UI</p>
                       </div>
                       <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
                         <i className="fas fa-eye text-accent text-sm sm:text-lg"></i>
-                        <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">
-                          Design Eye
-                        </p>
+                        <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">Design Eye</p>
                       </div>
                       <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
                         <i className="fas fa-cogs text-primary text-sm sm:text-lg"></i>
-                        <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">
-                          Clean Code
-                        </p>
+                        <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">Clean Code</p>
                       </div>
                     </div>
                   </div>
@@ -124,11 +153,8 @@ const Hero = () => {
               isVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-8 scale-95'
             }`}>
               <div className="relative">
-                {/* Glow behind image */}
                 <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl"></div>
                 <div className="absolute -inset-2 bg-accent/10 rounded-full blur-2xl"></div>
-                
-                {/* Image container */}
                 <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
                   <img 
                     src={portraitImg} 
@@ -137,8 +163,6 @@ const Hero = () => {
                     loading="eager"
                   />
                 </div>
-                
-                {/* Decorative ring */}
                 <div className="absolute -inset-3 rounded-full border-2 border-primary/20 animate-pulse"></div>
               </div>
             </div>
