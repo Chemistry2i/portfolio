@@ -133,14 +133,17 @@ const Hero = () => {
                       <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
                         <i className="fas fa-lightbulb text-primary text-sm sm:text-lg"></i>
                         <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">Ideas to UI</p>
+                        <p className="hidden md:block text-[11px] text-muted-foreground/70">Transforming concepts into polished, interactive interfaces</p>
                       </div>
                       <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
                         <i className="fas fa-eye text-accent text-sm sm:text-lg"></i>
                         <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">Design Eye</p>
+                        <p className="hidden md:block text-[11px] text-muted-foreground/70">Pixel-perfect layouts with modern aesthetics & UX focus</p>
                       </div>
                       <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
                         <i className="fas fa-cogs text-primary text-sm sm:text-lg"></i>
                         <p className="text-[10px] sm:text-sm text-muted-foreground font-medium">Clean Code</p>
+                        <p className="hidden md:block text-[11px] text-muted-foreground/70">Scalable, maintainable code following best practices</p>
                       </div>
                     </div>
                   </div>
