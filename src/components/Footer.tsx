@@ -39,7 +39,7 @@ const Footer = () => {
               </p>
             </div>
             <button
-              className="mt-3 md:mt-0 px-6 py-2 bg-gray-500 text-white font-bold rounded-md md:rounded-full shadow-md hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary flex items-center gap-2"
+              className="mt-3 md:mt-0 px-6 py-2 bg-gray-500 text-white font-bold rounded-full shadow-md hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary flex items-center gap-2"
               onClick={() => scrollToSection('#contact')}
             >
               <i className="fas fa-paper-plane"></i>
