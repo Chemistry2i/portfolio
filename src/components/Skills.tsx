@@ -104,7 +104,7 @@ const Skills = () => {
               {[
                 { name: 'Git', icon: 'fab fa-git-alt' },
                 { name: 'Bootstrap', icon: 'fab fa-bootstrap' },
-                { name: 'Vue.js', icon: 'fab fa-vuejs' },
+                { name: 'GitHub', icon: 'fab fa-github' },
                 { name: 'REST API', icon: 'fas fa-server' },
                 { name: 'WebSockets', icon: 'fas fa-plug' },
                 { name: 'Vercel', icon: 'fas fa-cloud' },
