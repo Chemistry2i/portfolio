@@ -29,6 +29,7 @@ const Testimonials = () => {
       role: 'University Lecturer, Kyambogo University',
       content: 'Hassan developed the Campus Ballot system for our student elections. His attention to detail and ability to deliver a secure, user-friendly platform was impressive. The system handled thousands of votes flawlessly.',
       avatar: 'SN',
+      stars: 5,
     },
     {
       id: 2,
@@ -36,6 +37,7 @@ const Testimonials = () => {
       role: 'Agricultural Consultant',
       content: 'Working with Hassan on Agri Buddy was a pleasure. He translated complex agricultural workflows into an intuitive digital solution. His UI/UX skills really shine through in every aspect of the platform.',
       avatar: 'JM',
+      stars: 5,
     },
     {
       id: 3,
@@ -43,6 +45,7 @@ const Testimonials = () => {
       role: 'Small Business Owner',
       content: 'Hassan built our e-commerce platform from scratch. He was responsive, professional, and delivered beyond our expectations. Our online sales have increased significantly since the launch.',
       avatar: 'GA',
+      stars: 4,
     },
   ];
 
@@ -71,6 +74,18 @@ const Testimonials = () => {
               }`}
               style={{ transitionDelay: `${(index + 1) * 150}ms` }}
             >
+              {/* Stars */}
+              <div className="flex gap-1 mb-3">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <i
+                    key={i}
+                    className={`fas fa-star text-sm ${
+                      i < testimonial.stars ? 'text-yellow-400' : 'text-muted-foreground/30'
+                    }`}
+                  ></i>
+                ))}
+              </div>
+
               {/* Quote Icon */}
               <div className="text-primary/30 mb-4">
                 <i className="fas fa-quote-left text-3xl"></i>
