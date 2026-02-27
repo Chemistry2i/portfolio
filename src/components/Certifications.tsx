@@ -102,13 +102,13 @@ const Certifications = () => {
         </h3>
 
           <div
-            className="overflow-hidden relative"
+            className="overflow-hidden relative md:mx-16 lg:mx-24 xl:mx-32"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {/* Fade edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-secondary/80 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-secondary/80 to-transparent z-10 pointer-events-none" />
+            {/* Wider fade edges to hide container boundaries */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[hsl(var(--secondary)/0.8)] via-[hsl(var(--secondary)/0.4)] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[hsl(var(--secondary)/0.8)] via-[hsl(var(--secondary)/0.4)] to-transparent z-10 pointer-events-none" />
 
             <div
               ref={scrollRef}
