@@ -77,8 +77,8 @@ const Certifications = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="certifications" className="py-16 md:py-24 safe-px bg-secondary/20">
-      <div className="max-w-6xl mx-auto">
+    <section ref={sectionRef} id="certifications" className="py-16 md:py-24 bg-secondary/20">
+      <div className="max-w-6xl mx-auto safe-px">
         {/* Section Header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -90,15 +90,16 @@ const Certifications = () => {
             Continuous learning and professional development
           </p>
         </div>
+      </div>
 
-        {/* Marquee Certifications */}
-        <div className={`mb-12 transition-all duration-700 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <h3 className="text-xl font-bold text-foreground mb-6">
-            <i className="fas fa-certificate text-primary mr-2"></i>
-            Certifications
-          </h3>
+      {/* Marquee Certifications - Full width */}
+      <div className={`mb-12 transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}>
+        <h3 className="text-xl font-bold text-foreground mb-6 max-w-6xl mx-auto safe-px">
+          <i className="fas fa-certificate text-primary mr-2"></i>
+          Certifications
+        </h3>
 
           <div
             className="overflow-hidden relative"
@@ -155,10 +156,11 @@ const Certifications = () => {
                 </div>
               ))}
             </div>
-          </div>
         </div>
+      </div>
 
-        {/* Education */}
+      {/* Education */}
+      <div className="max-w-6xl mx-auto safe-px">
         <div className={`max-w-md transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`} style={{ transitionDelay: '300ms' }}>
