@@ -1,3 +1,6 @@
+import javaPhoto from '../assets/java.png';
+import jsPhoto from '../assets/js.png';
+import gitPhoto from '../assets/git.png';
 import { useEffect, useState, useRef } from 'react';
 
 const Certifications = () => {
