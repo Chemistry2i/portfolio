@@ -112,19 +112,19 @@ const Projects = () => {
                         className="flex items-center text-primary hover:text-primary-glow transition-colors"
                       >
                         <i className="fas fa-external-link-alt mr-2"></i>
-                        <span className="text-sm font-medium">Live Demo</span>
+                        <span className="text-xs font-medium">Live Demo</span>
                       </a>
                       <a 
                         href={project.githubUrl}
                         className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
                       >
                         <i className="fab fa-github mr-2"></i>
-                        <span className="text-sm font-medium">View Code</span>
+                        <span className="text-xs font-medium">View Code</span>
                       </a>
                     </div>
                     <Link
                       to={`/project/${project.slug}`}
-                      className="text-sm font-medium text-accent hover:text-primary transition-colors flex items-center gap-1"
+                      className="text-xs font-medium text-accent hover:text-primary transition-colors flex items-center gap-1"
                     >
                       Case Study
                       <i className="fas fa-arrow-right text-xs" />
