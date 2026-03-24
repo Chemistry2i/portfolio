@@ -105,7 +105,7 @@ const Certifications = () => {
         </h3>
 
           <div
-            className="overflow-hidden relative md:mx-16 lg:mx-24 xl:mx-32 md:rounded-2xl"
+            className="overflow-hidden relative max-w-6xl mx-auto md:rounded-2xl"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
