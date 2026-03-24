@@ -12,6 +12,7 @@ import Services from '@/components/Services';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import PageLoader from '@/components/PageLoader';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
   return (
@@ -30,6 +31,7 @@ const Index = () => {
       <Services />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
