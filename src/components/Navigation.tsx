@@ -71,7 +71,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
+                   onClick={() => handleNavClick(item.href)}
                   className="text-foreground hover:text-primary transition-colors duration-300 font-medium text-sm lg:text-base"
                 >
                   {item.name}
@@ -114,7 +114,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavClick(item.href)}
                   className="block w-full text-left px-3 py-3 text-foreground hover:text-primary transition-colors duration-300 font-medium text-base"
                 >
                   {item.name}
