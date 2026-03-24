@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 
 const Navigation = () => {
@@ -21,13 +22,23 @@ const Navigation = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Services', href: '#services' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '#contact' },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (href: string) => {
+    if (href.startsWith('/')) {
+      navigate(href);
+    } else if (location.pathname !== '/') {
+      navigate('/' + href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsMenuOpen(false);
   };
@@ -60,7 +71,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
+                   onClick={() => handleNavClick(item.href)}
                   className="text-foreground hover:text-primary transition-colors duration-300 font-medium text-sm lg:text-base"
                 >
                   {item.name}
@@ -103,7 +114,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavClick(item.href)}
                   className="block w-full text-left px-3 py-3 text-foreground hover:text-primary transition-colors duration-300 font-medium text-base"
                 >
                   {item.name}

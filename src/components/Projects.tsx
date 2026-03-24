@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import projectCampusBallot from '@/assets/project-campus-ballot.jpg';
-import projectAgriBuddy from '@/assets/project-agri-buddy.jpg';
-import projectQuickCart from '@/assets/project-quick-cart.jpg';
+import { Link } from 'react-router-dom';
+import { projects } from '@/data/projects';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,38 +26,6 @@ const Projects = () => {
       }
     };
   }, []);
-  const projects = [
-    {
-      id: 1,
-      title: 'Campus Ballot - Online Voting System',
-      description: 'A secure and transparent online voting platform designed for campus elections, featuring real-time results, voter authentication, and election management.',
-      image: projectCampusBallot,
-      tech: ['React', 'Node.js', 'MongoDB', 'Authentication'],
-      liveUrl: 'https://campusballot.tech',
-      githubUrl: 'https://github.com/Chemistry2i',
-      category: 'Full Stack Development'
-    },
-    {
-      id: 2,
-      title: 'Agri Buddy - Agricultural Solution',
-      description: 'An innovative online agricultural platform connecting farmers with resources, market insights, and expert advice for improved farming practices.',
-      image: projectAgriBuddy,
-      tech: ['React', 'Node.js', 'Database', 'API Integration'],
-      liveUrl: 'https://agri-buddy.onrender.com',
-      githubUrl: 'https://github.com/Chemistry2i',
-      category: 'Full Stack Development'
-    },
-    {
-      id: 3,
-      title: 'Quick Cart - E-commerce Platform',
-      description: 'A modern e-commerce platform with seamless shopping experience, featuring advanced filtering, secure payment integration, and inventory management.',
-      image: projectQuickCart,
-      tech: ['React', 'Express', 'MongoDB', 'Stripe'],
-      liveUrl: '#',
-      githubUrl: 'https://github.com/Chemistry2i',
-      category: 'Full Stack Development'
-    },
-  ];
 
   return (
     <section ref={sectionRef} id="projects" className="py-12 md:py-20 lg:py-24 relative">
@@ -127,7 +94,7 @@ const Projects = () => {
 
                   {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
+                    {project.tech.slice(0, 4).map((tech) => (
                       <span 
                         key={tech}
                         className="px-3 py-1 bg-secondary text-secondary-foreground text-xs rounded-full border border-border"
@@ -138,21 +105,30 @@ const Projects = () => {
                   </div>
 
                   {/* Project Links */}
-                  <div className="flex items-center space-x-4 pt-4">
-                    <a 
-                      href={project.liveUrl}
-                      className="flex items-center text-primary hover:text-primary-glow transition-colors"
+                  <div className="flex items-center justify-between pt-4">
+                    <div className="flex items-center space-x-4">
+                      <a 
+                        href={project.liveUrl}
+                        className="flex items-center text-primary hover:text-primary-glow transition-colors"
+                      >
+                        <i className="fas fa-external-link-alt mr-2"></i>
+                        <span className="text-sm font-medium">Live Demo</span>
+                      </a>
+                      <a 
+                        href={project.githubUrl}
+                        className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <i className="fab fa-github mr-2"></i>
+                        <span className="text-sm font-medium">View Code</span>
+                      </a>
+                    </div>
+                    <Link
+                      to={`/project/${project.slug}`}
+                      className="text-sm font-medium text-accent hover:text-primary transition-colors flex items-center gap-1"
                     >
-                      <i className="fas fa-external-link-alt mr-2"></i>
-                      <span className="text-sm font-medium">Live Demo</span>
-                    </a>
-                    <a 
-                      href={project.githubUrl}
-                      className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <i className="fab fa-github mr-2"></i>
-                      <span className="text-sm font-medium">View Code</span>
-                    </a>
+                      Case Study
+                      <i className="fas fa-arrow-right text-xs" />
+                    </Link>
                   </div>
                 </div>
               </div>
