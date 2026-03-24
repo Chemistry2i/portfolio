@@ -110,8 +110,8 @@ const ProjectCaseStudy = () => {
             {/* Results */}
             <div>
               <h2 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-3">
-                <span className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
-                  <i className="fas fa-chart-line text-green-500 text-sm" />
+                <span className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                  <i className="fas fa-chart-line text-accent text-sm" />
                 </span>
                 Results & Impact
               </h2>
