@@ -1,3 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +14,7 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: LinkedInBot
 Allow: /
+
+Sitemap: https://wambogohassansadat.dev/sitemap.xml
