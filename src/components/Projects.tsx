@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '@/data/projects';
+import ImageLightbox from './ImageLightbox';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -55,12 +57,19 @@ const Projects = () => {
               >
                 {/* Project Image */}
                 <div className="relative overflow-hidden rounded-xl mb-6">
-                  <img 
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="w-full h-40 md:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setLightbox({ src: project.image, alt: project.title })}
+                    aria-label={`View ${project.title} fullscreen`}
+                    className="block w-full cursor-zoom-in focus:outline-none"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      className="w-full h-40 md:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </button>
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
                   {/* Overlay Links */}
@@ -144,6 +153,14 @@ const Projects = () => {
           </div>
         </div>
       </div>
+
+      {lightbox && (
+        <ImageLightbox
+          src={lightbox.src}
+          alt={lightbox.alt}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </section>
   );
 };
