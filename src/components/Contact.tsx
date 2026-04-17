@@ -191,25 +191,70 @@ const Contact = () => {
                 : 'opacity-0 translate-x-6'
             }`}
           >
-            {contactInfo.map((item, i) => (
-              <a
-                key={i}
-                href={item.href}
-                className="glass-card block p-4 sm:p-5 rounded-xl transition md:hover:scale-105"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                    <i className={`${item.icon} text-primary-foreground`} />
+            {/* Phone */}
+            <a
+              href="tel:+256786021431"
+              className="glass-card block p-4 sm:p-5 rounded-xl transition md:hover:scale-105"
+            >
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                  <i className="fas fa-phone text-primary-foreground" />
+                </div>
+                <div>
+                  <h4 className="font-semibold">Phone</h4>
+                  <p className="text-muted-foreground text-sm">+256 786021431</p>
+                </div>
+              </div>
+            </a>
+
+            {/* Email with copy button */}
+            <div className="glass-card p-4 sm:p-5 rounded-xl transition md:hover:scale-105">
+              <div className="flex items-center gap-4">
+                <a
+                  href={`mailto:${emailAddress}`}
+                  className="flex items-center gap-4 flex-1 min-w-0"
+                >
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shrink-0">
+                    <i className="fas fa-envelope text-primary-foreground" />
                   </div>
-                  <div>
-                    <h4 className="font-semibold">{item.title}</h4>
-                    <p className="text-muted-foreground text-sm">
-                      {item.details}
+                  <div className="min-w-0">
+                    <h4 className="font-semibold">Email</h4>
+                    <p className="text-muted-foreground text-sm truncate">
+                      {emailAddress}
                     </p>
                   </div>
+                </a>
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  aria-label="Copy email address"
+                  title={emailCopied ? 'Copied!' : 'Copy email'}
+                  className={`shrink-0 h-9 w-9 rounded-lg flex items-center justify-center transition-all ${
+                    emailCopied
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-secondary hover:bg-secondary/80 text-foreground'
+                  }`}
+                >
+                  <i className={`fas ${emailCopied ? 'fa-check' : 'fa-copy'} text-sm`} />
+                </button>
+              </div>
+            </div>
+
+            {/* Location */}
+            <a
+              href="#"
+              className="glass-card block p-4 sm:p-5 rounded-xl transition md:hover:scale-105"
+            >
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                  <i className="fas fa-map-marker-alt text-primary-foreground" />
                 </div>
-              </a>
-            ))}
+                <div>
+                  <h4 className="font-semibold">Location</h4>
+                  <p className="text-muted-foreground text-sm">Banda, Kampala, Uganda</p>
+                </div>
+              </div>
+            </a>
 
             <div className="glass-card p-5 sm:p-6 rounded-2xl">
               <h3 className="text-xl font-semibold mb-6">
