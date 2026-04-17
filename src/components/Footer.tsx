@@ -147,13 +147,6 @@ const Footer = () => {
               <span className="text-primary font-semibold">"Building digital bridges, one pixel at a time."</span>
             </div>
 
-            {/* Desktop back-to-top */}
-            <button
-              onClick={scrollToTop}
-              className="hidden md:flex w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center transition-transform duration-300 hover:-translate-y-1"
-            >
-              <i className="fas fa-arrow-up" />
-            </button>
           </div>
         </div>
       </footer>
