@@ -60,26 +60,27 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: 'fas fa-phone',
-      title: 'Phone',
-      details: '+256 786021431',
-      href: 'tel:+256786021431',
-    },
-    {
-      icon: 'fas fa-envelope',
-      title: 'Email',
-      details: 'wambogohassan63@gmail.com',
-      href: 'mailto:wambogohassan63@gmail.com',
-    },
-    {
-      icon: 'fas fa-map-marker-alt',
-      title: 'Location',
-      details: 'Banda, Kampala, Uganda',
-      href: '#',
-    },
-  ];
+  const emailAddress = 'wambogohassan63@gmail.com';
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+      setEmailCopied(true);
+      toast({
+        title: 'Email copied!',
+        description: `${emailAddress} is now in your clipboard.`,
+      });
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch {
+      toast({
+        title: 'Could not copy',
+        description: 'Please copy the email manually.',
+        variant: 'destructive',
+      });
+    }
+  };
 
   const socialLinks = [
     { icon: 'fab fa-github', name: 'GitHub', href: 'https://github.com/Chemistry2i' },

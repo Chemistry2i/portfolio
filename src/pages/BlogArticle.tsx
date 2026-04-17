@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { articles } from '@/data/articles';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ReadingProgress from '@/components/ReadingProgress';
 
 const BlogArticle = () => {
   const { slug } = useParams();
@@ -111,6 +112,7 @@ const BlogArticle = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <ReadingProgress />
       <Navigation />
 
       <article className="pt-24 pb-16 md:pt-32">
