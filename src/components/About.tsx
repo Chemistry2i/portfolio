@@ -85,6 +85,72 @@ const About = () => {
                 </div>
               </div>
 
+              {/* Voice & opinions block */}
+              <div className="glass-card p-6 md:p-8 rounded-2xl">
+                <h3 className="text-xl md:text-2xl font-semibold mb-4 text-foreground flex items-center">
+                  <i className="fas fa-quote-left text-primary mr-3" />
+                  What I believe
+                </h3>
+                <ul className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
+                  <li className="flex gap-3">
+                    <i className="fas fa-check text-accent mt-1.5 text-xs shrink-0" />
+                    <span>
+                      <strong className="text-foreground">Boring tech wins.</strong> I'd
+                      rather ship a stable MERN app today than chase a framework
+                      that won't exist next year.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <i className="fas fa-check text-accent mt-1.5 text-xs shrink-0" />
+                    <span>
+                      <strong className="text-foreground">Design is part of engineering.</strong>{' '}
+                      A bug-free product with bad UX is still broken.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <i className="fas fa-check text-accent mt-1.5 text-xs shrink-0" />
+                    <span>
+                      <strong className="text-foreground">Ship small, ship often.</strong>{' '}
+                      Every Friday a real user should touch something I built that week.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <i className="fas fa-check text-accent mt-1.5 text-xs shrink-0" />
+                    <span>
+                      <strong className="text-foreground">Africa-first matters.</strong> I
+                      build with low-bandwidth, mobile-first, and offline-friendly
+                      defaults — because that's where my users are.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Currently */}
+              <div className="glass-card p-6 md:p-7 rounded-2xl">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-foreground flex items-center">
+                  <i className="fas fa-circle-notch fa-spin text-primary mr-3 text-sm" />
+                  Right now
+                </h3>
+                <div className="space-y-2.5 text-sm text-muted-foreground">
+                  <p>
+                    <span className="text-accent font-medium">Building:</span> A SaaS dashboard
+                    template with role-based access and audit logs.
+                  </p>
+                  <p>
+                    <span className="text-accent font-medium">Learning:</span> Edge runtimes,
+                    Postgres internals, and shader-based UI animations.
+                  </p>
+                  <p>
+                    <span className="text-accent font-medium">Reading:</span> "A Philosophy of
+                    Software Design" by John Ousterhout.
+                  </p>
+                  <p>
+                    <span className="text-accent font-medium">Listening to:</span> Lo-fi
+                    beats and the Syntax podcast on repeat.
+                  </p>
+                </div>
+              </div>
+
               {/* Download CV Button */}
               <div className="text-center lg:text-left px-4">
                 <button className="w-full sm:w-auto hero-btn text-primary-foreground">
