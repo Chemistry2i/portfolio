@@ -1,5 +1,7 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import portraitImg from '@/assets/Wambogo.jpg';
+import MagneticCursor from './MagneticCursor';
+import AvailabilityBadge from './AvailabilityBadge';
 
 const TYPING_ROLES = [
   { text: 'MERN Stack Dev', className: 'text-primary' },
@@ -13,6 +15,7 @@ const Hero = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -48,7 +51,8 @@ const Hero = () => {
   const currentRole = TYPING_ROLES[roleIndex];
 
   return (
-    <section id="home" className="min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible mb-0">
+    <section ref={heroRef} id="home" className="min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible mb-0">
+      <MagneticCursor containerRef={heroRef} />
       {/* Dot Grid Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -73,6 +77,13 @@ const Hero = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}>
               <div className="space-y-5 md:space-y-6">
+                {/* Availability badge */}
+                <div className={`flex justify-center lg:justify-start transition-all duration-500 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}>
+                  <AvailabilityBadge />
+                </div>
+
                 {/* Name and Title */}
                 <div className="space-y-2 sm:space-y-3">
                   <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold leading-tight transition-all duration-500 delay-100 ${
