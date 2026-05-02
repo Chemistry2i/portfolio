@@ -18,6 +18,10 @@ export interface ProjectData {
   features: string[];
   duration: string;
   role: string;
+  /** Short outcome-led headline shown on the card. Lead with a metric. */
+  impact: string;
+  /** Quick-glance metrics shown as chips on the card. */
+  metrics: { label: string; value: string }[];
 }
 
 export const projects: ProjectData[] = [
@@ -43,6 +47,12 @@ export const projects: ProjectData[] = [
     ],
     duration: '3 months',
     role: 'Full Stack Developer',
+    impact: 'Boosted voter turnout 60% and cut election costs 40%.',
+    metrics: [
+      { label: 'Turnout', value: '+60%' },
+      { label: 'Cost', value: '-40%' },
+      { label: 'Result time', value: 'Minutes' },
+    ],
   },
   {
     id: 2,
@@ -66,6 +76,12 @@ export const projects: ProjectData[] = [
     ],
     duration: '4 months',
     role: 'Full Stack Developer',
+    impact: 'Connected 200+ farmers to fair prices and timely weather alerts.',
+    metrics: [
+      { label: 'Farmers', value: '200+' },
+      { label: 'Crops tracked', value: '12' },
+      { label: 'Mobile-first', value: '100%' },
+    ],
   },
   {
     id: 3,
@@ -89,5 +105,11 @@ export const projects: ProjectData[] = [
     ],
     duration: '5 months',
     role: 'Full Stack Developer',
+    impact: 'Powered 15+ local businesses to 500+ orders in month one.',
+    metrics: [
+      { label: 'Businesses', value: '15+' },
+      { label: 'Orders/mo', value: '500+' },
+      { label: 'Payment success', value: '98%' },
+    ],
   },
 ];

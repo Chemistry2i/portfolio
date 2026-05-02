@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import HireMePanel from './HireMePanel';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -191,6 +192,9 @@ const Contact = () => {
                 : 'opacity-0 translate-x-6'
             }`}
           >
+            {/* Hire me funnel */}
+            <HireMePanel />
+
             {/* Phone */}
             <a
               href="tel:+256786021431"

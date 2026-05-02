@@ -98,7 +98,29 @@ const Projects = () => {
                       <span className="text-primary text-sm font-medium">{project.category}</span>
                     </div>
                     <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">{project.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{project.description}</p>
+                    {/* Outcome-led headline */}
+                    <p className="text-sm md:text-base font-medium text-accent mb-2 leading-snug">
+                      <i className="fas fa-bolt text-xs mr-1.5" />
+                      {project.impact}
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed text-sm">{project.description}</p>
+                  </div>
+
+                  {/* Impact metrics */}
+                  <div className="grid grid-cols-3 gap-2">
+                    {project.metrics.map((m) => (
+                      <div
+                        key={m.label}
+                        className="glass-card rounded-lg px-2 py-2 text-center"
+                      >
+                        <div className="text-sm md:text-base font-bold gradient-text leading-none">
+                          {m.value}
+                        </div>
+                        <div className="text-[10px] text-muted-foreground mt-1 uppercase tracking-wide">
+                          {m.label}
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
                   {/* Tech Stack */}
