@@ -21,8 +21,8 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
     <div
       className={`transition-all duration-300 ease-out ${
         stage === 'in'
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-2'
+          ? 'opacity-100'
+          : 'opacity-0'
       }`}
     >
       {displayChildren}
