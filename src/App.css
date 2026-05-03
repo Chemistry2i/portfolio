@@ -14,7 +14,6 @@
 i.fas.fa-lightbulb.animate-scale {
   animation: scale-in-out 1.2s infinite ease-in-out !important;
 }
-}
 #root {
   margin: 0;
   padding: 0;
