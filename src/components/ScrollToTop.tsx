@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
@@ -32,12 +33,12 @@ const ScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  return (
+  return createPortal(
     <button
       onClick={handleClick}
       aria-label="Scroll to top"
       title="Back to top"
-      className={`group fixed bottom-6 right-6 z-50 h-12 w-12 sm:h-14 sm:w-14 rounded-full p-[2px] shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.6)] transition-all duration-500 ease-out ${
+      className={`group fixed bottom-6 right-6 z-[90] h-12 w-12 sm:h-14 sm:w-14 rounded-full p-[2px] shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.6)] transition-all duration-500 ease-out ${
         visible
           ? 'opacity-100 translate-y-0 pointer-events-auto'
           : 'opacity-0 translate-y-4 pointer-events-none'
@@ -49,7 +50,8 @@ const ScrollToTop = () => {
       <span className="flex h-full w-full items-center justify-center rounded-full bg-background/90 backdrop-blur-md transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-accent">
         <i className="fas fa-arrow-up text-primary text-base sm:text-lg transition-all duration-300 group-hover:text-primary-foreground group-hover:-translate-y-0.5" />
       </span>
-    </button>
+    </button>,
+    document.body
   );
 };
 
