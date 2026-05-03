@@ -9,6 +9,7 @@ import ProjectCaseStudy from "./pages/ProjectCaseStudy";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import PageTransition from "./components/PageTransition";
+import GlobalCursorFX from "./components/GlobalCursorFX";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <GlobalCursorFX />
       <BrowserRouter>
         <AnimatedRoutes />
       </BrowserRouter>
