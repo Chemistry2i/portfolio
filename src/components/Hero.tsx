@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import portraitImg from '@/assets/Wambogo.jpg';
-import MagneticCursor from './MagneticCursor';
 import AvailabilityBadge from './AvailabilityBadge';
 
 const TYPING_ROLES = [
@@ -52,7 +51,6 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} id="home" className="min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible mb-0">
-      <MagneticCursor containerRef={heroRef} />
       {/* Dot Grid Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div
