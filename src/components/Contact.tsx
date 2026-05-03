@@ -91,7 +91,7 @@ const Contact = () => {
       href: 'https://www.linkedin.com/in/wambogo-hassan-sadat-895544376',
     },
     { icon: 'fab fa-dribbble', name: 'Dribbble', href: 'https://dribbble.com/' },
-    { icon: 'fab fa-twitter', name: 'Twitter', href: 'https://twitter.com/' },
+    { icon: 'fab fa-twitter', name: 'Twitter', href: 'https://twitter.com/wambogohassan' },
   ];
 
   return (
