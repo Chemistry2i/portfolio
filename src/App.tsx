@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import ProjectCaseStudy from "./pages/ProjectCaseStudy";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
+import Resume from "./pages/Resume";
 import PageTransition from "./components/PageTransition";
 import GlobalCursorFX from "./components/GlobalCursorFX";
 
@@ -22,6 +23,7 @@ const AnimatedRoutes = () => {
         <Route path="/project/:slug" element={<ProjectCaseStudy />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
+        <Route path="/resume" element={<Resume />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
