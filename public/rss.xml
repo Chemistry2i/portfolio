@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wambogo Hassan Sadat — Blog</title>
+    <link>https://wambogohassansadat.dev/blog</link>
+    <atom:link href="https://wambogohassansadat.dev/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Technical write-ups on MERN stack, UI/UX, and shipping software from Kampala.</description>
+    <language>en-us</language>
+    <managingEditor>wambogohassan63@gmail.com (Wambogo Hassan Sadat)</managingEditor>
+    <webMaster>wambogohassan63@gmail.com (Wambogo Hassan Sadat)</webMaster>
+    <lastBuildDate>Fri, 15 May 2026 09:34:39 GMT</lastBuildDate>
+    <item>
+      <title>Building Scalable MERN Stack Applications</title>
+      <link>https://wambogohassansadat.dev/blog/building-scalable-mern-apps</link>
+      <guid isPermaLink="true">https://wambogohassansadat.dev/blog/building-scalable-mern-apps</guid>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 GMT</pubDate>
+      <description>Lessons learned from building production-ready applications with MongoDB, Express, React, and Node.js — from architecture decisions to deployment strategies.</description>
+      <category>MERN</category>
+      <category>Node.js</category>
+      <category>MongoDB</category>
+      <category>React</category>
+    </item>
+    <item>
+      <title>UI/UX Principles Every Developer Should Know</title>
+      <link>https://wambogohassansadat.dev/blog/ui-ux-principles-for-developers</link>
+      <guid isPermaLink="true">https://wambogohassansadat.dev/blog/ui-ux-principles-for-developers</guid>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 GMT</pubDate>
+      <description>Design isn&apos;t just for designers. Here are the fundamental UI/UX principles that have transformed how I build user interfaces and think about user experience.</description>
+      <category>UI/UX</category>
+      <category>Design</category>
+      <category>Accessibility</category>
+      <category>CSS</category>
+    </item>
+    <item>
+      <title>My Journey into Java &amp; Spring Boot</title>
+      <link>https://wambogohassansadat.dev/blog/getting-started-with-java-spring-boot</link>
+      <guid isPermaLink="true">https://wambogohassansadat.dev/blog/getting-started-with-java-spring-boot</guid>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
+      <description>Transitioning from JavaScript to Java — why I&apos;m learning Spring Boot, what surprised me, and how it compares to the Node.js ecosystem I know and love.</description>
+      <category>Java</category>
+      <category>Spring Boot</category>
+      <category>Backend</category>
+      <category>Learning</category>
+    </item>
+  </channel>
+</rss>
