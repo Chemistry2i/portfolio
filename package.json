@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "bun scripts/generate-sitemap.ts && bun scripts/generate-rss.ts",
     "dev": "vite",
+    "prebuild": "bun scripts/generate-sitemap.ts && bun scripts/generate-rss.ts",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
