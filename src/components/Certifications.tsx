@@ -118,17 +118,17 @@ const Certifications = () => {
                   key={`${cert.id}-${index}`}
                   className="glass-card rounded-2xl overflow-hidden flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] group hover:scale-[1.02] transition-transform duration-300"
                 >
-                  {/* Certificate header with gradient */}
-                  <div className={`h-28 sm:h-32 bg-gradient-to-br ${cert.color} relative flex items-center justify-center`}>
-                    <i className={`${cert.icon} text-white text-4xl sm:text-5xl opacity-90 group-hover:scale-110 transition-transform duration-300`}></i>
-                    <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
+                  {/* Certificate image */}
+                  <div className="h-40 sm:h-44 bg-secondary/40 relative overflow-hidden">
+                    <img
+                      src={cert.image}
+                      alt={`${cert.name} certificate from ${cert.issuer}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${cert.color} opacity-10`} />
+                    <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
                       <span className="text-white text-xs font-semibold">{cert.date}</span>
-                    </div>
-                    {/* Decorative pattern */}
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute top-2 left-2 w-8 h-8 border border-white/40 rounded-full" />
-                      <div className="absolute bottom-4 right-6 w-12 h-12 border border-white/30 rounded-full" />
-                      <div className="absolute top-6 right-14 w-4 h-4 border border-white/50 rounded-full" />
                     </div>
                   </div>
 
