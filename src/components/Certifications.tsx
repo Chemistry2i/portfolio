@@ -60,6 +60,16 @@ const Certifications = () => {
   // Duplicate for seamless loop
   const duplicated = [...certifications, ...certifications];
 
+  const education = [
+    {
+      id: 1,
+      degree: 'Bachelor of Information Systems',
+      institution: 'Kyambogo University',
+      period: '2024 - 2027',
+      icon: 'fas fa-graduation-cap',
+    },
+  ];
+
   return (
     <section ref={sectionRef} id="certifications" className="py-16 md:py-24 bg-secondary/20">
       <div className="max-w-6xl mx-auto safe-px">
