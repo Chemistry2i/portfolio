@@ -2,11 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Wambogo Hassan Portfolio - Blue Futuristic Design System */
+/* Wambogo Hassan Portfolio — Blue Futuristic Design System
+   Standard pattern: :root = LIGHT, .dark = DARK overrides.
+   The <html> element gets the `dark` class via ThemeProvider. */
 
 @layer base {
   :root {
-    /* Core brand colors - Blue futuristic theme */
+    /* ===== LIGHT MODE ===== */
+    --background: 210 40% 98%;
+    --foreground: 220 35% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 35% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 35% 12%;
+
+    --primary: 200 95% 42%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 200 100% 55%;
+
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 220 35% 15%;
+
+    --muted: 210 40% 95%;
+    --muted-foreground: 220 15% 40%;
+
+    --accent: 180 80% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 88%;
+    --input: 210 30% 92%;
+    --ring: 200 95% 42%;
+
+    /* Glass morphism (light) */
+    --glass-bg: 0 0% 100% / 0.65;
+    --glass-border: 200 95% 42% / 0.18;
+
+    /* Gradients (light) */
+    --gradient-primary: linear-gradient(135deg, hsl(200 95% 42%), hsl(180 80% 38%));
+    --gradient-background: linear-gradient(135deg, hsl(210 40% 98%), hsl(210 60% 95%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 0.85), hsl(210 40% 96% / 0.9));
+
+    /* Shadows (light) */
+    --shadow-glow: 0 0 40px hsl(200 95% 42% / 0.22);
+    --shadow-card: 0 10px 30px -12px hsl(220 30% 30% / 0.18);
+    --shadow-elegant: 0 20px 60px -15px hsl(200 95% 42% / 0.22);
+
+    /* Motion */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    /* Sidebar (light) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* ===== DARK MODE ===== */
     --background: 220 30% 8%;
     --foreground: 210 100% 95%;
 
@@ -29,64 +93,36 @@
     --accent: 180 100% 50%;
     --accent-foreground: 220 30% 8%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 220 20% 20%;
     --input: 220 20% 18%;
     --ring: 200 100% 60%;
 
-    /* Glass morphism effects */
-    --glass-bg: 220 25% 12% / 0.3;
+    /* Glass morphism (dark) */
+    --glass-bg: 220 25% 12% / 0.4;
     --glass-border: 200 100% 60% / 0.2;
-    
-    /* Gradients */
+
+    /* Gradients (dark) */
     --gradient-primary: linear-gradient(135deg, hsl(200 100% 60%), hsl(180 100% 50%));
     --gradient-background: linear-gradient(135deg, hsl(220 30% 8%), hsl(220 35% 12%));
     --gradient-card: linear-gradient(135deg, hsl(220 25% 12% / 0.8), hsl(220 20% 15% / 0.9));
-    
-    /* Shadows */
+
+    /* Shadows (dark) */
     --shadow-glow: 0 0 40px hsl(200 100% 60% / 0.3);
     --shadow-card: 0 10px 30px -10px hsl(220 30% 5% / 0.5);
     --shadow-elegant: 0 20px 60px -15px hsl(200 100% 60% / 0.2);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  /* Light mode variant - keeping dark as primary */
-  .light {
-    --background: 210 100% 98%;
-    --foreground: 220 30% 15%;
-    --card: 210 100% 100%;
-    --card-foreground: 220 30% 15%;
-    --primary: 200 100% 50%;
-    --primary-foreground: 210 100% 98%;
-    --secondary: 210 100% 95%;
-    --secondary-foreground: 220 30% 15%;
-    --muted: 210 100% 96%;
-    --muted-foreground: 220 15% 45%;
-    --border: 210 50% 90%;
-    --input: 210 50% 95%;
+    /* Sidebar (dark) */
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 210 100% 95%;
+    --sidebar-primary: 200 100% 60%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 210 100% 95%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 200 100% 60%;
   }
 }
 
@@ -95,80 +131,75 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground overflow-x-hidden;
-    background: var(--gradient-background);
-    min-height: 100vh;
-  }
-
   html {
     scroll-behavior: smooth;
     overflow-x: clip;
   }
 
   body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: var(--gradient-background);
+    background-attachment: fixed;
+    min-height: 100vh;
     overflow-x: clip;
     position: relative;
     width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
 @layer components {
-  /* Glass morphism cards */
+  /* Glass morphism cards — token-driven, works in both modes */
   .glass-card {
-    @apply backdrop-blur-md border border-white/10;
+    @apply backdrop-blur-md;
     background: hsla(var(--glass-bg));
+    border: 1px solid hsla(var(--glass-border));
     box-shadow: var(--shadow-card);
   }
-  
-  /* Glow effects */
+
   .glow-primary {
     box-shadow: var(--shadow-glow);
   }
-  
-  /* Gradient text */
+
   .gradient-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
-  /* Hero button */
+
   .hero-btn {
     @apply px-8 py-4 rounded-xl font-semibold transition-all duration-300;
     background: var(--gradient-primary);
     box-shadow: var(--shadow-elegant);
+    color: hsl(var(--primary-foreground));
   }
-  
+
   .hero-btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow), var(--shadow-elegant);
   }
-  
-  /* Skill bars */
+
   .skill-bar {
     @apply h-2 rounded-full overflow-hidden bg-muted;
   }
-  
+
   .skill-progress {
     @apply h-full rounded-full;
     background: var(--gradient-primary);
     transition: width 1s ease-in-out;
   }
-  
-  /* Project cards */
+
   .project-card {
     @apply glass-card rounded-2xl p-6 hover:scale-105 transition-all duration-300;
   }
-  
+
   .project-card:hover {
     box-shadow: var(--shadow-glow), var(--shadow-card);
   }
 }
 
 @layer utilities {
-  /* Prevent content hugging device notches and keep symmetric padding on mobile */
   .safe-px {
     padding-left: max(env(safe-area-inset-left), 1rem);
     padding-right: max(env(safe-area-inset-right), 1rem);
