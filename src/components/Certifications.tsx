@@ -33,7 +33,7 @@ const Certifications = () => {
       name: 'Java Fundamentals',
       issuer: 'Frontend Masters',
       date: 'Nov 2025',
-      icon: 'fab fa-java',
+      image: javaPhoto,
       color: 'from-orange-500 to-red-500',
       skills: ['Java', 'OOP', 'Fundamentals'],
     },
@@ -42,7 +42,7 @@ const Certifications = () => {
       name: 'Getting Started with JavaScript, v2',
       issuer: 'Frontend Masters',
       date: 'Nov 2025',
-      icon: 'fab fa-js-square',
+      image: jsPhoto,
       color: 'from-yellow-400 to-amber-500',
       skills: ['JavaScript', 'ES6+', 'Fundamentals'],
     },
@@ -51,72 +51,9 @@ const Certifications = () => {
       name: "Everything You'll Need to Know About Git",
       issuer: 'Frontend Masters',
       date: 'Nov 2025',
-      icon: 'fab fa-git-alt',
+      image: gitPhoto,
       color: 'from-orange-600 to-pink-500',
       skills: ['Git', 'Branching', 'Workflow'],
-    },
-    {
-      id: 4,
-      name: 'JavaScript Essentials 1',
-      issuer: 'Cisco Networking Academy',
-      date: '2025',
-      icon: 'fab fa-js',
-      color: 'from-yellow-500 to-orange-500',
-      skills: ['JavaScript', 'DOM', 'Basics'],
-    },
-    {
-      id: 5,
-      name: 'JavaScript Essentials 2',
-      issuer: 'Cisco Networking Academy',
-      date: '2025',
-      icon: 'fab fa-js',
-      color: 'from-amber-500 to-orange-600',
-      skills: ['Advanced JS', 'OOP', 'Async'],
-    },
-    {
-      id: 6,
-      name: 'HTML Essentials',
-      issuer: 'Cisco Networking Academy',
-      date: '2025',
-      icon: 'fab fa-html5',
-      color: 'from-orange-500 to-rose-500',
-      skills: ['HTML5', 'Semantics', 'Accessibility'],
-    },
-    {
-      id: 7,
-      name: 'CSS Essentials',
-      issuer: 'Cisco Networking Academy',
-      date: '2025',
-      icon: 'fab fa-css3-alt',
-      color: 'from-blue-500 to-indigo-600',
-      skills: ['CSS3', 'Flexbox', 'Grid'],
-    },
-    {
-      id: 8,
-      name: 'Git',
-      issuer: 'Cisco Networking Academy',
-      date: '2025',
-      icon: 'fab fa-git',
-      color: 'from-red-500 to-orange-500',
-      skills: ['Git', 'Version Control', 'Collaboration'],
-    },
-    {
-      id: 9,
-      name: 'IT Customer Support Basics',
-      issuer: 'Cisco Networking Academy',
-      date: '2025',
-      icon: 'fas fa-headset',
-      color: 'from-cyan-500 to-blue-600',
-      skills: ['Support', 'Troubleshooting', 'Communication'],
-    },
-    {
-      id: 10,
-      name: 'Introduction to Greenhouse Accounting',
-      issuer: 'Cisco Networking Academy',
-      date: '2025',
-      icon: 'fas fa-leaf',
-      color: 'from-green-500 to-emerald-600',
-      skills: ['Sustainability', 'GHG', 'Accounting'],
     },
   ];
 
@@ -181,17 +118,17 @@ const Certifications = () => {
                   key={`${cert.id}-${index}`}
                   className="glass-card rounded-2xl overflow-hidden flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] group hover:scale-[1.02] transition-transform duration-300"
                 >
-                  {/* Certificate header with gradient */}
-                  <div className={`h-28 sm:h-32 bg-gradient-to-br ${cert.color} relative flex items-center justify-center`}>
-                    <i className={`${cert.icon} text-white text-4xl sm:text-5xl opacity-90 group-hover:scale-110 transition-transform duration-300`}></i>
-                    <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
+                  {/* Certificate image */}
+                  <div className="h-40 sm:h-44 bg-secondary/40 relative overflow-hidden">
+                    <img
+                      src={cert.image}
+                      alt={`${cert.name} certificate from ${cert.issuer}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${cert.color} opacity-10`} />
+                    <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
                       <span className="text-white text-xs font-semibold">{cert.date}</span>
-                    </div>
-                    {/* Decorative pattern */}
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute top-2 left-2 w-8 h-8 border border-white/40 rounded-full" />
-                      <div className="absolute bottom-4 right-6 w-12 h-12 border border-white/30 rounded-full" />
-                      <div className="absolute top-6 right-14 w-4 h-4 border border-white/50 rounded-full" />
                     </div>
                   </div>
 
