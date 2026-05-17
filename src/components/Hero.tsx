@@ -3,11 +3,13 @@ import portraitImg from '@/assets/Wambogo.jpg';
 import AvailabilityBadge from './AvailabilityBadge';
 
 const TYPING_ROLES = [
-  { text: 'MERN Stack Dev', className: 'text-primary' },
-  { text: 'UI/UX Designer', className: 'text-accent' },
-  { text: 'Frontend Engineer', className: 'text-primary' },
-  { text: 'Creative Coder', className: 'text-accent' },
+  { text: 'Full-Stack Engineer', className: 'text-primary' },
+  { text: 'MERN Specialist', className: 'text-accent' },
+  { text: 'UI/UX-minded Developer', className: 'text-primary' },
+  { text: 'Product-focused Coder', className: 'text-accent' },
 ];
+
+const CALENDLY_URL = 'https://calendly.com/wambogo-hassan/15min';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
