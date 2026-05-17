@@ -132,20 +132,28 @@ const Services = () => {
           <div className="text-center mt-16">
             <div className="glass-card p-8 md:p-12 rounded-2xl w-full">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                <span className="gradient-text">Ready to Start Your Project?</span>
+                <span className="gradient-text">Hiring or Building? Let's Talk.</span>
               </h3>
               <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-                Let's discuss how I can help bring your digital vision to life with custom solutions tailored to your needs.
+                Open to <strong className="text-foreground">full-time & contract roles</strong> and select <strong className="text-foreground">project work</strong>. Pick the path that fits — I'll reply within 24 hours.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="hero-btn text-primary-foreground">
+                <a
+                  href="#contact"
+                  className="hero-btn text-primary-foreground inline-flex items-center justify-center"
+                >
                   <i className="fas fa-comments mr-2"></i>
                   Start a Conversation
-                </button>
-                <button className="px-8 py-4 rounded-xl font-semibold bg-secondary hover:bg-secondary/80 text-secondary-foreground transition-all duration-300 border border-border">
-                  <i className="fas fa-calendar mr-2"></i>
-                  Schedule a Call
-                </button>
+                </a>
+                <a
+                  href="https://calendly.com/wambogo-hassan/15min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 rounded-xl font-semibold bg-secondary hover:bg-secondary/80 text-secondary-foreground transition-all duration-300 border border-border inline-flex items-center justify-center"
+                >
+                  <i className="fas fa-calendar-check mr-2"></i>
+                  Book a 15-min Intro Call
+                </a>
               </div>
             </div>
           </div>
