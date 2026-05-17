@@ -3,11 +3,13 @@ import portraitImg from '@/assets/Wambogo.jpg';
 import AvailabilityBadge from './AvailabilityBadge';
 
 const TYPING_ROLES = [
-  { text: 'MERN Stack Dev', className: 'text-primary' },
-  { text: 'UI/UX Designer', className: 'text-accent' },
-  { text: 'Frontend Engineer', className: 'text-primary' },
-  { text: 'Creative Coder', className: 'text-accent' },
+  { text: 'Full-Stack Engineer', className: 'text-primary' },
+  { text: 'MERN Specialist', className: 'text-accent' },
+  { text: 'UI/UX-minded Developer', className: 'text-primary' },
+  { text: 'Product-focused Coder', className: 'text-accent' },
 ];
+
+const CALENDLY_URL = 'https://calendly.com/wambogo-hassan/15min';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -94,7 +96,32 @@ const Hero = () => {
                   }`}>
                     <span className="gradient-text">Wambogo Hassan Sadat</span>
                   </h1>
-                  
+
+                  {/* Primary positioning H2 — recruiter-scannable */}
+                  <h2 className={`text-base sm:text-lg md:text-xl lg:text-2xl font-semibold leading-snug text-foreground transition-all duration-500 delay-150 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}>
+                    Full-Stack Engineer specializing in <span className="text-primary">MERN</span>
+                    <span className="text-muted-foreground">, with </span>
+                    <span className="text-accent">UI/UX</span>
+                    <span className="text-muted-foreground"> sensibility</span>
+                  </h2>
+
+                  {/* Seniority + meta chips */}
+                  <div className={`flex flex-wrap gap-2 justify-center lg:justify-start pt-1 transition-all duration-500 delay-200 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/25">
+                      <i className="fas fa-layer-group" /> Mid-Level
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-secondary/70 text-secondary-foreground border border-border">
+                      <i className="fas fa-globe" /> Remote · Worldwide
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-secondary/70 text-secondary-foreground border border-border">
+                      <i className="fas fa-briefcase" /> Open to Full-time & Contract
+                    </span>
+                  </div>
+
                   {/* Typing Animation Subtitle */}
                   <div className={`text-base sm:text-lg md:text-xl lg:text-2xl font-medium h-8 sm:h-10 transition-all duration-500 delay-200 mb-1 ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -115,7 +142,7 @@ const Hero = () => {
                 </p>
 
                 {/* Buttons */}
-                <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center transition-all duration-500 delay-400 ${
+                <div className={`flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start items-center transition-all duration-500 delay-400 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
                   <button 
@@ -125,6 +152,15 @@ const Hero = () => {
                     <i className="fas fa-paper-plane mr-2"></i>
                     Hire Me
                   </button>
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold bg-accent/15 hover:bg-accent/25 text-accent border border-accent/40 transition-all duration-300 min-w-[140px] sm:min-w-[160px] transform hover:scale-105 text-center"
+                  >
+                    <i className="fas fa-calendar-check mr-2"></i>
+                    Book a 15-min Call
+                  </a>
                   <button 
                     onClick={scrollToProjects}
                     className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold bg-secondary hover:bg-secondary/80 text-secondary-foreground transition-all duration-300 border border-border min-w-[140px] sm:min-w-[160px] transform hover:scale-105"
