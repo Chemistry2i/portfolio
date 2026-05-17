@@ -61,11 +61,22 @@ const Services = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              <span className="gradient-text">Services I Offer</span>
+              <span className="gradient-text">How I Can Help</span>
             </h2>
             <p className="text-muted-foreground text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-4">
-              Comprehensive digital solutions to bring your ideas to life with precision and creativity
+              Whether you're hiring for a role or launching a project, here's where I add value.
             </p>
+
+            {/* Two tracks */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-primary/10 text-primary border border-primary/30">
+                <i className="fas fa-briefcase" /> For Companies Hiring
+              </span>
+              <span className="text-muted-foreground hidden sm:inline">·</span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-accent/10 text-accent border border-accent/30">
+                <i className="fas fa-handshake" /> For Project Clients
+              </span>
+            </div>
           </div>
 
           {/* Services Grid */}
