@@ -144,7 +144,27 @@
     overflow-x: clip;
     position: relative;
     width: 100%;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+
+  /* Smooth cross-fade when toggling theme — applies to colors, backgrounds, borders, shadows, fills */
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition: background-color 450ms ease, background-image 450ms ease,
+      color 450ms ease, border-color 450ms ease, fill 450ms ease,
+      stroke 450ms ease, box-shadow 450ms ease, opacity 450ms ease !important;
+    transition-delay: 0ms !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.theme-transition,
+    html.theme-transition *,
+    html.theme-transition *::before,
+    html.theme-transition *::after {
+      transition: none !important;
+    }
   }
 }
 
