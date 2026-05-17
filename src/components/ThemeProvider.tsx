@@ -25,12 +25,15 @@ function getInitialTheme(): Theme {
   return 'dark';
 }
 
-function applyTheme(theme: Theme) {
+function applyTheme(theme: Theme, animate = false) {
   const root = document.documentElement;
+  if (animate) {
+    root.classList.add('theme-transition');
+    window.setTimeout(() => root.classList.remove('theme-transition'), 500);
+  }
   root.classList.remove('dark', 'light');
   root.classList.add(theme);
   root.style.colorScheme = theme;
-  // Keep <meta name="theme-color"> in sync for mobile browser chrome
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) {
     meta.setAttribute('content', theme === 'dark' ? '#0b1220' : '#e6f4ff');
