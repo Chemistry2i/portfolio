@@ -42,9 +42,11 @@ function applyTheme(theme: Theme, animate = false) {
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>(() => getInitialTheme());
+  const isFirstRun = useRef(true);
 
   useEffect(() => {
-    applyTheme(theme);
+    applyTheme(theme, !isFirstRun.current);
+    isFirstRun.current = false;
     try {
       localStorage.setItem(STORAGE_KEY, theme);
     } catch {
