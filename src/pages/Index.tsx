@@ -23,6 +23,7 @@ const Index = () => {
       <About />
       <StatsCounter />
       <Experience />
+      <TechStackMatrix />
       <Projects />
       <GitHubActivity />
       <Testimonials />
