@@ -61,7 +61,7 @@ export const projects: ProjectData[] = [
     description: 'An innovative online agricultural platform connecting farmers with resources, market insights, and expert advice for improved farming practices.',
     image: projectAgriBuddy,
     tech: ['React', 'Node.js', 'MongoDB', 'Express', 'REST API'],
-    liveUrl: 'https://agri-buddy.onrender.com',
+    liveUrl: 'https://agribuddy-pi.onrender.com',
     githubUrl: 'https://github.com/Chemistry2i',
     category: 'Full Stack Development',
     problem: 'Small-scale farmers in Uganda lacked access to real-time market prices, weather forecasts, and expert agricultural advice. This information gap led to poor crop yields and unfair pricing from middlemen.',

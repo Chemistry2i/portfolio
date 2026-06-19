@@ -9,7 +9,7 @@ const TYPING_ROLES = [
   { text: 'Product-focused Coder', className: 'text-accent' },
 ];
 
-const CALENDLY_URL = 'https://calendly.com/wambogo-hassan/15min';
+const CALENDLY_URL = 'https://calendly.com/wambogohassansadat/15min';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
