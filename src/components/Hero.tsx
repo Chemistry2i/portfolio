@@ -52,7 +52,7 @@ const Hero = () => {
   const currentRole = TYPING_ROLES[roleIndex];
 
   return (
-    <section ref={heroRef} id="home" className="min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible mb-0">
+    <section ref={heroRef} id="home" className="lg:min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible mb-0">
       {/* Dot Grid Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div
