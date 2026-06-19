@@ -21,9 +21,9 @@ const Index = () => {
       <Navigation />
       <Hero />
       <About />
+      <TechStackMatrix />
       <StatsCounter />
       <Experience />
-      <TechStackMatrix />
       <Projects />
       <GitHubActivity />
       <Testimonials />
