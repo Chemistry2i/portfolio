@@ -68,7 +68,7 @@ const Hero = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="flex-1 w-full safe-px sm:px-6 lg:px-8 relative z-10 flex items-center justify-center py-20 md:py-0">
+      <div className="flex-1 w-full safe-px sm:px-6 lg:px-8 relative z-10 flex items-center justify-center pt-24 pb-10 md:py-0">
         <div className="w-full max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
