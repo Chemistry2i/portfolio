@@ -171,9 +171,10 @@ const Hero = () => {
                 </div>
 
                 {/* Professional Taglines */}
-                <div className={`pt-2 transition-all duration-700 delay-600 ${
+                <div className={`pt-2 hidden sm:block transition-all duration-700 delay-600 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
+
                   <div className="glass-card p-2 sm:p-4 rounded-2xl backdrop-blur-md mx-auto lg:max-w-3xl xl:max-w-4xl">
                     <div className="grid grid-cols-3 gap-1 sm:gap-3 text-center">
                       <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
