@@ -146,7 +146,7 @@ const Services = () => {
                   Start a Conversation
                 </a>
                 <a
-                  href="https://calendly.com/wambogo-hassan/15min"
+                  href="https://calendly.com/wambogohassansadat/15min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-4 rounded-xl font-semibold bg-secondary hover:bg-secondary/80 text-secondary-foreground transition-all duration-300 border border-border inline-flex items-center justify-center"

@@ -19,9 +19,9 @@ const GROUPS: StackGroup[] = [
     icon: 'fas fa-laptop-code',
     items: [
       { name: 'React.js', icon: 'fab fa-react', years: 3, level: 80 },
-      { name: 'JavaScript (ES6+)', icon: 'fab fa-js-square', years: 4, level: 80 },
+      { name: 'JavaScript (ES6+)', icon: 'fab fa-js-square', years: 3, level: 80 },
       { name: 'Bootstrap', icon: 'fab fa-bootstrap', years: 3, level: 78 },
-      { name: 'HTML5 / CSS3', icon: 'fab fa-html5', years: 4, level: 80 },
+      { name: 'HTML5 / CSS3', icon: 'fab fa-html5', years: 3, level: 80 },
     ],
   },
   {
@@ -41,7 +41,7 @@ const GROUPS: StackGroup[] = [
     items: [
       { name: 'Figma', icon: 'fab fa-figma', years: 3, level: 70 },
       { name: 'Adobe XD', icon: 'fas fa-palette', years: 2, level: 70 },
-      { name: 'Git / GitHub', icon: 'fab fa-git-alt', years: 4, level: 70 },
+      { name: 'Git / GitHub', icon: 'fab fa-git-alt', years: 3, level: 70 },
       { name: 'Render', icon: 'fas fa-cloud', years: 2, level: 70 },
       { name: 'Vercel / Netlify', icon: 'fas fa-cloud-upload-alt', years: 2, level: 70 },
       { name: 'Vite', icon: 'fas fa-bolt', years: 2, level: 70 },
