@@ -52,7 +52,7 @@ const Hero = () => {
   const currentRole = TYPING_ROLES[roleIndex];
 
   return (
-    <section ref={heroRef} id="home" className="min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible mb-0">
+    <section ref={heroRef} id="home" className="lg:min-h-screen flex flex-col relative overflow-x-hidden overflow-y-visible mb-0">
       {/* Dot Grid Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -68,7 +68,7 @@ const Hero = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="flex-1 w-full safe-px sm:px-6 lg:px-8 relative z-10 flex items-center justify-center py-20 md:py-0">
+      <div className="flex-1 w-full safe-px sm:px-6 lg:px-8 relative z-10 flex items-center justify-center pt-24 pb-10 md:py-0">
         <div className="w-full max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
@@ -171,9 +171,10 @@ const Hero = () => {
                 </div>
 
                 {/* Professional Taglines */}
-                <div className={`pt-2 transition-all duration-700 delay-600 ${
+                <div className={`pt-2 hidden sm:block transition-all duration-700 delay-600 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
+
                   <div className="glass-card p-2 sm:p-4 rounded-2xl backdrop-blur-md mx-auto lg:max-w-3xl xl:max-w-4xl">
                     <div className="grid grid-cols-3 gap-1 sm:gap-3 text-center">
                       <div className="space-y-0.5 sm:space-y-1 transition-all duration-300 hover:scale-105">
@@ -220,7 +221,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 text-center z-10">
+      <div className="hidden md:block absolute bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 text-center z-10">
         <div className="animate-bounce flex flex-col items-center">
           <i className="fas fa-chevron-down text-primary text-lg md:text-xl mb-1"></i>
           <i className="fas fa-mouse text-accent text-xl md:text-2xl mt-1"></i>
