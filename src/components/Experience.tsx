@@ -45,10 +45,10 @@ const Experience = () => {
       id: 3,
       role: 'Backend Developer',
       company: 'Peculiar Technologies',
-      period: '2025 - 2027',
+      period: '2025 - Present',
       description: 'Started my professional journey working on backend development. Learned industry best practices and agile methodologies.',
       skills: ['Java', 'Springboot', 'Git', 'MySQL', 'Node.js'],
-      current: false,
+      current: true,
     },
   ];
 
