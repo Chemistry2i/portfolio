@@ -97,15 +97,6 @@ const Hero = () => {
                     <span className="gradient-text">Wambogo Hassan Sadat</span>
                   </h1>
 
-                  {/* Primary positioning H2 — recruiter-scannable */}
-                  <h2 className={`text-base sm:text-lg md:text-xl lg:text-2xl font-semibold leading-snug text-foreground transition-all duration-500 delay-150 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}>
-                    Full-Stack Engineer specializing in <span className="text-primary">MERN</span>
-                    <span className="text-muted-foreground">, with </span>
-                    <span className="text-accent">UI/UX</span>
-                    <span className="text-muted-foreground"> sensibility</span>
-                  </h2>
 
                   {/* Seniority + meta chips */}
                   <div className={`flex flex-wrap gap-2 justify-center lg:justify-start pt-1 transition-all duration-500 delay-200 ${
