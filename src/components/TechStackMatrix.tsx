@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
-type Proficiency = 'Expert' | 'Advanced' | 'Proficient' | 'Working';
-
 interface StackItem {
   name: string;
   icon: string;
   years: number;
-  proficiency: Proficiency;
+  level: number; // percentage
 }
 
 interface StackGroup {
@@ -20,42 +18,41 @@ const GROUPS: StackGroup[] = [
     title: 'Frontend',
     icon: 'fas fa-laptop-code',
     items: [
-      { name: 'React.js', icon: 'fab fa-react', years: 3, proficiency: 'Advanced' },
-      { name: 'TypeScript', icon: 'fas fa-code', years: 2, proficiency: 'Proficient' },
-      { name: 'JavaScript (ES6+)', icon: 'fab fa-js-square', years: 4, proficiency: 'Expert' },
-      { name: 'Tailwind CSS', icon: 'fas fa-wind', years: 3, proficiency: 'Advanced' },
-      { name: 'HTML5 / CSS3', icon: 'fab fa-html5', years: 4, proficiency: 'Expert' },
+      { name: 'React.js', icon: 'fab fa-react', years: 3, level: 80 },
+      { name: 'JavaScript (ES6+)', icon: 'fab fa-js-square', years: 4, level: 80 },
+      { name: 'Bootstrap', icon: 'fab fa-bootstrap', years: 3, level: 78 },
+      { name: 'HTML5 / CSS3', icon: 'fab fa-html5', years: 4, level: 80 },
     ],
   },
   {
     title: 'Backend',
     icon: 'fas fa-server',
     items: [
-      { name: 'Node.js', icon: 'fab fa-node-js', years: 3, proficiency: 'Advanced' },
-      { name: 'Express.js', icon: 'fas fa-bolt', years: 3, proficiency: 'Advanced' },
-      { name: 'MongoDB', icon: 'fas fa-database', years: 3, proficiency: 'Advanced' },
-      { name: 'REST APIs', icon: 'fas fa-plug', years: 3, proficiency: 'Advanced' },
-      { name: 'Supabase / Postgres', icon: 'fas fa-leaf', years: 1, proficiency: 'Proficient' },
+      { name: 'Node.js', icon: 'fab fa-node-js', years: 3, level: 78 },
+      { name: 'Express.js', icon: 'fas fa-bolt', years: 3, level: 78 },
+      { name: 'MongoDB', icon: 'fas fa-database', years: 3, level: 75 },
+      { name: 'MySQL', icon: 'fas fa-database', years: 2, level: 72 },
+      { name: 'REST APIs', icon: 'fas fa-plug', years: 3, level: 80 },
     ],
   },
   {
     title: 'Design & Tooling',
     icon: 'fas fa-pen-nib',
     items: [
-      { name: 'Figma', icon: 'fab fa-figma', years: 3, proficiency: 'Advanced' },
-      { name: 'Adobe XD', icon: 'fas fa-palette', years: 2, proficiency: 'Proficient' },
-      { name: 'Git / GitHub', icon: 'fab fa-git-alt', years: 4, proficiency: 'Advanced' },
-      { name: 'Vercel / Netlify', icon: 'fas fa-cloud-upload-alt', years: 2, proficiency: 'Proficient' },
-      { name: 'Vite', icon: 'fas fa-bolt', years: 2, proficiency: 'Proficient' },
+      { name: 'Figma', icon: 'fab fa-figma', years: 3, level: 70 },
+      { name: 'Adobe XD', icon: 'fas fa-palette', years: 2, level: 70 },
+      { name: 'Git / GitHub', icon: 'fab fa-git-alt', years: 4, level: 70 },
+      { name: 'Render', icon: 'fas fa-cloud', years: 2, level: 70 },
+      { name: 'Vercel / Netlify', icon: 'fas fa-cloud-upload-alt', years: 2, level: 70 },
+      { name: 'Vite', icon: 'fas fa-bolt', years: 2, level: 70 },
     ],
   },
 ];
 
-const proficiencyColor: Record<Proficiency, string> = {
-  Expert: 'bg-primary text-primary-foreground border-primary',
-  Advanced: 'bg-primary/15 text-primary border-primary/40',
-  Proficient: 'bg-accent/15 text-accent border-accent/40',
-  Working: 'bg-secondary text-secondary-foreground border-border',
+const proficiencyFor = (level: number) => {
+  if (level >= 90) return 'Expert';
+  if (level >= 80) return 'Advanced';
+  return 'Proficient';
 };
 
 const TechStackMatrix = () => {
@@ -65,7 +62,7 @@ const TechStackMatrix = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setIsVisible(true),
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -102,43 +99,37 @@ const TechStackMatrix = () => {
                   <h3 className="text-lg font-semibold text-foreground">{group.title}</h3>
                 </div>
 
-                <ul className="space-y-3">
-                  {group.items.map((item) => (
-                    <li
-                      key={item.name}
-                      className="flex items-center justify-between gap-3 text-sm"
-                    >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <i className={`${item.icon} text-primary text-base w-5 text-center shrink-0`} />
-                        <span className="font-medium text-foreground truncate">{item.name}</span>
+                <ul className="space-y-4">
+                  {group.items.map((item, idx) => (
+                    <li key={item.name} className="space-y-1.5">
+                      <div className="flex items-center justify-between gap-3 text-sm">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <i className={`${item.icon} text-primary text-base w-5 text-center shrink-0`} />
+                          <span className="font-medium text-foreground truncate">{item.name}</span>
+                        </div>
+                        <div className="flex items-center gap-2 shrink-0">
+                          <span className="text-[11px] text-muted-foreground tabular-nums">
+                            {item.years}+ yr{item.years === 1 ? '' : 's'}
+                          </span>
+                          <span className="text-[11px] font-semibold text-primary tabular-nums">
+                            {item.level}%
+                          </span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 shrink-0">
-                        <span className="text-xs text-muted-foreground tabular-nums">
-                          {item.years}+ yr{item.years === 1 ? '' : 's'}
-                        </span>
-                        <span
-                          className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${proficiencyColor[item.proficiency]}`}
-                        >
-                          {item.proficiency}
-                        </span>
+                      <div className="h-2 w-full rounded-full bg-secondary/60 overflow-hidden border border-border/60">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-[1200ms] ease-out"
+                          style={{
+                            width: isVisible ? `${item.level}%` : '0%',
+                            transitionDelay: `${gi * 120 + idx * 100}ms`,
+                          }}
+                          aria-label={`${item.name} ${proficiencyFor(item.level)} ${item.level}%`}
+                        />
                       </div>
                     </li>
                   ))}
                 </ul>
               </div>
-            ))}
-          </div>
-
-          {/* Legend */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-8 text-xs text-muted-foreground">
-            <span className="font-medium">Proficiency:</span>
-            {(['Expert', 'Advanced', 'Proficient', 'Working'] as Proficiency[]).map((p) => (
-              <span
-                key={p}
-                className={`px-2 py-0.5 rounded-full border ${proficiencyColor[p]}`}
-              >
-                {p}
-              </span>
             ))}
           </div>
         </div>
