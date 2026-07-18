@@ -197,11 +197,10 @@ const Hero = () => {
                 <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl"></div>
                 <div className="absolute -inset-2 bg-accent/10 rounded-full blur-2xl"></div>
                 <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
-                  <img 
-                    src={portraitImg} 
-                    alt="Wambogo Hassan Sadat - MERN Stack Developer & UI/UX Designer"
-                    className="w-full h-full object-cover"
-                    loading="eager"
+                  <img
+                      src={portraitImg}
+                      alt="Wambogo Hassan Sadat - MERN Stack Developer & UI/UX Designer"
+                      className="w-full h-full object-cover object-top"
                   />
                 </div>
                 <div className="absolute -inset-3 rounded-full border-2 border-primary/20 animate-pulse"></div>
