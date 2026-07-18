@@ -200,8 +200,8 @@ const Hero = () => {
                   <img
                       src={portraitImg}
                       alt="Wambogo Hassan Sadat"
-                      className="w-full h-full object-cover scale-90"
-                      style={{ objectPosition: "center 15%" }}
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: "center 50%" }}
                   />
                 </div>
                 <div className="absolute -inset-3 rounded-full border-2 border-primary/20 animate-pulse"></div>
