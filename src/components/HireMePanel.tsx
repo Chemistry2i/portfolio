@@ -71,7 +71,7 @@ const HireMePanel = () => {
         <div>
           <p className="text-xs text-muted-foreground">Starting from</p>
           <p className="text-base sm:text-lg font-bold gradient-text">
-            $25<span className="text-xs text-muted-foreground font-normal">/hour</span>
+            $10<span className="text-xs text-muted-foreground font-normal">/hour</span>
           </p>
         </div>
         <button
