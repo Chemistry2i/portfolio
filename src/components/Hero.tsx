@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import portraitImg from '@/assets/Wambogo.jpg';
+import portraitImg from '@/assets/Wambogo.png';
 import AvailabilityBadge from './AvailabilityBadge';
 
 const TYPING_ROLES = [
