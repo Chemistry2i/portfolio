@@ -201,7 +201,7 @@ const Hero = () => {
                       src={portraitImg}
                       alt="Wambogo Hassan Sadat"
                       className="w-full h-full object-cover"
-                      style={{ objectPosition: "center 40%" }}
+                      style={{ objectPosition: "center 30%" }}
                   />
                 </div>
                 <div className="absolute -inset-3 rounded-full border-2 border-primary/20 animate-pulse"></div>
