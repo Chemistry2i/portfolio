@@ -199,8 +199,9 @@ const Hero = () => {
                 <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
                   <img
                       src={portraitImg}
-                      alt="Wambogo Hassan Sadat - MERN Stack Developer & UI/UX Designer"
-                      className="w-full h-full object-cover object-top"
+                      alt="Wambogo Hassan Sadat"
+                      className="w-full h-full object-cover scale-90"
+                      style={{ objectPosition: "center 15%" }}
                   />
                 </div>
                 <div className="absolute -inset-3 rounded-full border-2 border-primary/20 animate-pulse"></div>
