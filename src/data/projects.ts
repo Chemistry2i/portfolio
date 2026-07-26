@@ -1,6 +1,7 @@
 import projectCampusBallot from '@/assets/project-campus-ballot.jpg';
 import projectAgriBuddy from '@/assets/project-agri-buddy.jpg';
 import projectQuickCart from '@/assets/project-quick-cart.jpg';
+import projectKyuica from '@/assets/project-kyuica.jpg';
 
 export interface ProjectData {
   id: number;
@@ -110,6 +111,35 @@ export const projects: ProjectData[] = [
       { label: 'Businesses', value: '15+' },
       { label: 'Orders/mo', value: '500+' },
       { label: 'Payment success', value: '98%' },
+    ],
+  },
+  {
+    id: 4,
+    slug: 'kyuica',
+    title: 'KYUICA - Innovation & Creativity Association',
+    description: "The official website for KYUICA, a student-led innovation hub at Kyambogo University connecting students across every faculty to learning, funding and opportunities.",
+    image: projectKyuica,
+    tech: ['React', 'Java', 'MySQL', 'REST API'],
+    liveUrl: 'https://kyuica.org',
+    githubUrl: 'https://github.com/Chemistry2i',
+    category: 'Full Stack Development',
+    problem: 'Innovation activity at Kyambogo University was scattered across faculties and WhatsApp groups. Students had no single place to find events, opportunities, funding calls or fellow innovators, so projects stalled before they started.',
+    solution: 'Built a national-facing innovation ecosystem platform: a searchable member directory, events calendar, opportunities and funding board, and a dashboard for members and administrators — spanning agriculture, engineering, science, arts & design, IT, business, education and biotech.',
+    results: 'Gave every KYU student one hub to learn, launch, connect and get funded, with faculty-wide coverage and a central directory that makes collaborators discoverable.',
+    features: [
+      'Member directory searchable across all faculties',
+      'Events calendar for hackathons, bootcamps and meetups',
+      'Opportunities and funding board with rolling calls',
+      'Member and admin dashboards with role-based access',
+      'Rotating hero showcase for featured disciplines',
+    ],
+    duration: '4 months',
+    role: 'Full Stack Developer',
+    impact: "One hub for every KYU student — learn, launch, connect and get funded.",
+    metrics: [
+      { label: 'Faculties', value: '8' },
+      { label: 'Focus', value: 'Innovation' },
+      { label: 'Access', value: 'Campus-wide' },
     ],
   },
 ];
