@@ -95,14 +95,19 @@ const Services = () => {
 
                 {/* CTA */}
                 <div className="mt-8">
-                  <button className="w-full px-6 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-xl font-medium transition-colors">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="w-full px-6 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-xl font-medium transition-colors"
+                  >
                     <i className="fas fa-arrow-right mr-2"></i>
                     Get Started
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
+
 
           {/* Call to Action */}
           <div className="text-center mt-16">
