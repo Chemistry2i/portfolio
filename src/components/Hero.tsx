@@ -14,15 +14,10 @@ const TYPING_ROLES = [
 const CALENDLY_URL = 'https://calendly.com/wambogohassansadat/15min';
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   // Typing animation
   useEffect(() => {
