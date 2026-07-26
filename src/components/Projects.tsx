@@ -1,59 +1,39 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, hoverLift, revealProps, staggerContainer } from '@/lib/motion';
 import { projects } from '@/data/projects';
 import ImageLightbox from './ImageLightbox';
 
 const Projects = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   return (
-    <section ref={sectionRef} id="projects" className="py-12 md:py-20 lg:py-24 relative">
+    <section id="projects" className="py-12 md:py-20 lg:py-24 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <motion.div className="text-center mb-12 md:mb-16" variants={fadeUp} {...revealProps}>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               <span className="gradient-text">Featured Projects</span>
             </h2>
             <p className="text-muted-foreground text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-4">
               A showcase of my recent work, demonstrating expertise in both development and design
             </p>
-          </div>
+          </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {projects.map((project, index) => (
-              <div 
+          <motion.div
+            className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            variants={staggerContainer(0.14)}
+            {...revealProps}
+          >
+            {projects.map((project) => (
+              <motion.div
                 key={project.id}
-                className={`project-card group transition-all duration-500 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                className="project-card group"
+                variants={fadeUp}
+                {...hoverLift}
               >
                 {/* Project Image */}
                 <div className="relative overflow-hidden rounded-xl mb-6">
@@ -162,16 +142,20 @@ const Projects = () => {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* View More Button */}
           <div className="text-center mt-12">
-            <button className="px-8 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-xl font-medium transition-colors">
+            <motion.button
+              className="px-8 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-xl font-medium transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.96 }}
+            >
               <i className="fas fa-plus mr-2"></i>
               View All Projects
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>

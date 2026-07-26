@@ -1,30 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { fadeUp, hoverLift, revealProps, staggerContainer } from '@/lib/motion';
 
 const Services = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   const services = [
     {
       icon: 'fas fa-code',
@@ -53,13 +30,11 @@ const Services = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="services" className="py-12 md:py-20 lg:py-24 relative">
+    <section id="services" className="py-12 md:py-20 lg:py-24 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <motion.div className="text-center mb-12 md:mb-16" variants={fadeUp} {...revealProps}>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               <span className="gradient-text">How I Can Help</span>
             </h2>
@@ -77,19 +52,20 @@ const Services = () => {
                 <i className="fas fa-handshake" /> For Project Clients
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Services Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8"
+            variants={staggerContainer(0.14)}
+            {...revealProps}
+          >
             {services.map((service, index) => (
-              <div 
+              <motion.div
                 key={index}
-                className={`glass-card p-6 md:p-8 lg:p-10 rounded-2xl hover:scale-105 transition-all duration-500 group ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ 
-                  transitionDelay: `${index * 150}ms`,
-                }}
+                className="glass-card p-6 md:p-8 lg:p-10 rounded-2xl group"
+                variants={fadeUp}
+                {...hoverLift}
               >
                 {/* Icon */}
                 <div className="mb-6">
@@ -119,14 +95,19 @@ const Services = () => {
 
                 {/* CTA */}
                 <div className="mt-8">
-                  <button className="w-full px-6 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-xl font-medium transition-colors">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="w-full px-6 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-xl font-medium transition-colors"
+                  >
                     <i className="fas fa-arrow-right mr-2"></i>
                     Get Started
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
+
 
           {/* Call to Action */}
           <div className="text-center mt-16">
