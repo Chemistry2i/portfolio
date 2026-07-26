@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { fadeUp, hoverPress, staggerContainer } from '@/lib/motion';
 import portraitImg from '@/assets/Wambogo.png';
 import AvailabilityBadge from './AvailabilityBadge';
 
@@ -73,35 +75,30 @@ const Hero = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
             {/* Left Column - Text Content */}
-            <div className={`text-center lg:text-left transition-all duration-700 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}>
-              <div className="space-y-5 md:space-y-6">
+            <div className="text-center lg:text-left">
+              <motion.div
+                className="space-y-5 md:space-y-6"
+                variants={staggerContainer(0.13, 0.15)}
+                initial="hidden"
+                animate="show"
+              >
                 {/* Availability badge */}
-                <div className={`flex justify-center lg:justify-start transition-all duration-500 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
+                <motion.div variants={fadeUp} className="flex justify-center lg:justify-start">
                   <AvailabilityBadge />
-                </div>
+                </motion.div>
 
                 {/* Name and Title */}
                 <div className="space-y-2 sm:space-y-3">
-                  <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold leading-tight transition-all duration-500 delay-100 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}>
+                  <motion.h1 variants={fadeUp} className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight">
                     <span className="text-foreground">Hello, It's Me</span>
-                  </h1>
-                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-all duration-500 delay-100 whitespace-nowrap ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}>
+                  </motion.h1>
+                  <motion.h1 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight whitespace-nowrap">
                     <span className="gradient-text">Wambogo Hassan Sadat</span>
-                  </h1>
+                  </motion.h1>
 
 
                   {/* Seniority + meta chips */}
-                  <div className={`flex flex-wrap gap-2 justify-center lg:justify-start pt-1 transition-all duration-500 delay-200 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}>
+                  <motion.div variants={fadeUp} className="flex flex-wrap gap-2 justify-center lg:justify-start pt-1">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/25">
                       <i className="fas fa-layer-group" /> Mid-Level
                     </span>
@@ -111,39 +108,34 @@ const Hero = () => {
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-secondary/70 text-secondary-foreground border border-border">
                       <i className="fas fa-briefcase" /> Open to Full-time & Contract
                     </span>
-                  </div>
+                  </motion.div>
 
                   {/* Typing Animation Subtitle */}
-                  <div className={`text-base sm:text-lg md:text-xl lg:text-2xl font-medium h-8 sm:h-10 transition-all duration-500 delay-200 mb-1 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}>
+                  <motion.div variants={fadeUp} className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium h-8 sm:h-10 mb-1">
                     <span className="text-foreground mr-2">And I am a</span>
                     <span className={currentRole.className}>
                       {currentRole.text.slice(0, charIndex)}
                     </span>
                     <span className="inline-block w-[2px] h-5 sm:h-6 bg-primary ml-0.5 align-middle animate-pulse" />
-                  </div>
+                  </motion.div>
                 </div>
                 
                 {/* Description */}
-                <p className={`text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed transition-all duration-500 delay-300 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
+                <motion.p variants={fadeUp} className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
                   Turning ideas into interactive interfaces with aesthetic precision. Crafting clean code and beautiful user experiences.
-                </p>
+                </motion.p>
 
                 {/* Buttons */}
-                <div className={`flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start items-center transition-all duration-500 delay-400 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
-                  <button 
+                <motion.div variants={fadeUp} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start items-center">
+                  <motion.button {...hoverPress} 
                     onClick={scrollToContact}
                     className="w-full sm:w-auto hero-btn text-primary-foreground min-w-[140px] sm:min-w-[160px] transform transition-all duration-300 hover:scale-105 py-3 px-6"
                   >
                     <i className="fas fa-paper-plane mr-2"></i>
                     Hire Me
-                  </button>
-                  <a
+                  </motion.button>
+                  <motion.a
+                    {...hoverPress}
                     href={CALENDLY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -151,20 +143,18 @@ const Hero = () => {
                   >
                     <i className="fas fa-calendar-check mr-2"></i>
                     Book a 15-min Call
-                  </a>
-                  <button 
+                  </motion.a>
+                  <motion.button {...hoverPress} 
                     onClick={scrollToProjects}
                     className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold bg-secondary hover:bg-secondary/80 text-secondary-foreground transition-all duration-300 border border-border min-w-[140px] sm:min-w-[160px] transform hover:scale-105"
                   >
                     <i className="fas fa-eye mr-2"></i>
                     View Projects
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
 
                 {/* Professional Taglines */}
-                <div className={`pt-2 hidden sm:block transition-all duration-700 delay-600 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
+                <motion.div variants={fadeUp} className="pt-2 hidden sm:block">
 
                   <div className="glass-card p-2 sm:p-4 rounded-2xl backdrop-blur-md mx-auto lg:max-w-3xl xl:max-w-4xl">
                     <div className="grid grid-cols-3 gap-1 sm:gap-3 text-center">
@@ -185,14 +175,17 @@ const Hero = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
 
             {/* Right Column - Portrait Image */}
-            <div className={`flex justify-center lg:justify-end transition-all duration-700 delay-300 ease-out ${
-              isVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-8 scale-95'
-            }`}>
+            <motion.div
+              className="flex justify-center lg:justify-end"
+              initial={{ opacity: 0, x: 32, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            >
               <div className="relative">
                 <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl"></div>
                 <div className="absolute -inset-2 bg-accent/10 rounded-full blur-2xl"></div>
@@ -206,7 +199,7 @@ const Hero = () => {
                 </div>
                 <div className="absolute -inset-3 rounded-full border-2 border-primary/20 animate-pulse"></div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
