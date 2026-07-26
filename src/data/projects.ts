@@ -139,7 +139,7 @@ export const projects: ProjectData[] = [
     metrics: [
       { label: 'Faculties', value: '8' },
       { label: 'Focus', value: 'Innovation' },
-      { label: 'Access', value: 'Campus-wide' },
+      { label: 'Access', value: 'Open' },
     ],
   },
 ];
