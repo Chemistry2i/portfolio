@@ -1,32 +1,26 @@
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
 const PageTransition = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
-  const [displayChildren, setDisplayChildren] = useState(children);
-  const [stage, setStage] = useState<'in' | 'out'>('in');
-
-  useEffect(() => {
-    setStage('out');
-    const timeout = setTimeout(() => {
-      setDisplayChildren(children);
-      setStage('in');
-      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-    }, 200);
-    return () => clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname]);
+  const reduce = useReducedMotion();
 
   return (
-    <div
-      className={`transition-all duration-300 ease-out ${
-        stage === 'in'
-          ? 'opacity-100'
-          : 'opacity-0'
-      }`}
+    <AnimatePresence
+      mode="wait"
+      initial={false}
+      onExitComplete={() => window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })}
     >
-      {displayChildren}
-    </div>
+      <motion.div
+        key={location.pathname}
+        initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12, filter: 'blur(4px)' }}
+        animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: 'blur(0px)' }}
+        exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8, filter: 'blur(4px)' }}
+        transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
