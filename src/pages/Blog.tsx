@@ -2,11 +2,33 @@ import { Link } from 'react-router-dom';
 import { articles } from '@/data/articles';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import SEO, { SITE_URL } from '@/components/SEO';
 
 const Blog = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title="Blog — Web Development Articles | Wambogo Hassan Sadat"
+        description="Technical write-ups on the MERN stack, MySQL, React performance, accessibility and UI/UX — lessons from building real products in Uganda."
+        path="/blog"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            name: 'Wambogo Hassan Sadat — Blog',
+            url: `${SITE_URL}/blog`,
+            blogPost: articles.map((a) => ({
+              '@type': 'BlogPosting',
+              headline: a.title,
+              datePublished: a.date,
+              url: `${SITE_URL}/blog/${a.slug}`,
+            })),
+          },
+        ]}
+      />
       <Navigation />
+
+
 
       <section className="pt-24 pb-12 md:pt-32 md:pb-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">

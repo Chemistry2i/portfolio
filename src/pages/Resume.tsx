@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import SEO from '@/components/SEO';
+
 import kyuLogo from '@/assets/kyambogo-university-logo.png';
 
 type CertCategory = 'Frontend' | 'Backend' | 'Database' | 'Tools' | 'Design' | 'Networking';
@@ -86,7 +88,13 @@ const Resume = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Resume & Certifications — Wambogo Hassan Sadat"
+        description="Resume, skills and certifications of Wambogo Hassan Sadat — MERN stack developer and UI/UX designer based in Kampala, Uganda."
+        path="/resume"
+      />
       <Navigation />
+
 
       <main className="pt-24 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

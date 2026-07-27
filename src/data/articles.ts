@@ -158,4 +158,113 @@ Don't abandon your JavaScript skills — combine them. Being proficient in both 
     tags: ['Java', 'Spring Boot', 'Backend', 'Learning'],
     icon: 'fab fa-java',
   },
+  {
+    id: 4,
+    slug: 'why-mysql-still-wins-for-business-apps',
+    title: 'Why MySQL Still Wins for Business Apps',
+    excerpt: 'MongoDB is my default for fast-moving products, but for invoicing, membership and reporting systems I keep reaching for MySQL. Here is how I decide.',
+    content: `
+## The Wrong Question
+
+"SQL or NoSQL?" is the wrong first question. The right one is: **how relational is my data, and how important are guaranteed consistency and ad-hoc reporting?**
+
+## Where MySQL Shines
+
+### 1. Relationships Everywhere
+Members belong to organisations, organisations run events, events have registrations and payments. Every one of those is a join. In MySQL that is a one-line query; in a document store it becomes denormalisation and manual sync work.
+
+### 2. Transactions You Can Trust
+Anything touching money — invoices, payments, wallet balances — needs real ACID transactions. MySQL gives you that out of the box with InnoDB.
+
+### 3. Reporting
+Clients always ask for reports you did not plan for. With SQL you write a query. With a document store you often write a migration.
+
+## Where I Still Pick MongoDB
+
+- Rapidly evolving schemas early in a product's life
+- Deeply nested, document-shaped content (CMS pages, form builders)
+- Event logs and analytics ingestion
+
+## A Practical Schema Checklist
+
+1. Model entities and their relationships before writing any code
+2. Index every foreign key and every column you filter or sort on
+3. Use \`DECIMAL\` for money, never \`FLOAT\`
+4. Store timestamps in UTC
+5. Add constraints in the database, not only in application code
+6. Use migrations from day one so environments stay in sync
+
+## Performance Habits
+
+- Read the \`EXPLAIN\` output before optimising anything
+- Avoid \`SELECT *\` on wide tables
+- Paginate with keyset pagination on large tables instead of large \`OFFSET\` values
+- Cache expensive aggregates rather than recomputing per request
+
+## Takeaway
+
+Pick the database that matches the shape of your data and the promises you must keep to your users. For most business software I build in Uganda — associations, schools, shops, dashboards — MySQL is still the boring, correct answer.
+    `,
+    date: '2025-05-12',
+    readTime: '7 min read',
+    category: 'Backend',
+    tags: ['MySQL', 'Databases', 'Backend', 'Architecture'],
+    icon: 'fas fa-database',
+  },
+  {
+    id: 5,
+    slug: 'shipping-a-fast-accessible-react-portfolio',
+    title: 'Shipping a Fast, Accessible React Portfolio',
+    excerpt: 'Performance, accessibility and SEO are not polish you add at the end. Here is the checklist I run through before any React site goes live.',
+    content: `
+## Performance First
+
+### Ship Less JavaScript
+Route-level code splitting with \`React.lazy\` and \`Suspense\` keeps the first load small. Audit your bundle before blaming the framework.
+
+### Images Are Usually the Problem
+Compress everything, serve modern formats, set explicit \`width\` and \`height\` to avoid layout shift, and lazy-load anything below the fold.
+
+### Respect Slow Networks
+Most of my users are on mobile data. A page that needs 3MB to render is a page most people will never see.
+
+## Accessibility Is Not Optional
+
+- Use semantic HTML: one \`h1\`, real \`button\` and \`a\` elements, landmarks
+- Keep visible focus states — never \`outline: none\` without a replacement
+- Meet AA contrast in **both** light and dark themes
+- Give every meaningful image real alt text
+- Honour \`prefers-reduced-motion\` in all your animations
+
+## Animation Without Regret
+
+Framer Motion is wonderful, but animate \`transform\` and \`opacity\` only, keep durations under 500ms, and trigger scroll reveals once. Motion should guide attention, not demand it.
+
+## SEO That Actually Matters
+
+1. A unique title and meta description per route
+2. Self-referencing canonical URLs
+3. Open Graph and Twitter tags with a real 1200×630 image
+4. Structured data — Person, Article, FAQPage — where it fits
+5. A sitemap and a robots.txt that does not block you
+6. Internal links between related pages
+
+## My Pre-Launch Checklist
+
+- Lighthouse ≥ 90 on performance, accessibility, best practices and SEO
+- Keyboard-only walkthrough of every interactive element
+- Real-device test on a mid-range Android phone
+- All external links open safely and resolve
+- Forms tested end to end, including the error states
+
+## Takeaway
+
+Fast and accessible are the same discipline: removing what is unnecessary so the essential thing arrives quickly, for everyone.
+    `,
+    date: '2025-06-08',
+    readTime: '6 min read',
+    category: 'Frontend',
+    tags: ['React', 'Performance', 'Accessibility', 'SEO'],
+    icon: 'fas fa-gauge-high',
+  },
 ];
