@@ -22,7 +22,35 @@ const ProjectCaseStudy = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title={`${project.title} — Case Study | Wambogo Hassan Sadat`}
+        description={`${project.problem.slice(0, 150)}`}
+        path={`/project/${project.slug}`}
+        type="article"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'CreativeWork',
+            name: project.title,
+            description: project.description,
+            about: project.category,
+            keywords: project.tech.join(', '),
+            url: `${SITE_URL}/project/${project.slug}`,
+            creator: { '@type': 'Person', name: 'Wambogo Hassan Sadat', url: SITE_URL },
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+              { '@type': 'ListItem', position: 2, name: 'Projects', item: `${SITE_URL}/#projects` },
+              { '@type': 'ListItem', position: 3, name: project.title, item: `${SITE_URL}/project/${project.slug}` },
+            ],
+          },
+        ]}
+      />
       <Navigation />
+
 
       {/* Hero Banner */}
       <section className="pt-24 pb-12 md:pt-32 md:pb-16 relative overflow-hidden">
