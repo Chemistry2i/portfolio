@@ -3,6 +3,8 @@ import { articles } from '@/data/articles';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ReadingProgress from '@/components/ReadingProgress';
+import SEO, { SITE_URL } from '@/components/SEO';
+
 
 const BlogArticle = () => {
   const { slug } = useParams();
