@@ -112,8 +112,30 @@ const BlogArticle = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title={`${article.title} | Wambogo Hassan Sadat`}
+        description={article.excerpt}
+        path={`/blog/${article.slug}`}
+        type="article"
+        publishedTime={article.date}
+        tags={article.tags}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: article.title,
+            description: article.excerpt,
+            datePublished: article.date,
+            keywords: article.tags.join(', '),
+            articleSection: article.category,
+            mainEntityOfPage: `${SITE_URL}/blog/${article.slug}`,
+            author: { '@type': 'Person', name: 'Wambogo Hassan Sadat', url: SITE_URL },
+          },
+        ]}
+      />
       <ReadingProgress />
       <Navigation />
+
 
       <article className="pt-24 pb-16 md:pt-32">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
