@@ -204,7 +204,7 @@ Clients always ask for reports you did not plan for. With SQL you write a query.
 ## Takeaway
 
 Pick the database that matches the shape of your data and the promises you must keep to your users. For most business software I build in Uganda — associations, schools, shops, dashboards — MySQL is still the boring, correct answer.
-    \`,
+    `,
     date: '2025-05-12',
     readTime: '7 min read',
     category: 'Backend',
@@ -260,7 +260,7 @@ Framer Motion is wonderful, but animate \`transform\` and \`opacity\` only, keep
 ## Takeaway
 
 Fast and accessible are the same discipline: removing what is unnecessary so the essential thing arrives quickly, for everyone.
-    \`,
+    `,
     date: '2025-06-08',
     readTime: '6 min read',
     category: 'Frontend',
