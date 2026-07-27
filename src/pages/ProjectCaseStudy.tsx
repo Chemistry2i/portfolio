@@ -2,6 +2,8 @@ import { useParams, Link } from 'react-router-dom';
 import { projects } from '@/data/projects';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import SEO, { SITE_URL } from '@/components/SEO';
+
 
 const ProjectCaseStudy = () => {
   const { slug } = useParams();
