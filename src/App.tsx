@@ -11,6 +11,7 @@ import BlogArticle from "./pages/BlogArticle";
 import Resume from "./pages/Resume";
 import PageTransition from "./components/PageTransition";
 import GlobalCursorFX from "./components/GlobalCursorFX";
+import PageLoader from "./components/PageLoader";
 import { ThemeProvider } from "./components/ThemeProvider";
 
 const queryClient = new QueryClient();
@@ -38,7 +39,10 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <PageLoader />
         <GlobalCursorFX />
+
+
         <BrowserRouter>
           <AnimatedRoutes />
         </BrowserRouter>
