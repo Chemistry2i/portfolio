@@ -40,6 +40,8 @@ const App = () => (
         <Toaster />
         <Sonner />
         <PageLoader />
+        <GlobalCursorFX />
+
 
         <BrowserRouter>
           <AnimatedRoutes />
