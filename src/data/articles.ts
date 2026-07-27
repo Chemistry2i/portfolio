@@ -189,16 +189,16 @@ Clients always ask for reports you did not plan for. With SQL you write a query.
 
 1. Model entities and their relationships before writing any code
 2. Index every foreign key and every column you filter or sort on
-3. Use \\`DECIMAL\\` for money, never \\`FLOAT\\`
+3. Use \`DECIMAL\` for money, never \`FLOAT\`
 4. Store timestamps in UTC
 5. Add constraints in the database, not only in application code
 6. Use migrations from day one so environments stay in sync
 
 ## Performance Habits
 
-- Read the \\`EXPLAIN\\` output before optimising anything
-- Avoid \\`SELECT *\\` on wide tables
-- Paginate with keyset pagination on large tables instead of large \\`OFFSET\\` values
+- Read the \`EXPLAIN\` output before optimising anything
+- Avoid \`SELECT *\` on wide tables
+- Paginate with keyset pagination on large tables instead of large \`OFFSET\` values
 - Cache expensive aggregates rather than recomputing per request
 
 ## Takeaway
@@ -220,25 +220,25 @@ Pick the database that matches the shape of your data and the promises you must 
 ## Performance First
 
 ### Ship Less JavaScript
-Route-level code splitting with \\`React.lazy\\` and \\`Suspense\\` keeps the first load small. Audit your bundle before blaming the framework.
+Route-level code splitting with \`React.lazy\` and \`Suspense\` keeps the first load small. Audit your bundle before blaming the framework.
 
 ### Images Are Usually the Problem
-Compress everything, serve modern formats, set explicit \\`width\\` and \\`height\\` to avoid layout shift, and lazy-load anything below the fold.
+Compress everything, serve modern formats, set explicit \`width\` and \`height\` to avoid layout shift, and lazy-load anything below the fold.
 
 ### Respect Slow Networks
 Most of my users are on mobile data. A page that needs 3MB to render is a page most people will never see.
 
 ## Accessibility Is Not Optional
 
-- Use semantic HTML: one \\`h1\\`, real \\`button\\` and \\`a\\` elements, landmarks
-- Keep visible focus states — never \\`outline: none\\` without a replacement
+- Use semantic HTML: one \`h1\`, real \`button\` and \`a\` elements, landmarks
+- Keep visible focus states — never \`outline: none\` without a replacement
 - Meet AA contrast in **both** light and dark themes
 - Give every meaningful image real alt text
-- Honour \\`prefers-reduced-motion\\` in all your animations
+- Honour \`prefers-reduced-motion\` in all your animations
 
 ## Animation Without Regret
 
-Framer Motion is wonderful, but animate \\`transform\\` and \\`opacity\\` only, keep durations under 500ms, and trigger scroll reveals once. Motion should guide attention, not demand it.
+Framer Motion is wonderful, but animate \`transform\` and \`opacity\` only, keep durations under 500ms, and trigger scroll reveals once. Motion should guide attention, not demand it.
 
 ## SEO That Actually Matters
 
