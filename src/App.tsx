@@ -39,7 +39,8 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <GlobalCursorFX />
+        <PageLoader />
+
         <BrowserRouter>
           <AnimatedRoutes />
         </BrowserRouter>
