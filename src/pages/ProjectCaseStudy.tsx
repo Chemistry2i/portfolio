@@ -81,16 +81,40 @@ const ProjectCaseStudy = () => {
       </section>
 
       {/* Project Image */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-12 md:mb-16">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-10 md:mb-14">
         <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
           <img
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} interface screenshot`}
             className="w-full h-64 sm:h-80 md:h-[420px] object-cover"
             loading="lazy"
           />
         </div>
       </section>
+
+      {/* Outcome Metrics */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-12 md:mb-16">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground font-bold mb-4">Outcomes</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {project.metrics.map((m) => (
+            <div key={m.label} className="glass-card rounded-xl p-5 text-center">
+              <div className="text-2xl md:text-3xl font-bold gradient-text leading-none">{m.value}</div>
+              <div className="text-xs text-muted-foreground mt-2 uppercase tracking-wide">{m.label}</div>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="px-3 py-1.5 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </section>
+
 
       {/* Case Study Content */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
