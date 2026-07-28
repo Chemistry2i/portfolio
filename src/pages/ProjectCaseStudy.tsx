@@ -1,13 +1,34 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projects } from '@/data/projects';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SEO, { SITE_URL } from '@/components/SEO';
+import { downloadCaseStudyPdf } from '@/lib/caseStudyPdf';
+import { toast } from '@/hooks/use-toast';
 
 
 const ProjectCaseStudy = () => {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownload = async () => {
+    if (!project) return;
+    setDownloading(true);
+    try {
+      await downloadCaseStudyPdf(project);
+    } catch {
+      toast({
+        title: 'Could not generate the PDF',
+        description: 'Please try again in a moment.',
+        variant: 'destructive',
+      });
+    } finally {
+      setDownloading(false);
+    }
+  };
+
 
   if (!project) {
     return (
