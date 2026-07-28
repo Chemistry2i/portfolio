@@ -164,10 +164,11 @@ export async function downloadCaseStudyPdf(project: ProjectData) {
     doc.setFontSize(10.5);
     doc.setTextColor(...INK);
     doc.text(step.phase, MARGIN + 14, y);
+    const phaseW = doc.getTextWidth(step.phase);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
     doc.setTextColor(...MUTED);
-    doc.text(step.period, MARGIN + 14 + doc.getTextWidth(step.phase) + 10, y);
+    doc.text(step.period, MARGIN + 14 + phaseW + 10, y);
     y += 14;
     body(step.detail, 14);
     y += 4;
