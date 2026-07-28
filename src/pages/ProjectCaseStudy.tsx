@@ -97,6 +97,15 @@ const ProjectCaseStudy = () => {
               <i className="fas fa-user text-primary" />
               <span>{project.role}</span>
             </div>
+            <button
+              type="button"
+              onClick={handleDownload}
+              disabled={downloading}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-60"
+            >
+              <i className={downloading ? 'fas fa-circle-notch fa-spin' : 'fas fa-file-pdf'} />
+              {downloading ? 'Preparing PDF…' : 'Download PDF'}
+            </button>
           </div>
         </div>
       </section>
