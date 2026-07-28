@@ -171,6 +171,30 @@ const ProjectCaseStudy = () => {
               </h2>
               <p className="text-muted-foreground leading-relaxed">{project.results}</p>
             </div>
+
+            {/* Timeline */}
+            <div>
+              <h2 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <i className="fas fa-stream text-primary text-sm" />
+                </span>
+                Project Timeline
+              </h2>
+              <ol className="relative border-l border-border ml-4 space-y-8">
+                {project.timeline.map((step) => (
+                  <li key={step.phase} className="pl-6">
+                    <span className="absolute -left-[7px] mt-1.5 w-3 h-3 rounded-full bg-primary ring-4 ring-background" />
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <h3 className="font-semibold text-foreground">{step.phase}</h3>
+                      <span className="text-xs font-medium text-primary bg-primary/10 rounded-full px-2.5 py-0.5">
+                        {step.period}
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{step.detail}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
 
           {/* Sidebar */}
