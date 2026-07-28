@@ -85,6 +85,12 @@ export const projects: ProjectData[] = [
       { label: 'Crops tracked', value: '12' },
       { label: 'Mobile-first', value: '100%' },
     ],
+    timeline: [
+      { phase: 'Discovery', period: 'Month 1', detail: 'Field visits with small-scale farmers to map pricing, weather and advice gaps.' },
+      { phase: 'Design', period: 'Month 2', detail: 'Mobile-first flows designed for low bandwidth and low-literacy rural users.' },
+      { phase: 'Build', period: 'Month 3', detail: 'Built market price tracking, weather recommendations and the expert Q&A forum.' },
+      { phase: 'Launch', period: 'Month 4', detail: 'Rolled out to 200+ farmers with 12 crops tracked and an active advice community.' },
+    ],
   },
   {
     id: 3,
