@@ -143,5 +143,11 @@ export const projects: ProjectData[] = [
       { label: 'Focus', value: 'Innovation' },
       { label: 'Access', value: 'Open' },
     ],
+    timeline: [
+      { phase: 'Discovery', period: 'Week 1 – 2', detail: 'Interviewed faculty leads and mapped the scattered innovation activity into one information architecture.' },
+      { phase: 'Design', period: 'Week 3 – 5', detail: 'Designed the directory, events calendar and funding board around faculty-wide use cases.' },
+      { phase: 'Build', period: 'Month 2 – 3', detail: 'Built the React front end on a Java + MySQL backend with role-based member and admin dashboards.' },
+      { phase: 'Launch', period: 'Month 4', detail: 'Shipped kyuica.org, onboarded members across 8 faculties and handed over admin training.' },
+    ],
   },
 ];
