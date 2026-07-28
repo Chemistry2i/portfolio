@@ -23,6 +23,8 @@ export interface ProjectData {
   impact: string;
   /** Quick-glance metrics shown as chips on the card. */
   metrics: { label: string; value: string }[];
+  /** Delivery phases shown on the case-study timeline. */
+  timeline: { phase: string; period: string; detail: string }[];
 }
 
 export const projects: ProjectData[] = [
