@@ -8,7 +8,29 @@
     <language>en-us</language>
     <managingEditor>wambogohassan63@gmail.com (Wambogo Hassan Sadat)</managingEditor>
     <webMaster>wambogohassan63@gmail.com (Wambogo Hassan Sadat)</webMaster>
-    <lastBuildDate>Mon, 27 Jul 2026 17:29:19 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jul 2026 17:19:12 GMT</lastBuildDate>
+    <item>
+      <title>Shipping a Fast, Accessible React Portfolio</title>
+      <link>https://wambogohassansadat.dev/blog/shipping-a-fast-accessible-react-portfolio</link>
+      <guid isPermaLink="true">https://wambogohassansadat.dev/blog/shipping-a-fast-accessible-react-portfolio</guid>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 GMT</pubDate>
+      <description>Performance, accessibility and SEO are not polish you add at the end. Here is the checklist I run through before any React site goes live.</description>
+      <category>React</category>
+      <category>Performance</category>
+      <category>Accessibility</category>
+      <category>SEO</category>
+    </item>
+    <item>
+      <title>Why MySQL Still Wins for Business Apps</title>
+      <link>https://wambogohassansadat.dev/blog/why-mysql-still-wins-for-business-apps</link>
+      <guid isPermaLink="true">https://wambogohassansadat.dev/blog/why-mysql-still-wins-for-business-apps</guid>
+      <pubDate>Mon, 12 May 2025 00:00:00 GMT</pubDate>
+      <description>MongoDB is my default for fast-moving products, but for invoicing, membership and reporting systems I keep reaching for MySQL. Here is how I decide.</description>
+      <category>MySQL</category>
+      <category>Databases</category>
+      <category>Backend</category>
+      <category>Architecture</category>
+    </item>
     <item>
       <title>Building Scalable MERN Stack Applications</title>
       <link>https://wambogohassansadat.dev/blog/building-scalable-mern-apps</link>

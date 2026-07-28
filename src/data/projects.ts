@@ -23,6 +23,8 @@ export interface ProjectData {
   impact: string;
   /** Quick-glance metrics shown as chips on the card. */
   metrics: { label: string; value: string }[];
+  /** Delivery phases shown on the case-study timeline. */
+  timeline: { phase: string; period: string; detail: string }[];
 }
 
 export const projects: ProjectData[] = [
@@ -54,6 +56,12 @@ export const projects: ProjectData[] = [
       { label: 'Cost', value: '-40%' },
       { label: 'Result time', value: 'Minutes' },
     ],
+    timeline: [
+      { phase: 'Discovery', period: 'Week 1 – 2', detail: 'Audited the paper ballot process with the electoral commission and defined trust requirements.' },
+      { phase: 'Design', period: 'Week 3 – 4', detail: 'Designed the voting flow, candidate profiles and the live results dashboard.' },
+      { phase: 'Build', period: 'Month 2', detail: 'Implemented JWT voter authentication, encrypted ballots and real-time tallying.' },
+      { phase: 'Launch', period: 'Month 3', detail: 'Ran the live election — 60% higher turnout and results published minutes after polls closed.' },
+    ],
   },
   {
     id: 2,
@@ -82,6 +90,12 @@ export const projects: ProjectData[] = [
       { label: 'Farmers', value: '200+' },
       { label: 'Crops tracked', value: '12' },
       { label: 'Mobile-first', value: '100%' },
+    ],
+    timeline: [
+      { phase: 'Discovery', period: 'Month 1', detail: 'Field visits with small-scale farmers to map pricing, weather and advice gaps.' },
+      { phase: 'Design', period: 'Month 2', detail: 'Mobile-first flows designed for low bandwidth and low-literacy rural users.' },
+      { phase: 'Build', period: 'Month 3', detail: 'Built market price tracking, weather recommendations and the expert Q&A forum.' },
+      { phase: 'Launch', period: 'Month 4', detail: 'Rolled out to 200+ farmers with 12 crops tracked and an active advice community.' },
     ],
   },
   {
@@ -112,6 +126,12 @@ export const projects: ProjectData[] = [
       { label: 'Orders/mo', value: '500+' },
       { label: 'Payment success', value: '98%' },
     ],
+    timeline: [
+      { phase: 'Discovery', period: 'Month 1', detail: 'Shadowed local shop owners to understand catalogue, pricing and payout needs.' },
+      { phase: 'Design', period: 'Month 2', detail: 'Prototyped the storefront, filters and vendor dashboard for non-technical sellers.' },
+      { phase: 'Build', period: 'Month 3 – 4', detail: 'Implemented React + Redux storefront, Express/MongoDB API and Stripe checkout.' },
+      { phase: 'Launch', period: 'Month 5', detail: 'Onboarded 15+ vendors, processed 500+ orders in the first month at 98% payment success.' },
+    ],
   },
   {
     id: 4,
@@ -140,6 +160,12 @@ export const projects: ProjectData[] = [
       { label: 'Faculties', value: '8' },
       { label: 'Focus', value: 'Innovation' },
       { label: 'Access', value: 'Open' },
+    ],
+    timeline: [
+      { phase: 'Discovery', period: 'Week 1 – 2', detail: 'Interviewed faculty leads and mapped the scattered innovation activity into one information architecture.' },
+      { phase: 'Design', period: 'Week 3 – 5', detail: 'Designed the directory, events calendar and funding board around faculty-wide use cases.' },
+      { phase: 'Build', period: 'Month 2 – 3', detail: 'Built the React front end on a Java + MySQL backend with role-based member and admin dashboards.' },
+      { phase: 'Launch', period: 'Month 4', detail: 'Shipped kyuica.org, onboarded members across 8 faculties and handed over admin training.' },
     ],
   },
 ];

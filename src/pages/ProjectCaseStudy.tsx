@@ -81,16 +81,40 @@ const ProjectCaseStudy = () => {
       </section>
 
       {/* Project Image */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-12 md:mb-16">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-10 md:mb-14">
         <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
           <img
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} interface screenshot`}
             className="w-full h-64 sm:h-80 md:h-[420px] object-cover"
             loading="lazy"
           />
         </div>
       </section>
+
+      {/* Outcome Metrics */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-12 md:mb-16">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground font-bold mb-4">Outcomes</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {project.metrics.map((m) => (
+            <div key={m.label} className="glass-card rounded-xl p-5 text-center">
+              <div className="text-2xl md:text-3xl font-bold gradient-text leading-none">{m.value}</div>
+              <div className="text-xs text-muted-foreground mt-2 uppercase tracking-wide">{m.label}</div>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="px-3 py-1.5 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </section>
+
 
       {/* Case Study Content */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
@@ -146,6 +170,30 @@ const ProjectCaseStudy = () => {
                 Results & Impact
               </h2>
               <p className="text-muted-foreground leading-relaxed">{project.results}</p>
+            </div>
+
+            {/* Timeline */}
+            <div>
+              <h2 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <i className="fas fa-stream text-primary text-sm" />
+                </span>
+                Project Timeline
+              </h2>
+              <ol className="relative border-l border-border ml-4 space-y-8">
+                {project.timeline.map((step) => (
+                  <li key={step.phase} className="pl-6">
+                    <span className="absolute -left-[7px] mt-1.5 w-3 h-3 rounded-full bg-primary ring-4 ring-background" />
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <h3 className="font-semibold text-foreground">{step.phase}</h3>
+                      <span className="text-xs font-medium text-primary bg-primary/10 rounded-full px-2.5 py-0.5">
+                        {step.period}
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{step.detail}</p>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
 
