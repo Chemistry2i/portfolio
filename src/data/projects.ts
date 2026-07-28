@@ -56,6 +56,12 @@ export const projects: ProjectData[] = [
       { label: 'Cost', value: '-40%' },
       { label: 'Result time', value: 'Minutes' },
     ],
+    timeline: [
+      { phase: 'Discovery', period: 'Week 1 – 2', detail: 'Audited the paper ballot process with the electoral commission and defined trust requirements.' },
+      { phase: 'Design', period: 'Week 3 – 4', detail: 'Designed the voting flow, candidate profiles and the live results dashboard.' },
+      { phase: 'Build', period: 'Month 2', detail: 'Implemented JWT voter authentication, encrypted ballots and real-time tallying.' },
+      { phase: 'Launch', period: 'Month 3', detail: 'Ran the live election — 60% higher turnout and results published minutes after polls closed.' },
+    ],
   },
   {
     id: 2,
