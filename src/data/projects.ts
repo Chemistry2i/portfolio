@@ -114,6 +114,12 @@ export const projects: ProjectData[] = [
       { label: 'Orders/mo', value: '500+' },
       { label: 'Payment success', value: '98%' },
     ],
+    timeline: [
+      { phase: 'Discovery', period: 'Month 1', detail: 'Shadowed local shop owners to understand catalogue, pricing and payout needs.' },
+      { phase: 'Design', period: 'Month 2', detail: 'Prototyped the storefront, filters and vendor dashboard for non-technical sellers.' },
+      { phase: 'Build', period: 'Month 3 – 4', detail: 'Implemented React + Redux storefront, Express/MongoDB API and Stripe checkout.' },
+      { phase: 'Launch', period: 'Month 5', detail: 'Onboarded 15+ vendors, processed 500+ orders in the first month at 98% payment success.' },
+    ],
   },
   {
     id: 4,
