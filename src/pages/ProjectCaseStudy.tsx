@@ -105,12 +105,30 @@ const ProjectCaseStudy = () => {
               type="button"
               onClick={handleDownload}
               disabled={downloading}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-60"
+              className="no-print inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-60"
             >
               <i className={downloading ? 'fas fa-circle-notch fa-spin' : 'fas fa-file-pdf'} />
               {downloading ? 'Preparing PDF…' : 'Download PDF'}
             </button>
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="no-print inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border text-foreground text-sm font-medium hover:border-primary/50 hover:text-primary transition-colors"
+            >
+              <i className="fas fa-print" />
+              Print
+            </button>
           </div>
+
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Share</span>
+            <ShareButtons
+              url={`${SITE_URL}/project/${project.slug}`}
+              title={`${project.title} — Case Study`}
+              summary={project.description}
+            />
+          </div>
+
         </div>
       </section>
 
