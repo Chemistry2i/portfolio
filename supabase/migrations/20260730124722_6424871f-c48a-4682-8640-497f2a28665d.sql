@@ -1,0 +1,1 @@
+DELETE FROM public.pdf_downloads WHERE project_slug = 'test';
