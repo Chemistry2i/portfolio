@@ -4,7 +4,9 @@ import { projects } from '@/data/projects';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SEO, { SITE_URL } from '@/components/SEO';
+import ShareButtons from '@/components/ShareButtons';
 import { downloadCaseStudyPdf } from '@/lib/caseStudyPdf';
+import { trackPdfDownload } from '@/lib/trackDownload';
 import { toast } from '@/hooks/use-toast';
 
 
@@ -18,6 +20,7 @@ const ProjectCaseStudy = () => {
     setDownloading(true);
     try {
       await downloadCaseStudyPdf(project);
+      void trackPdfDownload(project.slug, project.title);
     } catch {
       toast({
         title: 'Could not generate the PDF',
@@ -28,6 +31,7 @@ const ProjectCaseStudy = () => {
       setDownloading(false);
     }
   };
+
 
 
   if (!project) {
