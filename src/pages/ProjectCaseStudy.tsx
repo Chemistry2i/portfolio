@@ -120,7 +120,7 @@ const ProjectCaseStudy = () => {
             </button>
           </div>
 
-          <div className="mt-5 flex flex-wrap items-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center gap-3 no-print">
             <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Share</span>
             <ShareButtons
               url={`${SITE_URL}/project/${project.slug}`}
