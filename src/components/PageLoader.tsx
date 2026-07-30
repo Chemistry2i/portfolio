@@ -22,7 +22,7 @@ const PageLoader = () => {
   if (!isLoading) return null;
 
   return (
-    <div className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background transition-opacity duration-500 ${progress >= 100 ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={`no-print fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background transition-opacity duration-500 ${progress >= 100 ? 'opacity-0' : 'opacity-100'}`}>
       <div className="text-center space-y-6">
         {/* Icon above name */}
         <div className="flex justify-center mb-2">

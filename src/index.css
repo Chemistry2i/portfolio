@@ -248,6 +248,19 @@
     box-shadow: none !important;
     text-shadow: none !important;
     backdrop-filter: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .text-muted-foreground {
+    color: #374151 !important;
+  }
+
+  .text-foreground,
+  p, li, span, div {
+    color: #111 !important;
   }
 
   .glass-card {
