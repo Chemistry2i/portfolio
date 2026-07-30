@@ -234,7 +234,8 @@
   .no-print,
   nav,
   footer,
-  [data-radix-popper-content-wrapper] {
+  [data-radix-popper-content-wrapper],
+  .fixed {
     display: none !important;
   }
 
