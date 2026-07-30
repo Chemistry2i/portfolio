@@ -4,7 +4,9 @@ import { projects } from '@/data/projects';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SEO, { SITE_URL } from '@/components/SEO';
+import ShareButtons from '@/components/ShareButtons';
 import { downloadCaseStudyPdf } from '@/lib/caseStudyPdf';
+import { trackPdfDownload } from '@/lib/trackDownload';
 import { toast } from '@/hooks/use-toast';
 
 
@@ -18,6 +20,7 @@ const ProjectCaseStudy = () => {
     setDownloading(true);
     try {
       await downloadCaseStudyPdf(project);
+      void trackPdfDownload(project.slug, project.title);
     } catch {
       toast({
         title: 'Could not generate the PDF',
@@ -28,6 +31,7 @@ const ProjectCaseStudy = () => {
       setDownloading(false);
     }
   };
+
 
 
   if (!project) {
@@ -101,12 +105,30 @@ const ProjectCaseStudy = () => {
               type="button"
               onClick={handleDownload}
               disabled={downloading}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-60"
+              className="no-print inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-60"
             >
               <i className={downloading ? 'fas fa-circle-notch fa-spin' : 'fas fa-file-pdf'} />
               {downloading ? 'Preparing PDF…' : 'Download PDF'}
             </button>
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="no-print inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border text-foreground text-sm font-medium hover:border-primary/50 hover:text-primary transition-colors"
+            >
+              <i className="fas fa-print" />
+              Print
+            </button>
           </div>
+
+          <div className="mt-5 flex flex-wrap items-center gap-3 no-print">
+            <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Share</span>
+            <ShareButtons
+              url={`${SITE_URL}/project/${project.slug}`}
+              title={`${project.title} — Case Study`}
+              summary={project.description}
+            />
+          </div>
+
         </div>
       </section>
 
@@ -267,10 +289,10 @@ const ProjectCaseStudy = () => {
             </div>
 
             {/* PDF download */}
-            <div className="glass-card rounded-xl p-6">
+            <div className="glass-card rounded-xl p-6 no-print">
               <h3 className="font-bold mb-2 text-sm uppercase tracking-wider text-muted-foreground">Take it with you</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Get this full case study — outcomes, stack and timeline — as a one-page PDF.
+                Get this full case study — outcomes, stack and timeline — as a one-page PDF, or print it.
               </p>
               <button
                 type="button"
@@ -281,6 +303,22 @@ const ProjectCaseStudy = () => {
                 <i className={downloading ? 'fas fa-circle-notch fa-spin' : 'fas fa-download'} />
                 {downloading ? 'Preparing…' : 'Download PDF'}
               </button>
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="mt-3 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-border text-foreground text-sm font-medium hover:border-primary/50 hover:text-primary transition-colors"
+              >
+                <i className="fas fa-print" />
+                Print this page
+              </button>
+              <div className="mt-5 pt-5 border-t border-border">
+                <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">Share</h4>
+                <ShareButtons
+                  url={`${SITE_URL}/project/${project.slug}`}
+                  title={`${project.title} — Case Study`}
+                  summary={project.description}
+                />
+              </div>
             </div>
           </div>
         </div>

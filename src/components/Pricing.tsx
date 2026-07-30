@@ -5,7 +5,7 @@ const packages = [
   {
     name: 'Landing Page',
     icon: 'fas fa-bolt',
-    price: 'from $350',
+    price: 'up to $350',
     timeline: '1 – 2 weeks',
     tagline: 'A single high-converting page to get you online fast.',
     features: [
@@ -20,7 +20,7 @@ const packages = [
   {
     name: 'Business Website',
     icon: 'fas fa-layer-group',
-    price: 'from $800',
+    price: 'up to $800',
     timeline: '2 – 4 weeks',
     tagline: 'A complete multi-page site with a CMS you can update yourself.',
     features: [
@@ -36,7 +36,7 @@ const packages = [
   {
     name: 'Full-Stack Web App',
     icon: 'fas fa-server',
-    price: 'from $1,800',
+    price: 'up to $1,800',
     timeline: '4 – 10 weeks',
     tagline: 'Dashboards, portals and platforms with real users and real data.',
     features: [
