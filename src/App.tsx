@@ -9,6 +9,8 @@ import ProjectCaseStudy from "./pages/ProjectCaseStudy";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Resume from "./pages/Resume";
+import Auth from "./pages/Auth";
+import AdminDownloads from "./pages/AdminDownloads";
 import PageTransition from "./components/PageTransition";
 import GlobalCursorFX from "./components/GlobalCursorFX";
 import PageLoader from "./components/PageLoader";
