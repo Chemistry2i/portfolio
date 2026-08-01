@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ReadingProgress from '@/components/ReadingProgress';
 import SEO, { SITE_URL } from '@/components/SEO';
+import ShareButtons from '@/components/ShareButtons';
 
 
 const BlogArticle = () => {
@@ -170,6 +171,16 @@ const BlogArticle = () => {
 
           <div className="prose-custom">
             {renderContent(article.content)}
+          </div>
+
+          {/* Share again at the end */}
+          <div className="mt-12 pt-6 border-t border-border flex flex-wrap items-center gap-3 no-print">
+            <span className="text-sm font-medium text-foreground">Found this useful? Share it</span>
+            <ShareButtons
+              url={`${SITE_URL}/blog/${article.slug}`}
+              title={article.title}
+              summary={article.excerpt}
+            />
           </div>
 
           {/* Tags */}
