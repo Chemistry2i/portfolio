@@ -224,6 +224,25 @@ const ProjectCaseStudy = () => {
               <p className="text-muted-foreground leading-relaxed">{project.results}</p>
             </div>
 
+            {/* Client quote */}
+            {project.testimonial && (
+              <figure className="glass-card rounded-2xl p-6 md:p-8 relative">
+                <i className="fas fa-quote-left text-primary/30 text-3xl absolute top-5 left-6" />
+                <blockquote className="text-foreground text-base md:text-lg leading-relaxed italic pt-8">
+                  “{project.testimonial.quote}”
+                </blockquote>
+                <figcaption className="flex items-center gap-3 mt-6">
+                  <span className="w-10 h-10 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">
+                    {project.testimonial.initials}
+                  </span>
+                  <span className="text-sm">
+                    <span className="block font-semibold text-foreground">{project.testimonial.name}</span>
+                    <span className="block text-muted-foreground text-xs">{project.testimonial.role}</span>
+                  </span>
+                </figcaption>
+              </figure>
+            )}
+
             {/* Timeline */}
             <div>
               <h2 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-3">

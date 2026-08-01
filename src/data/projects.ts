@@ -25,6 +25,8 @@ export interface ProjectData {
   metrics: { label: string; value: string }[];
   /** Delivery phases shown on the case-study timeline. */
   timeline: { phase: string; period: string; detail: string }[];
+  /** Client quote shown inside the case study. */
+  testimonial?: { quote: string; name: string; role: string; initials: string };
 }
 
 export const projects: ProjectData[] = [
@@ -62,6 +64,12 @@ export const projects: ProjectData[] = [
       { phase: 'Build', period: 'Month 2', detail: 'Implemented JWT voter authentication, encrypted ballots and real-time tallying.' },
       { phase: 'Launch', period: 'Month 3', detail: 'Ran the live election — 60% higher turnout and results published minutes after polls closed.' },
     ],
+    testimonial: {
+      quote: 'Hassan developed the Campus Ballot system for our student elections. His attention to detail and ability to deliver a secure, user-friendly platform was impressive — the system handled thousands of votes flawlessly.',
+      name: 'Dr. Sarah Nakamya',
+      role: 'University Lecturer, Kyambogo University',
+      initials: 'SN',
+    },
   },
   {
     id: 2,
@@ -97,6 +105,12 @@ export const projects: ProjectData[] = [
       { phase: 'Build', period: 'Month 3', detail: 'Built market price tracking, weather recommendations and the expert Q&A forum.' },
       { phase: 'Launch', period: 'Month 4', detail: 'Rolled out to 200+ farmers with 12 crops tracked and an active advice community.' },
     ],
+    testimonial: {
+      quote: 'Working with Hassan on Agri Buddy was a pleasure. He translated complex agricultural workflows into an intuitive digital solution, and his UI/UX skills shine through in every part of the platform.',
+      name: 'John Mugisha',
+      role: 'Agricultural Consultant',
+      initials: 'JM',
+    },
   },
   {
     id: 3,
@@ -132,6 +146,12 @@ export const projects: ProjectData[] = [
       { phase: 'Build', period: 'Month 3 – 4', detail: 'Implemented React + Redux storefront, Express/MongoDB API and Stripe checkout.' },
       { phase: 'Launch', period: 'Month 5', detail: 'Onboarded 15+ vendors, processed 500+ orders in the first month at 98% payment success.' },
     ],
+    testimonial: {
+      quote: 'Hassan built our e-commerce platform from scratch. He was responsive, professional and delivered beyond our expectations — our online sales have increased significantly since launch.',
+      name: 'Grace Apio',
+      role: 'Small Business Owner',
+      initials: 'GA',
+    },
   },
   {
     id: 4,
@@ -167,5 +187,11 @@ export const projects: ProjectData[] = [
       { phase: 'Build', period: 'Month 2 – 3', detail: 'Built the React front end on a Java + MySQL backend with role-based member and admin dashboards.' },
       { phase: 'Launch', period: 'Month 4', detail: 'Shipped kyuica.org, onboarded members across 8 faculties and handed over admin training.' },
     ],
+    testimonial: {
+      quote: 'Hassan turned scattered faculty activity into one platform our members actually use. Students can finally find each other, the events and the funding calls in a single place.',
+      name: 'Isaac Wanyama',
+      role: 'Executive Member, KYUICA',
+      initials: 'IW',
+    },
   },
 ];

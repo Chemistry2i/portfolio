@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ReadingProgress from '@/components/ReadingProgress';
 import SEO, { SITE_URL } from '@/components/SEO';
+import ShareButtons from '@/components/ShareButtons';
 
 
 const BlogArticle = () => {
@@ -155,12 +156,31 @@ const BlogArticle = () => {
           </div>
 
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>
-          <p className="text-muted-foreground text-base md:text-lg mb-8 border-b border-border pb-8">
+          <p className="text-muted-foreground text-base md:text-lg mb-6">
             {article.excerpt}
           </p>
 
+          <div className="flex flex-wrap items-center gap-3 mb-8 border-b border-border pb-8 no-print">
+            <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Share</span>
+            <ShareButtons
+              url={`${SITE_URL}/blog/${article.slug}`}
+              title={article.title}
+              summary={article.excerpt}
+            />
+          </div>
+
           <div className="prose-custom">
             {renderContent(article.content)}
+          </div>
+
+          {/* Share again at the end */}
+          <div className="mt-12 pt-6 border-t border-border flex flex-wrap items-center gap-3 no-print">
+            <span className="text-sm font-medium text-foreground">Found this useful? Share it</span>
+            <ShareButtons
+              url={`${SITE_URL}/blog/${article.slug}`}
+              title={article.title}
+              summary={article.excerpt}
+            />
           </div>
 
           {/* Tags */}
