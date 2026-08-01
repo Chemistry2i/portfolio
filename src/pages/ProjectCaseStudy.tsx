@@ -5,6 +5,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SEO, { SITE_URL } from '@/components/SEO';
 import ShareButtons from '@/components/ShareButtons';
+import { projectJsonLd } from '@/lib/structuredData';
 import { downloadCaseStudyPdf } from '@/lib/caseStudyPdf';
 import { trackPdfDownload } from '@/lib/trackDownload';
 import { toast } from '@/hooks/use-toast';
@@ -52,27 +53,7 @@ const ProjectCaseStudy = () => {
         description={`${project.problem.slice(0, 150)}`}
         path={`/project/${project.slug}`}
         type="article"
-        jsonLd={[
-          {
-            '@context': 'https://schema.org',
-            '@type': 'CreativeWork',
-            name: project.title,
-            description: project.description,
-            about: project.category,
-            keywords: project.tech.join(', '),
-            url: `${SITE_URL}/project/${project.slug}`,
-            creator: { '@type': 'Person', name: 'Wambogo Hassan Sadat', url: SITE_URL },
-          },
-          {
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-              { '@type': 'ListItem', position: 2, name: 'Projects', item: `${SITE_URL}/#projects` },
-              { '@type': 'ListItem', position: 3, name: project.title, item: `${SITE_URL}/project/${project.slug}` },
-            ],
-          },
-        ]}
+        jsonLd={projectJsonLd(project)}
       />
       <Navigation />
 

@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ReadingProgress from '@/components/ReadingProgress';
 import SEO, { SITE_URL } from '@/components/SEO';
+import { articleJsonLd } from '@/lib/structuredData';
 import ShareButtons from '@/components/ShareButtons';
 
 
@@ -122,19 +123,7 @@ const BlogArticle = () => {
         type="article"
         publishedTime={article.date}
         tags={article.tags}
-        jsonLd={[
-          {
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: article.title,
-            description: article.excerpt,
-            datePublished: article.date,
-            keywords: article.tags.join(', '),
-            articleSection: article.category,
-            mainEntityOfPage: `${SITE_URL}/blog/${article.slug}`,
-            author: { '@type': 'Person', name: 'Wambogo Hassan Sadat', url: SITE_URL },
-          },
-        ]}
+        jsonLd={articleJsonLd(article)}
       />
       <ReadingProgress />
       <Navigation />
