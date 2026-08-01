@@ -9,6 +9,8 @@ import ProjectCaseStudy from "./pages/ProjectCaseStudy";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Resume from "./pages/Resume";
+import Auth from "./pages/Auth";
+import AdminDownloads from "./pages/AdminDownloads";
 import PageTransition from "./components/PageTransition";
 import GlobalCursorFX from "./components/GlobalCursorFX";
 import PageLoader from "./components/PageLoader";
@@ -26,6 +28,8 @@ const AnimatedRoutes = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/resume" element={<Resume />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/admin/downloads" element={<AdminDownloads />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /auth
 
 User-agent: Googlebot
 Allow: /
