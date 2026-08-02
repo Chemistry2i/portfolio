@@ -11,6 +11,7 @@ import BlogArticle from "./pages/BlogArticle";
 import Resume from "./pages/Resume";
 import Auth from "./pages/Auth";
 import AdminDownloads from "./pages/AdminDownloads";
+import AdminRoles from "./pages/AdminRoles";
 import PageTransition from "./components/PageTransition";
 import GlobalCursorFX from "./components/GlobalCursorFX";
 import PageLoader from "./components/PageLoader";
@@ -30,6 +31,7 @@ const AnimatedRoutes = () => {
         <Route path="/resume" element={<Resume />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/admin/downloads" element={<AdminDownloads />} />
+        <Route path="/admin/roles" element={<AdminRoles />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
