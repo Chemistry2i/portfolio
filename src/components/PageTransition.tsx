@@ -29,9 +29,9 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
       <motion.div
         ref={ref}
         key={location.pathname}
-        initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12, filter: 'blur(4px)' }}
-        animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: 'blur(0px)' }}
-        exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8, filter: 'blur(4px)' }}
+        initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
+        animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
+        exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
         transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
         onAnimationComplete={clearContainingBlock}
       >
