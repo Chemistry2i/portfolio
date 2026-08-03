@@ -52,6 +52,16 @@ const dayKey = (iso: string) => iso.slice(0, 10);
 const toKey = (date: Date) => date.toISOString().slice(0, 10);
 const daysAgoKey = (n: number) => toKey(new Date(Date.now() - n * 86400000));
 
+type SortColumn = 'project' | 'slug' | 'day' | 'timestamp';
+type SortState = { column: SortColumn; direction: 'asc' | 'desc' };
+
+const SORT_COLUMNS: { column: SortColumn; label: string }[] = [
+  { column: 'project', label: 'Project' },
+  { column: 'slug', label: 'Slug' },
+  { column: 'day', label: 'Day' },
+  { column: 'timestamp', label: 'When' },
+];
+
 const AdminDownloads = () => {
   const navigate = useNavigate();
   const { loading: authLoading, session, isAdmin } = useAdminAuth();
@@ -62,6 +72,7 @@ const AdminDownloads = () => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const [sort, setSort] = useState<SortState>({ column: 'timestamp', direction: 'desc' });
 
   useEffect(() => {
     if (!authLoading && !session) navigate('/auth', { replace: true });
