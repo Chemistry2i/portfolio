@@ -15,6 +15,7 @@ import {
 import {
   ArrowLeft,
   Download,
+  FileDown,
   FileText,
   Loader2,
   LogOut,
@@ -506,15 +507,20 @@ const AdminDownloads = () => {
                   <span className="text-sm font-normal text-muted-foreground"> · {selectedDayLabel}</span>
                 )}
               </h2>
-              <div className="relative w-full sm:w-72">
-                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search project or slug…"
-                  className="pl-9"
-                  aria-label="Search downloads"
-                />
+              <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                <div className="relative flex-1 sm:w-72">
+                  <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search project or slug…"
+                    className="pl-9"
+                    aria-label="Search downloads"
+                  />
+                </div>
+                <Button size="sm" variant="outline" onClick={exportCsv} disabled={loading}>
+                  <FileDown className="w-4 h-4 mr-2" /> Export CSV
+                </Button>
               </div>
             </div>
 
