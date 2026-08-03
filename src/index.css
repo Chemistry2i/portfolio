@@ -301,3 +301,29 @@
     margin: 16mm;
   }
 }
+
+/* ===== Keyboard accessibility with sticky navigation ===== */
+@layer base {
+  /* Keep anchor targets clear of the fixed nav bar */
+  section[id],
+  [id]:target {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Programmatic focus target should not paint an outline */
+  #main-content:focus {
+    outline: none;
+  }
+
+  /* Visible focus ring for keyboard users everywhere */
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 0.375rem;
+  }
+}
