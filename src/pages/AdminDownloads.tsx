@@ -45,14 +45,18 @@ const RANGES = [
 ] as const;
 
 const PAGE_SIZE = 15;
+const MAX_TREND_DAYS = 366;
 
 const dayKey = (iso: string) => iso.slice(0, 10);
+const toKey = (date: Date) => date.toISOString().slice(0, 10);
+const daysAgoKey = (n: number) => toKey(new Date(Date.now() - n * 86400000));
 
 const AdminDownloads = () => {
   const navigate = useNavigate();
   const { loading: authLoading, session, isAdmin } = useAdminAuth();
   const [rows, setRows] = useState<DownloadRow[]>([]);
-  const [days, setDays] = useState<number>(30);
+  const [startKey, setStartKey] = useState<string>(daysAgoKey(29));
+  const [endKey, setEndKey] = useState<string>(daysAgoKey(0));
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -62,13 +66,30 @@ const AdminDownloads = () => {
     if (!authLoading && !session) navigate('/auth', { replace: true });
   }, [authLoading, session, navigate]);
 
+  const setPreset = (days: number) => {
+    setStartKey(daysAgoKey(days - 1));
+    setEndKey(daysAgoKey(0));
+  };
+
+  const activePreset = RANGES.find(
+    (range) => startKey === daysAgoKey(range.days - 1) && endKey === daysAgoKey(0)
+  )?.days;
+
+  const rangeDays = useMemo(() => {
+    const diff = Math.floor(
+      (new Date(`${endKey}T00:00:00Z`).getTime() - new Date(`${startKey}T00:00:00Z`).getTime()) /
+        86400000
+    );
+    return Math.min(MAX_TREND_DAYS, Math.max(1, diff + 1));
+  }, [startKey, endKey]);
+
   const load = async () => {
     setLoading(true);
-    const since = new Date(Date.now() - days * 86400000).toISOString();
     const { data, error } = await supabase
       .from('pdf_downloads')
       .select('id, project_slug, project_title, created_at')
-      .gte('created_at', since)
+      .gte('created_at', `${startKey}T00:00:00.000Z`)
+      .lte('created_at', `${endKey}T23:59:59.999Z`)
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -82,14 +103,15 @@ const AdminDownloads = () => {
 
   useEffect(() => {
     if (isAdmin) load();
-  }, [isAdmin, days]);
+  }, [isAdmin, startKey, endKey]);
 
   useEffect(() => {
     setSelectedDay(null);
     setPage(1);
-  }, [days]);
+  }, [startKey, endKey]);
 
   useEffect(() => setPage(1), [query, selectedDay]);
+
 
   const byProject = useMemo(() => {
     const map = new Map<string, { name: string; downloads: number }>();
