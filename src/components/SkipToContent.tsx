@@ -1,9 +1,11 @@
+import type { MouseEvent } from 'react';
+
 /**
  * Accessible "skip to content" link — first focusable element on every page.
  * Visually hidden until focused via keyboard.
  */
 const SkipToContent = () => {
-  const handleSkip = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleSkip = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     const target =
       document.querySelector<HTMLElement>('#main-content') ??
