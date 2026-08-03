@@ -161,6 +161,38 @@ const AdminDownloads = () => {
   const currentPage = Math.min(page, totalPages);
   const pagedLog = logRows.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
+  /** Export the currently filtered log rows as CSV. */
+  const exportCsv = () => {
+    if (logRows.length === 0) {
+      toast.error('Nothing to export for these filters');
+      return;
+    }
+    const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
+    const csv = [
+      ['Project', 'Slug', 'Downloaded at (ISO)', 'Downloaded at (local)'].join(','),
+      ...logRows.map((row) =>
+        [
+          escape(row.project_title || row.project_slug),
+          escape(row.project_slug),
+          escape(row.created_at),
+          escape(new Date(row.created_at).toLocaleString()),
+        ].join(',')
+      ),
+    ].join('\r\n');
+
+    const blob = new Blob([`\uFEFF${csv}`], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `pdf-downloads_${selectedDay ?? `${startKey}_to_${endKey}`}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${logRows.length} record${logRows.length === 1 ? '' : 's'}`);
+  };
+
+
   /** Per-project totals for the selected day only. */
   const dayBreakdown = useMemo(() => {
     if (!selectedDay) return [];
