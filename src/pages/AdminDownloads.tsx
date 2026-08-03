@@ -146,7 +146,7 @@ const AdminDownloads = () => {
   }, [rows]);
 
   /** Raw log filtered by the search box and the drill-down day. */
-  const logRows = useMemo(() => {
+  const filteredRows = useMemo(() => {
     const q = query.trim().toLowerCase();
     return rows.filter((row) => {
       if (selectedDay && dayKey(row.created_at) !== selectedDay) return false;
@@ -158,9 +158,42 @@ const AdminDownloads = () => {
     });
   }, [rows, query, selectedDay]);
 
+  /** Filtered log with the active column sort applied. */
+  const logRows = useMemo(() => {
+    const dir = sort.direction === 'asc' ? 1 : -1;
+    const value = (row: DownloadRow) => {
+      switch (sort.column) {
+        case 'project':
+          return (row.project_title || row.project_slug).toLowerCase();
+        case 'slug':
+          return row.project_slug.toLowerCase();
+        case 'day':
+          return dayKey(row.created_at);
+        case 'timestamp':
+        default:
+          return row.created_at;
+      }
+    };
+    return [...filteredRows].sort((a, b) => {
+      const av = value(a);
+      const bv = value(b);
+      if (av === bv) return a.created_at < b.created_at ? 1 : -1;
+      return av > bv ? dir : -dir;
+    });
+  }, [filteredRows, sort]);
+
   const totalPages = Math.max(1, Math.ceil(logRows.length / PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
   const pagedLog = logRows.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  const toggleSort = (column: SortColumn) => {
+    setSort((prev) =>
+      prev.column === column
+        ? { column, direction: prev.direction === 'asc' ? 'desc' : 'asc' }
+        : { column, direction: column === 'timestamp' || column === 'day' ? 'desc' : 'asc' }
+    );
+    setPage(1);
+  };
 
   /** Export the currently filtered log rows as CSV. */
   const exportCsv = () => {
@@ -170,16 +203,18 @@ const AdminDownloads = () => {
     }
     const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
     const csv = [
-      ['Project', 'Slug', 'Downloaded at (ISO)', 'Downloaded at (local)'].join(','),
+      ['Project', 'Slug', 'Day', 'Downloaded at (ISO)', 'Downloaded at (local)'].join(','),
       ...logRows.map((row) =>
         [
           escape(row.project_title || row.project_slug),
           escape(row.project_slug),
+          escape(dayKey(row.created_at)),
           escape(row.created_at),
           escape(new Date(row.created_at).toLocaleString()),
         ].join(',')
       ),
     ].join('\r\n');
+
 
     const blob = new Blob([`\uFEFF${csv}`], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
