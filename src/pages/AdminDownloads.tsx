@@ -13,7 +13,10 @@ import {
   Line,
 } from 'recharts';
 import {
+  ArrowDown,
   ArrowLeft,
+  ArrowUp,
+  ArrowUpDown,
   Download,
   FileDown,
   FileText,
@@ -582,9 +585,42 @@ const AdminDownloads = () => {
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="text-left text-muted-foreground border-b border-border">
-                        <th className="py-2 pr-4 font-medium">Project</th>
-                        <th className="py-2 pr-4 font-medium">Slug</th>
-                        <th className="py-2 font-medium">When</th>
+                        {SORT_COLUMNS.map((col, i) => {
+                          const active = sort.column === col.column;
+                          return (
+                            <th
+                              key={col.column}
+                              className={`py-2 font-medium ${i < SORT_COLUMNS.length - 1 ? 'pr-4' : ''}`}
+                              aria-sort={
+                                active
+                                  ? sort.direction === 'asc'
+                                    ? 'ascending'
+                                    : 'descending'
+                                  : 'none'
+                              }
+                            >
+                              <button
+                                type="button"
+                                onClick={() => toggleSort(col.column)}
+                                className={`inline-flex items-center gap-1 rounded hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                                  active ? 'text-foreground' : ''
+                                }`}
+                                title={`Sort by ${col.label.toLowerCase()}`}
+                              >
+                                {col.label}
+                                {active ? (
+                                  sort.direction === 'asc' ? (
+                                    <ArrowUp className="w-3.5 h-3.5" />
+                                  ) : (
+                                    <ArrowDown className="w-3.5 h-3.5" />
+                                  )
+                                ) : (
+                                  <ArrowUpDown className="w-3.5 h-3.5 opacity-40" />
+                                )}
+                              </button>
+                            </th>
+                          );
+                        })}
                       </tr>
                     </thead>
                     <tbody>
@@ -592,6 +628,7 @@ const AdminDownloads = () => {
                         <tr key={row.id} className="border-b border-border/50 last:border-0">
                           <td className="py-3 pr-4">{row.project_title || row.project_slug}</td>
                           <td className="py-3 pr-4 text-muted-foreground">{row.project_slug}</td>
+                          <td className="py-3 pr-4 text-muted-foreground">{dayKey(row.created_at)}</td>
                           <td className="py-3 text-muted-foreground">
                             {new Date(row.created_at).toLocaleString()}
                           </td>
