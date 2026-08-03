@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -6,6 +6,7 @@ import ThemeToggle from './ThemeToggle';
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +16,19 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close the mobile menu on Escape and return focus to the toggle
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isMenuOpen]);
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -52,6 +66,7 @@ const Navigation = () => {
 
   return (
     <nav
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden transition-all duration-300 ${
         scrolled ? 'glass-card backdrop-blur-md' : 'bg-transparent'
       }`}
@@ -62,7 +77,7 @@ const Navigation = () => {
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="flex items-center justify-center focus:outline-none"
+            className="flex items-center justify-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <i className="fas fa-code text-xl md:text-2xl gradient-text" />
           </button>
@@ -74,7 +89,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                    onClick={() => handleNavClick(item.href)}
-                  className="text-foreground hover:text-primary transition-colors duration-300 font-medium text-sm lg:text-base"
+                  className="text-foreground hover:text-primary transition-colors duration-300 font-medium text-sm lg:text-base rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   {item.name}
                 </button>
@@ -90,7 +105,8 @@ const Navigation = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
-              className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary focus:outline-none"
+              ref={menuButtonRef}
+              className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               title={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               <i
@@ -117,7 +133,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
-                  className="block w-full text-left px-3 py-3 text-foreground hover:text-primary transition-colors duration-300 font-medium text-base"
+                  className="block w-full text-left px-3 py-3 rounded-md text-foreground hover:text-primary transition-colors duration-300 font-medium text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
                 >
                   {item.name}
                 </button>

@@ -38,19 +38,21 @@ const Index = () => {
       />
 
       <Navigation />
-      <Hero />
-      <About />
-      <TechStackMatrix />
-      <StatsCounter />
-      <Experience />
-      <Projects />
-      <GitHubActivity />
-      <Testimonials />
-      <CurrentlyLearning />
-      <Services />
-      <Pricing />
-      <FAQ />
-      <Contact />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <TechStackMatrix />
+        <StatsCounter />
+        <Experience />
+        <Projects />
+        <GitHubActivity />
+        <Testimonials />
+        <CurrentlyLearning />
+        <Services />
+        <Pricing />
+        <FAQ />
+        <Contact />
+      </main>
       <Footer />
       <ScrollToTop />
     </div>

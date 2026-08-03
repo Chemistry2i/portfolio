@@ -16,6 +16,7 @@ import PageTransition from "./components/PageTransition";
 import GlobalCursorFX from "./components/GlobalCursorFX";
 import PageLoader from "./components/PageLoader";
 import { ThemeProvider } from "./components/ThemeProvider";
+import SkipToContent from "./components/SkipToContent";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
 
 
         <BrowserRouter>
+          <SkipToContent />
           <AnimatedRoutes />
         </BrowserRouter>
       </TooltipProvider>

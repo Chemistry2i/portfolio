@@ -15,6 +15,7 @@ import {
 import {
   ArrowLeft,
   Download,
+  FileDown,
   FileText,
   Loader2,
   LogOut,
@@ -45,14 +46,18 @@ const RANGES = [
 ] as const;
 
 const PAGE_SIZE = 15;
+const MAX_TREND_DAYS = 366;
 
 const dayKey = (iso: string) => iso.slice(0, 10);
+const toKey = (date: Date) => date.toISOString().slice(0, 10);
+const daysAgoKey = (n: number) => toKey(new Date(Date.now() - n * 86400000));
 
 const AdminDownloads = () => {
   const navigate = useNavigate();
   const { loading: authLoading, session, isAdmin } = useAdminAuth();
   const [rows, setRows] = useState<DownloadRow[]>([]);
-  const [days, setDays] = useState<number>(30);
+  const [startKey, setStartKey] = useState<string>(daysAgoKey(29));
+  const [endKey, setEndKey] = useState<string>(daysAgoKey(0));
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -62,13 +67,30 @@ const AdminDownloads = () => {
     if (!authLoading && !session) navigate('/auth', { replace: true });
   }, [authLoading, session, navigate]);
 
+  const setPreset = (days: number) => {
+    setStartKey(daysAgoKey(days - 1));
+    setEndKey(daysAgoKey(0));
+  };
+
+  const activePreset = RANGES.find(
+    (range) => startKey === daysAgoKey(range.days - 1) && endKey === daysAgoKey(0)
+  )?.days;
+
+  const rangeDays = useMemo(() => {
+    const diff = Math.floor(
+      (new Date(`${endKey}T00:00:00Z`).getTime() - new Date(`${startKey}T00:00:00Z`).getTime()) /
+        86400000
+    );
+    return Math.min(MAX_TREND_DAYS, Math.max(1, diff + 1));
+  }, [startKey, endKey]);
+
   const load = async () => {
     setLoading(true);
-    const since = new Date(Date.now() - days * 86400000).toISOString();
     const { data, error } = await supabase
       .from('pdf_downloads')
       .select('id, project_slug, project_title, created_at')
-      .gte('created_at', since)
+      .gte('created_at', `${startKey}T00:00:00.000Z`)
+      .lte('created_at', `${endKey}T23:59:59.999Z`)
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -82,14 +104,15 @@ const AdminDownloads = () => {
 
   useEffect(() => {
     if (isAdmin) load();
-  }, [isAdmin, days]);
+  }, [isAdmin, startKey, endKey]);
 
   useEffect(() => {
     setSelectedDay(null);
     setPage(1);
-  }, [days]);
+  }, [startKey, endKey]);
 
   useEffect(() => setPage(1), [query, selectedDay]);
+
 
   const byProject = useMemo(() => {
     const map = new Map<string, { name: string; downloads: number }>();
@@ -105,8 +128,9 @@ const AdminDownloads = () => {
   const trend = useMemo(() => {
     const counts = new Map<string, number>();
     rows.forEach((row) => counts.set(dayKey(row.created_at), (counts.get(dayKey(row.created_at)) ?? 0) + 1));
-    return Array.from({ length: days }, (_, i) => {
-      const date = new Date(Date.now() - (days - 1 - i) * 86400000);
+    const start = new Date(`${startKey}T00:00:00Z`).getTime();
+    return Array.from({ length: rangeDays }, (_, i) => {
+      const date = new Date(start + i * 86400000);
       const key = date.toISOString().slice(0, 10);
       return {
         key,
@@ -114,7 +138,7 @@ const AdminDownloads = () => {
         downloads: counts.get(key) ?? 0,
       };
     });
-  }, [rows, days]);
+  }, [rows, startKey, rangeDays]);
 
   const last7 = useMemo(() => {
     const cutoff = Date.now() - 7 * 86400000;
@@ -137,6 +161,38 @@ const AdminDownloads = () => {
   const totalPages = Math.max(1, Math.ceil(logRows.length / PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
   const pagedLog = logRows.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  /** Export the currently filtered log rows as CSV. */
+  const exportCsv = () => {
+    if (logRows.length === 0) {
+      toast.error('Nothing to export for these filters');
+      return;
+    }
+    const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
+    const csv = [
+      ['Project', 'Slug', 'Downloaded at (ISO)', 'Downloaded at (local)'].join(','),
+      ...logRows.map((row) =>
+        [
+          escape(row.project_title || row.project_slug),
+          escape(row.project_slug),
+          escape(row.created_at),
+          escape(new Date(row.created_at).toLocaleString()),
+        ].join(',')
+      ),
+    ].join('\r\n');
+
+    const blob = new Blob([`\uFEFF${csv}`], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `pdf-downloads_${selectedDay ?? `${startKey}_to_${endKey}`}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${logRows.length} record${logRows.length === 1 ? '' : 's'}`);
+  };
+
 
   /** Per-project totals for the selected day only. */
   const dayBreakdown = useMemo(() => {
@@ -246,17 +302,48 @@ const AdminDownloads = () => {
             </div>
           </div>
 
-          <div className="flex gap-2 mb-8">
-            {RANGES.map((range) => (
-              <Button
-                key={range.days}
-                size="sm"
-                variant={days === range.days ? 'default' : 'outline'}
-                onClick={() => setDays(range.days)}
-              >
-                {range.label}
-              </Button>
-            ))}
+          <div className="glass-card p-4 rounded-2xl mb-8 flex flex-wrap items-end gap-4">
+            <div className="flex flex-wrap gap-2">
+              {RANGES.map((range) => (
+                <Button
+                  key={range.days}
+                  size="sm"
+                  variant={activePreset === range.days ? 'default' : 'outline'}
+                  onClick={() => setPreset(range.days)}
+                >
+                  {range.label}
+                </Button>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-end gap-3 ml-auto">
+              <div>
+                <label htmlFor="range-start" className="block text-xs text-muted-foreground mb-1">
+                  Start date
+                </label>
+                <Input
+                  id="range-start"
+                  type="date"
+                  value={startKey}
+                  max={endKey}
+                  onChange={(e) => e.target.value && setStartKey(e.target.value)}
+                  className="w-[10.5rem]"
+                />
+              </div>
+              <div>
+                <label htmlFor="range-end" className="block text-xs text-muted-foreground mb-1">
+                  End date
+                </label>
+                <Input
+                  id="range-end"
+                  type="date"
+                  value={endKey}
+                  min={startKey}
+                  max={daysAgoKey(0)}
+                  onChange={(e) => e.target.value && setEndKey(e.target.value)}
+                  className="w-[10.5rem]"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3 mb-8">
@@ -420,15 +507,20 @@ const AdminDownloads = () => {
                   <span className="text-sm font-normal text-muted-foreground"> · {selectedDayLabel}</span>
                 )}
               </h2>
-              <div className="relative w-full sm:w-72">
-                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search project or slug…"
-                  className="pl-9"
-                  aria-label="Search downloads"
-                />
+              <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                <div className="relative flex-1 sm:w-72">
+                  <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search project or slug…"
+                    className="pl-9"
+                    aria-label="Search downloads"
+                  />
+                </div>
+                <Button size="sm" variant="outline" onClick={exportCsv} disabled={loading}>
+                  <FileDown className="w-4 h-4 mr-2" /> Export CSV
+                </Button>
               </div>
             </div>
 
