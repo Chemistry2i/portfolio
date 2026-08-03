@@ -13,7 +13,10 @@ import {
   Line,
 } from 'recharts';
 import {
+  ArrowDown,
   ArrowLeft,
+  ArrowUp,
+  ArrowUpDown,
   Download,
   FileDown,
   FileText,
@@ -52,6 +55,16 @@ const dayKey = (iso: string) => iso.slice(0, 10);
 const toKey = (date: Date) => date.toISOString().slice(0, 10);
 const daysAgoKey = (n: number) => toKey(new Date(Date.now() - n * 86400000));
 
+type SortColumn = 'project' | 'slug' | 'day' | 'timestamp';
+type SortState = { column: SortColumn; direction: 'asc' | 'desc' };
+
+const SORT_COLUMNS: { column: SortColumn; label: string }[] = [
+  { column: 'project', label: 'Project' },
+  { column: 'slug', label: 'Slug' },
+  { column: 'day', label: 'Day' },
+  { column: 'timestamp', label: 'When' },
+];
+
 const AdminDownloads = () => {
   const navigate = useNavigate();
   const { loading: authLoading, session, isAdmin } = useAdminAuth();
@@ -62,6 +75,7 @@ const AdminDownloads = () => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const [sort, setSort] = useState<SortState>({ column: 'timestamp', direction: 'desc' });
 
   useEffect(() => {
     if (!authLoading && !session) navigate('/auth', { replace: true });
@@ -146,7 +160,7 @@ const AdminDownloads = () => {
   }, [rows]);
 
   /** Raw log filtered by the search box and the drill-down day. */
-  const logRows = useMemo(() => {
+  const filteredRows = useMemo(() => {
     const q = query.trim().toLowerCase();
     return rows.filter((row) => {
       if (selectedDay && dayKey(row.created_at) !== selectedDay) return false;
@@ -158,9 +172,42 @@ const AdminDownloads = () => {
     });
   }, [rows, query, selectedDay]);
 
+  /** Filtered log with the active column sort applied. */
+  const logRows = useMemo(() => {
+    const dir = sort.direction === 'asc' ? 1 : -1;
+    const value = (row: DownloadRow) => {
+      switch (sort.column) {
+        case 'project':
+          return (row.project_title || row.project_slug).toLowerCase();
+        case 'slug':
+          return row.project_slug.toLowerCase();
+        case 'day':
+          return dayKey(row.created_at);
+        case 'timestamp':
+        default:
+          return row.created_at;
+      }
+    };
+    return [...filteredRows].sort((a, b) => {
+      const av = value(a);
+      const bv = value(b);
+      if (av === bv) return a.created_at < b.created_at ? 1 : -1;
+      return av > bv ? dir : -dir;
+    });
+  }, [filteredRows, sort]);
+
   const totalPages = Math.max(1, Math.ceil(logRows.length / PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
   const pagedLog = logRows.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  const toggleSort = (column: SortColumn) => {
+    setSort((prev) =>
+      prev.column === column
+        ? { column, direction: prev.direction === 'asc' ? 'desc' : 'asc' }
+        : { column, direction: column === 'timestamp' || column === 'day' ? 'desc' : 'asc' }
+    );
+    setPage(1);
+  };
 
   /** Export the currently filtered log rows as CSV. */
   const exportCsv = () => {
@@ -170,16 +217,18 @@ const AdminDownloads = () => {
     }
     const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
     const csv = [
-      ['Project', 'Slug', 'Downloaded at (ISO)', 'Downloaded at (local)'].join(','),
+      ['Project', 'Slug', 'Day', 'Downloaded at (ISO)', 'Downloaded at (local)'].join(','),
       ...logRows.map((row) =>
         [
           escape(row.project_title || row.project_slug),
           escape(row.project_slug),
+          escape(dayKey(row.created_at)),
           escape(row.created_at),
           escape(new Date(row.created_at).toLocaleString()),
         ].join(',')
       ),
     ].join('\r\n');
+
 
     const blob = new Blob([`\uFEFF${csv}`], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
@@ -536,9 +585,42 @@ const AdminDownloads = () => {
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="text-left text-muted-foreground border-b border-border">
-                        <th className="py-2 pr-4 font-medium">Project</th>
-                        <th className="py-2 pr-4 font-medium">Slug</th>
-                        <th className="py-2 font-medium">When</th>
+                        {SORT_COLUMNS.map((col, i) => {
+                          const active = sort.column === col.column;
+                          return (
+                            <th
+                              key={col.column}
+                              className={`py-2 font-medium ${i < SORT_COLUMNS.length - 1 ? 'pr-4' : ''}`}
+                              aria-sort={
+                                active
+                                  ? sort.direction === 'asc'
+                                    ? 'ascending'
+                                    : 'descending'
+                                  : 'none'
+                              }
+                            >
+                              <button
+                                type="button"
+                                onClick={() => toggleSort(col.column)}
+                                className={`inline-flex items-center gap-1 rounded hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                                  active ? 'text-foreground' : ''
+                                }`}
+                                title={`Sort by ${col.label.toLowerCase()}`}
+                              >
+                                {col.label}
+                                {active ? (
+                                  sort.direction === 'asc' ? (
+                                    <ArrowUp className="w-3.5 h-3.5" />
+                                  ) : (
+                                    <ArrowDown className="w-3.5 h-3.5" />
+                                  )
+                                ) : (
+                                  <ArrowUpDown className="w-3.5 h-3.5 opacity-40" />
+                                )}
+                              </button>
+                            </th>
+                          );
+                        })}
                       </tr>
                     </thead>
                     <tbody>
@@ -546,6 +628,7 @@ const AdminDownloads = () => {
                         <tr key={row.id} className="border-b border-border/50 last:border-0">
                           <td className="py-3 pr-4">{row.project_title || row.project_slug}</td>
                           <td className="py-3 pr-4 text-muted-foreground">{row.project_slug}</td>
+                          <td className="py-3 pr-4 text-muted-foreground">{dayKey(row.created_at)}</td>
                           <td className="py-3 text-muted-foreground">
                             {new Date(row.created_at).toLocaleString()}
                           </td>
