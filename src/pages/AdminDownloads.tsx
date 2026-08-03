@@ -127,8 +127,9 @@ const AdminDownloads = () => {
   const trend = useMemo(() => {
     const counts = new Map<string, number>();
     rows.forEach((row) => counts.set(dayKey(row.created_at), (counts.get(dayKey(row.created_at)) ?? 0) + 1));
-    return Array.from({ length: days }, (_, i) => {
-      const date = new Date(Date.now() - (days - 1 - i) * 86400000);
+    const start = new Date(`${startKey}T00:00:00Z`).getTime();
+    return Array.from({ length: rangeDays }, (_, i) => {
+      const date = new Date(start + i * 86400000);
       const key = date.toISOString().slice(0, 10);
       return {
         key,
@@ -136,7 +137,7 @@ const AdminDownloads = () => {
         downloads: counts.get(key) ?? 0,
       };
     });
-  }, [rows, days]);
+  }, [rows, startKey, rangeDays]);
 
   const last7 = useMemo(() => {
     const cutoff = Date.now() - 7 * 86400000;
@@ -268,17 +269,48 @@ const AdminDownloads = () => {
             </div>
           </div>
 
-          <div className="flex gap-2 mb-8">
-            {RANGES.map((range) => (
-              <Button
-                key={range.days}
-                size="sm"
-                variant={days === range.days ? 'default' : 'outline'}
-                onClick={() => setDays(range.days)}
-              >
-                {range.label}
-              </Button>
-            ))}
+          <div className="glass-card p-4 rounded-2xl mb-8 flex flex-wrap items-end gap-4">
+            <div className="flex flex-wrap gap-2">
+              {RANGES.map((range) => (
+                <Button
+                  key={range.days}
+                  size="sm"
+                  variant={activePreset === range.days ? 'default' : 'outline'}
+                  onClick={() => setPreset(range.days)}
+                >
+                  {range.label}
+                </Button>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-end gap-3 ml-auto">
+              <div>
+                <label htmlFor="range-start" className="block text-xs text-muted-foreground mb-1">
+                  Start date
+                </label>
+                <Input
+                  id="range-start"
+                  type="date"
+                  value={startKey}
+                  max={endKey}
+                  onChange={(e) => e.target.value && setStartKey(e.target.value)}
+                  className="w-[10.5rem]"
+                />
+              </div>
+              <div>
+                <label htmlFor="range-end" className="block text-xs text-muted-foreground mb-1">
+                  End date
+                </label>
+                <Input
+                  id="range-end"
+                  type="date"
+                  value={endKey}
+                  min={startKey}
+                  max={daysAgoKey(0)}
+                  onChange={(e) => e.target.value && setEndKey(e.target.value)}
+                  className="w-[10.5rem]"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3 mb-8">
