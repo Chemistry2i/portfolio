@@ -6,6 +6,29 @@ import ScrollToTop from '@/components/ScrollToTop';
 import SEO from '@/components/SEO';
 
 import kyuLogo from '@/assets/kyambogo-university-logo.png';
+import forestHillLogo from '@/assets/forest-hill-college.jpeg.asset.json';
+import vicViewLogo from '@/assets/vic-view-primary.png.asset.json';
+
+const priorEducation = [
+  {
+    school: 'Forest Hill College',
+    logo: forestHillLogo.url,
+    qualification: 'UACE & UCE',
+    level: 'Secondary Education',
+    location: 'Mukono, Uganda',
+    icon: 'fas fa-school',
+    notes: 'Completed both O-Level (UCE) and A-Level (UACE) certificates.',
+  },
+  {
+    school: 'Vic View Primary School',
+    logo: vicViewLogo.url,
+    qualification: 'PLE',
+    level: 'Primary Education',
+    location: 'Jinja, Uganda',
+    icon: 'fas fa-book-open',
+    notes: 'Primary Leaving Examinations — where the foundation was built.',
+  },
+];
 
 type CertCategory = 'Frontend' | 'Backend' | 'Database' | 'Tools' | 'Design' | 'Networking';
 
