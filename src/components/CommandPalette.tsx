@@ -174,7 +174,7 @@ const CommandPalette = () => {
             </CommandItem>
             <CommandItem
               value="email contact"
-              onSelect={() => run(() => (window.location.href = 'mailto:wambogohassansadat@gmail.com'))}
+              onSelect={() => run(() => (window.location.href = 'mailto:wambogohassan63@gmail.com'))}
             >
               <Mail className="mr-2 h-4 w-4 text-primary" />
               Send me an email
@@ -188,7 +188,7 @@ const CommandPalette = () => {
             </CommandItem>
             <CommandItem
               value="github profile"
-              onSelect={() => run(() => window.open('https://github.com/wambogohassansadat', '_blank', 'noopener'))}
+              onSelect={() => run(() => window.open('https://github.com/Chemistry2i', '_blank', 'noopener'))}
             >
               <Github className="mr-2 h-4 w-4 text-primary" />
               GitHub profile
@@ -196,7 +196,7 @@ const CommandPalette = () => {
             <CommandItem
               value="linkedin profile"
               onSelect={() =>
-                run(() => window.open('https://www.linkedin.com/in/wambogo-hassan-sadat', '_blank', 'noopener'))
+                run(() => window.open('https://www.linkedin.com/in/wambogo-hassan-sadat-895544376', '_blank', 'noopener'))
               }
             >
               <Linkedin className="mr-2 h-4 w-4 text-primary" />
