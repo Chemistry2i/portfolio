@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -150,6 +151,28 @@ const About = () => {
                   </p>
                 </div>
               </div>
+
+              {/* Gallery link */}
+              <Link
+                to="/gallery"
+                className="glass-card group flex items-center gap-4 p-5 md:p-6 rounded-2xl transition-transform duration-300 hover:scale-[1.02]"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shrink-0">
+                  <i className="fas fa-images text-primary-foreground text-lg" aria-hidden="true" />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="font-semibold text-foreground text-base md:text-lg">
+                    Photo Gallery
+                  </h3>
+                  <p className="text-xs md:text-sm text-muted-foreground">
+                    Events, workshops, team moments and awards
+                  </p>
+                </div>
+                <i
+                  className="fas fa-arrow-right text-primary ml-auto transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
 
               {/* Download CV Button */}
               <div className="text-center lg:text-left px-4">
