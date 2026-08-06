@@ -211,7 +211,39 @@ const Resume = () => {
                 </div>
               </div>
             </div>
+
+            {/* Secondary & Primary */}
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              {priorEducation.map((e) => (
+                <div key={e.school} className="glass-card p-5 md:p-6 rounded-2xl">
+                  <div className="flex gap-4">
+                    <div className="w-16 h-16 flex-shrink-0 rounded-xl bg-white/90 dark:bg-white/95 p-1.5 flex items-center justify-center shadow-md">
+                      <img
+                        src={e.logo}
+                        alt={`${e.school} logo`}
+                        loading="lazy"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-0.5">
+                        <i className={`${e.icon} text-primary mr-1.5`} aria-hidden="true" />
+                        {e.level}
+                      </p>
+                      <h3 className="font-bold text-foreground text-base md:text-lg">{e.school}</h3>
+                      <p className="text-accent font-medium text-sm">{e.qualification}</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        <i className="fas fa-map-marker-alt mr-1.5" aria-hidden="true" />
+                        {e.location}
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-2">{e.notes}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
+
 
           {/* Skills with proof */}
           <section id="skills" className="mb-16 md:mb-20">
