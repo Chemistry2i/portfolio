@@ -18,6 +18,7 @@ import GlobalCursorFX from "./components/GlobalCursorFX";
 import PageLoader from "./components/PageLoader";
 import { ThemeProvider } from "./components/ThemeProvider";
 import SkipToContent from "./components/SkipToContent";
+import CommandPalette from "./components/CommandPalette";
 
 const queryClient = new QueryClient();
 
