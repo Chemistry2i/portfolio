@@ -9,6 +9,7 @@ import ProjectCaseStudy from "./pages/ProjectCaseStudy";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Resume from "./pages/Resume";
+import Gallery from "./pages/Gallery";
 import Auth from "./pages/Auth";
 import AdminDownloads from "./pages/AdminDownloads";
 import AdminRoles from "./pages/AdminRoles";
@@ -30,6 +31,7 @@ const AnimatedRoutes = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
         <Route path="/resume" element={<Resume />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/admin/downloads" element={<AdminDownloads />} />
         <Route path="/admin/roles" element={<AdminRoles />} />
