@@ -55,6 +55,7 @@ const App = () => (
 
         <BrowserRouter>
           <SkipToContent />
+          <CommandPalette />
           <AnimatedRoutes />
         </BrowserRouter>
       </TooltipProvider>
