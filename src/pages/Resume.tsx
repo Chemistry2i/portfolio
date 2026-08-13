@@ -6,13 +6,13 @@ import ScrollToTop from '@/components/ScrollToTop';
 import SEO from '@/components/SEO';
 
 import kyuLogo from '@/assets/kyambogo-university-logo.png';
-import forestHillLogo from '@/assets/forest-hill-college.jpeg.asset.json';
-import vicViewLogo from '@/assets/vic-view-primary.png.asset.json';
+import forestHillLogo from '@/assets/forest-hill-college.jpeg';
+import vicViewLogo from '@/assets/vic-view-primary.png';
 
 const priorEducation = [
   {
     school: 'Forest Hill College',
-    logo: forestHillLogo.url,
+    logo: forestHillLogo,
     qualification: 'UACE & UCE',
     level: 'Secondary Education',
     location: 'Mukono, Uganda',
@@ -21,7 +21,7 @@ const priorEducation = [
   },
   {
     school: 'Vic View Primary School',
-    logo: vicViewLogo.url,
+    logo: vicViewLogo,
     qualification: 'PLE',
     level: 'Primary Education',
     location: 'Jinja, Uganda',
