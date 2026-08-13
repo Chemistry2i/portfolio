@@ -1,3 +1,8 @@
+import cyber1 from '@/assets/gallery/cyber-1.jpeg.asset.json';
+import cyber2 from '@/assets/gallery/cyber-2.jpeg.asset.json';
+import steam2026 from '@/assets/gallery/steam-2026.jpeg.asset.json';
+import gaime from '@/assets/gallery/gaime.jpg.asset.json';
+
 export interface GalleryItem {
   id: string;
   title: string;
