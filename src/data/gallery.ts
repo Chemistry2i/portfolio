@@ -2,6 +2,8 @@ import cyber1 from '@/assets/gallery/cyber-1.jpeg';
 import cyber2 from '@/assets/gallery/cyber-2.jpeg';
 import steam2026 from '@/assets/gallery/steam-2026.jpeg';
 import gaime from '@/assets/gallery/gaime.jpg';
+import gaimeFriends from '@/assets/gallery/gaime-friends.jpg';
+import campusChill from '@/assets/gallery/campus-chill.jpg';
 
 export interface GalleryItem {
   id: string;
@@ -65,5 +67,21 @@ export const galleryItems: GalleryItem[] = [
     category: 'Events',
     src: gaime,
     shape: 'wide',
+  },
+  {
+    id: 'gaime-friends',
+    title: 'With friends at the GAIME Conference',
+    caption: 'Speke Resort Munyonyo — before the sessions kicked off',
+    category: 'Events',
+    src: gaimeFriends,
+    shape: 'wide',
+  },
+  {
+    id: 'campus-chill',
+    title: 'Chilling at campus',
+    caption: 'Just unwinding with the crew at Kyambogo University',
+    category: 'Behind the scenes',
+    src: campusChill,
+    shape: 'tall',
   },
 ];

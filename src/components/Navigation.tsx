@@ -60,7 +60,12 @@ const Navigation = () => {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (location.pathname !== '/') {
+      navigate('/');
+      window.scrollTo({ top: 0 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     setIsMenuOpen(false);
   };
 
