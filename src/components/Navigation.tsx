@@ -78,12 +78,13 @@ const Navigation = () => {
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* ICON-ONLY LOGO */}
+          {/* LOGO */}
           <button
             onClick={scrollToTop}
             aria-label="WHS — go to home"
             className="flex items-center gap-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
+            <i className="fas fa-code text-primary text-lg md:text-xl"></i>
             <span className="text-lg md:text-xl font-bold tracking-tight gradient-text">WHS</span>
           </button>
 
