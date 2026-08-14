@@ -81,10 +81,10 @@ const Navigation = () => {
           {/* ICON-ONLY LOGO */}
           <button
             onClick={scrollToTop}
-            aria-label="Scroll to top"
-            className="flex items-center justify-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            aria-label="WHS — go to home"
+            className="flex items-center gap-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            <i className="fas fa-code text-xl md:text-2xl gradient-text" />
+            <span className="text-lg md:text-xl font-bold tracking-tight gradient-text">WHS</span>
           </button>
 
           {/* DESKTOP NAV */}

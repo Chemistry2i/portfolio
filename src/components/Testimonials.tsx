@@ -47,6 +47,14 @@ const Testimonials = () => {
       avatar: 'GA',
       stars: 4,
     },
+    {
+      id: 4,
+      name: 'Miiro Chris',
+      role: 'Software Engineer & Instructor, Peculiar Technologies',
+      content: 'Most school systems die the moment the internet does. Hassan built one that does not — it runs on the school\'s own server, handles the Ugandan grading rules properly, and the staff picked it up in a single training session.',
+      avatar: 'MC',
+      stars: 5,
+    },
   ];
 
   return (
