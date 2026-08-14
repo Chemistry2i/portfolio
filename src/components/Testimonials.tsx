@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 
 const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -57,9 +58,12 @@ const Testimonials = () => {
     },
   ];
 
+  // Duplicate for seamless infinite marquee loop
+  const duplicated = [...testimonials, ...testimonials];
+
   return (
-    <section ref={sectionRef} id="testimonials" className="py-16 md:py-24 safe-px">
-      <div className="max-w-6xl mx-auto">
+    <section ref={sectionRef} id="testimonials" className="py-16 md:py-24 overflow-hidden">
+      <div className="max-w-6xl mx-auto safe-px">
         {/* Section Header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -71,16 +75,31 @@ const Testimonials = () => {
             What people say about working with me
           </p>
         </div>
+      </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {testimonials.map((testimonial, index) => (
+      {/* Testimonials Marquee — single line, full width */}
+      <div
+        className={`relative transition-all duration-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-r from-background via-background/60 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-l from-background via-background/60 to-transparent z-10 pointer-events-none" />
+
+        <div
+          className="flex gap-5 md:gap-6 w-max"
+          style={{
+            animation: 'testimonials-marquee 35s linear infinite',
+            animationPlayState: isPaused ? 'paused' : 'running',
+          }}
+        >
+          {duplicated.map((testimonial, index) => (
             <div
-              key={testimonial.id}
-              className={`glass-card p-6 md:p-8 rounded-2xl transition-all duration-700 hover:scale-105 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+              key={`${testimonial.id}-${index}`}
+              className="glass-card p-6 md:p-8 rounded-2xl flex-shrink-0 w-[320px] sm:w-[380px] md:w-[420px] group hover:scale-[1.02] transition-transform duration-300"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-3">
@@ -96,21 +115,21 @@ const Testimonials = () => {
 
               {/* Quote Icon */}
               <div className="text-primary/30 mb-4">
-                <i className="fas fa-quote-left text-3xl"></i>
+                <i className="fas fa-quote-left text-2xl"></i>
               </div>
-              
+
               {/* Content */}
-              <p className="text-muted-foreground text-sm md:text-base mb-6 leading-relaxed italic">
+              <p className="text-muted-foreground text-sm md:text-base mb-6 leading-relaxed italic line-clamp-4">
                 "{testimonial.content}"
               </p>
-              
+
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-sm">
                   {testimonial.avatar}
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
+                  <h4 className="font-semibold text-foreground text-sm md:text-base">{testimonial.name}</h4>
                   <p className="text-xs text-muted-foreground">{testimonial.role}</p>
                 </div>
               </div>
@@ -118,6 +137,13 @@ const Testimonials = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes testimonials-marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 };
