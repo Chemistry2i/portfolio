@@ -2,6 +2,7 @@ import projectCampusBallot from '@/assets/project-campus-ballot.jpg';
 import projectAgriBuddy from '@/assets/project-agri-buddy.jpg';
 import projectQuickCart from '@/assets/project-quick-cart.jpg';
 import projectKyuica from '@/assets/project-kyuica.jpg';
+import projectSchoolManagement from '@/assets/project-school-management.png';
 
 export interface ProjectData {
   id: number;
