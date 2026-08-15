@@ -8,6 +8,7 @@ import SEO from '@/components/SEO';
 import kyuLogo from '@/assets/kyambogo-university-logo.png';
 import forestHillLogo from '@/assets/forest-hill-college.jpeg';
 import vicViewLogo from '@/assets/vic-view-primary.png';
+import kyucsaLogo from '@/assets/kyucsa-logo.png';
 
 const priorEducation = [
   {
@@ -73,7 +74,8 @@ const languages = [
 ];
 
 const community = [
-  { title: 'Web Lead — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2026', icon: 'fas fa-users-cog', desc: 'Leading the web team for the official student association.' },
+  { title: 'President — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2026/2027', icon: 'fas fa-crown', desc: 'Appointed to lead the association — driving ICT innovation, events and student developer growth.' },
+  { title: 'Web Lead — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2025/2026', icon: 'fas fa-users-cog', desc: 'Led the web team for the official student association.' },
   { title: 'Member — GDG Kampala', org: 'Google Developer Group', year: '2024–Present', icon: 'fab fa-google', desc: 'Attending meetups, workshops and DevFest events.' },
   { title: 'MERN Study Circle', org: 'Peer-led learning group', year: '2024–Present', icon: 'fas fa-code', desc: 'Weekly sessions on full-stack patterns and code reviews.' },
 ];
@@ -84,8 +86,14 @@ const volunteer = [
 ];
 
 const achievements = [
+  { title: 'President — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2026/2027', icon: 'fas fa-crown' },
   { title: 'Winner — 5th STEAM Festival', org: 'Kyambogo University', year: '2025', icon: 'fas fa-trophy' },
-  { title: 'Web Lead — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2026', icon: 'fas fa-star' },
+  { title: 'Web Lead — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2025/2026', icon: 'fas fa-star' },
+];
+
+const kyucsaRoles = [
+  { role: 'President', year: '2026/2027', icon: 'fas fa-crown', desc: 'Appointed President for the 2026/2027 academic year — leading the association’s executive, ICT innovation drives and student programs.' },
+  { role: 'Web Lead', year: '2025/2026', icon: 'fas fa-laptop-code', desc: 'Served as Web Lead — maintained and improved the association’s web presence and mentored the web team.' },
 ];
 
 const Resume = () => {
@@ -243,6 +251,55 @@ const Resume = () => {
               ))}
             </div>
           </section>
+
+          {/* KYUCSA Leadership */}
+          <section id="leadership" className="mb-16 md:mb-20">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
+              <i className="fas fa-crown text-accent mr-2" aria-hidden="true" />
+              Leadership
+            </h2>
+
+            <div className="glass-card p-6 md:p-8 rounded-2xl">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="flex-shrink-0 flex items-start justify-center sm:justify-start">
+                  <div className="w-28 h-20 md:w-32 md:h-24 rounded-xl bg-white/90 dark:bg-white/95 p-2 flex items-center justify-center shadow-md">
+                    <img
+                      src={kyucsaLogo}
+                      alt="KYUCSA — Kyambogo University Computing Students' Association logo"
+                      loading="lazy"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-foreground text-lg md:text-xl">
+                    Kyambogo University Computing Students' Association (KYUCSA)
+                  </h3>
+                  <p className="text-accent font-medium text-sm">Spearheading ICT Innovations</p>
+
+                  <ul className="mt-5 space-y-4">
+                    {kyucsaRoles.map((r) => (
+                      <li key={r.role} className="flex items-start gap-3">
+                        <i className={`${r.icon} text-primary mt-1`} aria-hidden="true" />
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="font-semibold text-foreground">{r.role}</span>
+                            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/30">
+                              {r.year}
+                            </span>
+                          </div>
+                          <p className="text-sm text-muted-foreground mt-1">{r.desc}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
 
 
           {/* Skills with proof */}
