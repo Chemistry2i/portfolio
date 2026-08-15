@@ -73,7 +73,8 @@ const languages = [
 ];
 
 const community = [
-  { title: 'Web Lead — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2026', icon: 'fas fa-users-cog', desc: 'Leading the web team for the official student association.' },
+  { title: 'President — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2026/2027', icon: 'fas fa-crown', desc: 'Appointed to lead the association — driving ICT innovation, events and student developer growth.' },
+  { title: 'Web Lead — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2025/2026', icon: 'fas fa-users-cog', desc: 'Led the web team for the official student association.' },
   { title: 'Member — GDG Kampala', org: 'Google Developer Group', year: '2024–Present', icon: 'fab fa-google', desc: 'Attending meetups, workshops and DevFest events.' },
   { title: 'MERN Study Circle', org: 'Peer-led learning group', year: '2024–Present', icon: 'fas fa-code', desc: 'Weekly sessions on full-stack patterns and code reviews.' },
 ];
@@ -84,8 +85,14 @@ const volunteer = [
 ];
 
 const achievements = [
+  { title: 'President — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2026/2027', icon: 'fas fa-crown' },
   { title: 'Winner — 5th STEAM Festival', org: 'Kyambogo University', year: '2025', icon: 'fas fa-trophy' },
-  { title: 'Web Lead — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2026', icon: 'fas fa-star' },
+  { title: 'Web Lead — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2025/2026', icon: 'fas fa-star' },
+];
+
+const kyucsaRoles = [
+  { role: 'President', year: '2026/2027', icon: 'fas fa-crown', desc: 'Appointed President for the 2026/2027 academic year — leading the association’s executive, ICT innovation drives and student programs.' },
+  { role: 'Web Lead', year: '2025/2026', icon: 'fas fa-laptop-code', desc: 'Served as Web Lead — maintained and improved the association’s web presence and mentored the web team.' },
 ];
 
 const Resume = () => {
