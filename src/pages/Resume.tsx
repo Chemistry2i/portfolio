@@ -8,6 +8,7 @@ import SEO from '@/components/SEO';
 import kyuLogo from '@/assets/kyambogo-university-logo.png';
 import forestHillLogo from '@/assets/forest-hill-college.jpeg';
 import vicViewLogo from '@/assets/vic-view-primary.png';
+import kyucsaLogo from '@/assets/kyucsa-logo.png';
 
 const priorEducation = [
   {
