@@ -252,6 +252,55 @@ const Resume = () => {
             </div>
           </section>
 
+          {/* KYUCSA Leadership */}
+          <section id="leadership" className="mb-16 md:mb-20">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
+              <i className="fas fa-crown text-accent mr-2" aria-hidden="true" />
+              Leadership
+            </h2>
+
+            <div className="glass-card p-6 md:p-8 rounded-2xl">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="flex-shrink-0 flex items-start justify-center sm:justify-start">
+                  <div className="w-28 h-20 md:w-32 md:h-24 rounded-xl bg-white/90 dark:bg-white/95 p-2 flex items-center justify-center shadow-md">
+                    <img
+                      src={kyucsaLogo}
+                      alt="KYUCSA — Kyambogo University Computing Students' Association logo"
+                      loading="lazy"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-foreground text-lg md:text-xl">
+                    Kyambogo University Computing Students' Association (KYUCSA)
+                  </h3>
+                  <p className="text-accent font-medium text-sm">Spearheading ICT Innovations</p>
+
+                  <ul className="mt-5 space-y-4">
+                    {kyucsaRoles.map((r) => (
+                      <li key={r.role} className="flex items-start gap-3">
+                        <i className={`${r.icon} text-primary mt-1`} aria-hidden="true" />
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="font-semibold text-foreground">{r.role}</span>
+                            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/30">
+                              {r.year}
+                            </span>
+                          </div>
+                          <p className="text-sm text-muted-foreground mt-1">{r.desc}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
 
           {/* Skills with proof */}
           <section id="skills" className="mb-16 md:mb-20">
