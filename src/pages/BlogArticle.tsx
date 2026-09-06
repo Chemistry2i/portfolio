@@ -149,6 +149,15 @@ const BlogArticle = () => {
             {article.excerpt}
           </p>
 
+          {article.coverImage && (
+            <img
+              src={article.coverImage}
+              alt={article.coverImageAlt || article.title}
+              loading="lazy"
+              className="w-full rounded-2xl border border-border shadow-lg mb-8 object-cover max-h-[420px]"
+            />
+          )}
+
           <div className="flex flex-wrap items-center gap-3 mb-8 border-b border-border pb-8 no-print">
             <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Share</span>
             <ShareButtons
