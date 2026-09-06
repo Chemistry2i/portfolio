@@ -18,6 +18,105 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    id: 7,
+    slug: 'backend-concepts-explained',
+    title: 'Backend Concepts Explained: Load Balancing, Caching, Queues and More',
+    excerpt: 'A practical tour of the backend ideas behind fast, reliable apps — load balancing, caching, databases, queues, rate limiting, and how I apply them in Node.js and Spring Boot projects.',
+    content: `
+## Why These Concepts Matter
+
+A backend works fine with ten users and falls apart with ten thousand. The difference is rarely the language you chose — it is how requests are distributed, what you avoid recomputing, and how you handle work that does not need to happen right now. Here are the ideas I lean on most.
+
+## 1. Load Balancing
+
+A load balancer sits in front of several application servers and spreads incoming requests between them. It gives you two things: **capacity** (add another server instead of a bigger one) and **resilience** (one server dies, traffic shifts to the rest).
+
+Common strategies:
+
+- **Round robin** — each server takes the next request in turn. Simple and fine when servers are identical.
+- **Least connections** — send the request to the server currently handling the fewest. Better for long-lived requests.
+- **IP hash / sticky sessions** — the same client always lands on the same server. Useful when sessions live in memory — but avoid it if you can, and keep sessions in Redis instead so any server can serve any user.
+
+Health checks are the part people forget: the balancer must remove a failing instance automatically, otherwise it keeps routing users into an error page.
+
+## 2. Caching
+
+Caching is storing the answer so you do not have to compute it twice. Where you cache matters:
+
+- **Browser cache** — static assets with long \`Cache-Control\` lifetimes and hashed filenames.
+- **CDN cache** — images, JS, CSS, and even HTML served from an edge node near the user.
+- **Application cache (Redis/Memcached)** — query results, session data, computed dashboards.
+- **Database cache** — query plans and buffer pools the database manages for you.
+
+Two patterns cover most cases:
+
+- **Cache-aside**: read from cache, on a miss read the database and write the value back. Simple and forgiving.
+- **Write-through**: every write updates the database *and* the cache, so reads are always warm.
+
+The hard part is invalidation. My rule: give every cached key a TTL even if you also invalidate explicitly, so a stale value can never live forever.
+
+## 3. Databases: Indexing, Normalization, Transactions
+
+- **Indexes** turn a full table scan into a lookup. Index the columns you filter and join on — and remember every index slows down writes, so do not index everything.
+- **Normalization** removes duplicated data and keeps it consistent; **denormalization** deliberately duplicates it to avoid expensive joins on read-heavy paths. Real systems use both.
+- **Transactions (ACID)** keep multi-step operations all-or-nothing — the reason I still reach for MySQL for anything involving money, grades, or inventory.
+- **Replication** gives you read replicas and a failover copy; **sharding** splits data across databases when one machine can no longer hold it.
+
+## 4. Message Queues and Background Jobs
+
+Not every task belongs in the request/response cycle. Sending email, generating a PDF, resizing images, syncing a third-party API — push these onto a queue (RabbitMQ, Redis-backed BullMQ, SQS) and let workers process them.
+
+Benefits: the user gets an instant response, spikes are absorbed instead of dropped, and failed jobs can retry with backoff. Make your jobs **idempotent** — a retried job must not charge the card twice.
+
+## 5. Rate Limiting and Throttling
+
+Rate limiting protects you from abuse and from accidental floods. The token bucket algorithm is the usual choice: each client gets tokens that refill over time, and a request costs one token. Return \`429 Too Many Requests\` with a \`Retry-After\` header so well-behaved clients back off politely.
+
+## 6. Statelessness and Horizontal Scaling
+
+An application server should hold no user state in memory. Push sessions to Redis, files to object storage, and configuration to environment variables. Once servers are interchangeable, scaling out is just launching more of them.
+
+## 7. Observability
+
+You cannot fix what you cannot see:
+
+- **Structured logs** with a request ID that follows a request through every service
+- **Metrics** — request rate, error rate, latency percentiles (p95 and p99 matter far more than the average)
+- **Tracing** to find which downstream call is actually slow
+- **Alerts** on symptoms users feel, not on CPU graphs
+
+## 8. Resilience Patterns
+
+- **Timeouts** on every network call — an unbounded wait ties up a thread forever
+- **Retries with exponential backoff and jitter**, never a tight retry loop
+- **Circuit breakers** that stop calling a failing dependency and fail fast instead
+- **Graceful degradation** — serve stale cached data rather than an error page
+
+## 9. Security Basics That Are Non-Negotiable
+
+Hash passwords with bcrypt or Argon2, validate every input on the server, use parameterized queries, scope authorization checks server-side, keep secrets out of the repository, and serve everything over HTTPS.
+
+## Putting It Together
+
+A typical request path in the systems I build looks like this:
+
+\`\`\`text
+Client → CDN → Load balancer → App servers (stateless)
+                                  ├── Redis cache
+                                  ├── MySQL (primary + read replicas)
+                                  └── Queue → Workers
+\`\`\`
+
+Start simple. Add a cache when you measure a slow read, a queue when a request does work the user should not wait for, and a second server when one is genuinely saturated. Every one of these tools solves a specific pain — adding them before you feel the pain just buys you complexity.
+    `,
+    date: '2026-09-06',
+    readTime: '9 min read',
+    category: 'Backend',
+    tags: ['Backend', 'Load Balancing', 'Caching', 'Databases', 'Scalability', 'System Design'],
+    icon: 'fas fa-server',
+  },
+
+  {
     id: 6,
     slug: 'binance-university-tour-kyambogo',
     title: 'Organizing the Binance University Tour at Kyambogo University',
