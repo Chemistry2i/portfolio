@@ -1,3 +1,5 @@
+import binanceEventImg from '@/assets/gallery/binance-event.jpeg';
+
 export interface Article {
   id: number;
   slug: string;
@@ -9,9 +11,59 @@ export interface Article {
   category: string;
   tags: string[];
   icon: string;
+  /** Optional cover image displayed at the top of the article page. */
+  coverImage?: string;
+  coverImageAlt?: string;
 }
 
 export const articles: Article[] = [
+  {
+    id: 6,
+    slug: 'binance-university-tour-kyambogo',
+    title: 'Organizing the Binance University Tour at Kyambogo University',
+    excerpt: 'How I organized the Binance & Amplify Growth Africa University Tour stop at Kyambogo University — bringing blockchain education and Web3 opportunities to hundreds of students.',
+    content: `
+## A Room Full of Curious Minds
+
+On **4th September 2026**, I had the privilege of organizing the **Binance University Tour** at Kyambogo University, in partnership with **Amplify Growth Africa**. The event brought together hundreds of students eager to learn about blockchain technology, cryptocurrency, and the opportunities Web3 creates for young Africans.
+
+## Why This Event Mattered
+
+Blockchain and crypto are no longer abstract buzzwords — they are reshaping finance, remittances, and digital ownership across Africa. Yet many students only encounter these topics through hype on social media. Our goal was simple: give students **practical, grounded education** on how crypto works, how to stay safe, and where the real career opportunities lie.
+
+## What We Covered
+
+The sessions, led in collaboration with the Binance and Amplify Growth Africa teams, walked students through:
+
+- **Blockchain fundamentals** — what a blockchain is, why decentralization matters, and how transactions are verified
+- **Crypto safety** — spotting scams, securing wallets, and understanding that "not your keys, not your coins"
+- **Trading basics** — how exchanges work, market structure, and responsible participation
+- **Careers in Web3** — development, community management, content, compliance, and research roles open to students
+
+## The Turnout
+
+The lecture hall filled up fast — a clear sign that students at Kyambogo are hungry for this knowledge. The Q&A session ran long, with sharp questions on regulation in Uganda, how to start building on-chain projects, and how student developers can contribute to the ecosystem.
+
+## Lessons From Organizing
+
+Putting together an event of this scale taught me a lot beyond the tech:
+
+1. **Partnerships multiply impact** — working with Binance and Amplify Growth Africa gave us credibility, speakers, and materials we couldn't have assembled alone
+2. **Logistics are everything** — venue booking, publicity across student groups, sound, and session timing all determine whether people show up and stay
+3. **Community is the real product** — the connections students made with each other and the speakers will outlast any single talk
+
+## What's Next
+
+This was one stop on a bigger journey. As **KYUCSA President (2026/2027)**, I plan to keep bringing industry partners to campus so students don't just learn theory — they meet the people building the future. If you're running a developer or fintech community program and want to reach students at Kyambogo University, let's talk.
+    `,
+    date: '2026-09-05',
+    readTime: '5 min read',
+    category: 'Community',
+    tags: ['Binance', 'Web3', 'Community', 'Kyambogo University', 'Events'],
+    icon: 'fab fa-bitcoin',
+    coverImage: binanceEventImg,
+    coverImageAlt: 'Binance University Tour session at Kyambogo University, organized with Amplify Growth Africa',
+  },
   {
     id: 1,
     slug: 'building-scalable-mern-apps',

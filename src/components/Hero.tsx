@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeUp, hoverPress, staggerContainer } from '@/lib/motion';
-import portraitImg from '@/assets/Wambogo.png';
+import portraitImg from '@/assets/Wambogo-new.jpeg';
 import AvailabilityBadge from './AvailabilityBadge';
 
 const TYPING_ROLES = [

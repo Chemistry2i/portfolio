@@ -4,6 +4,7 @@ import steam2026 from '@/assets/gallery/steam-2026.jpeg';
 import gaime from '@/assets/gallery/gaime.jpg';
 import gaimeFriends from '@/assets/gallery/gaime-friends.jpg';
 import campusChill from '@/assets/gallery/campus-chill.jpg';
+import binanceEvent from '@/assets/gallery/binance-event.jpeg';
 
 export interface GalleryItem {
   id: string;
