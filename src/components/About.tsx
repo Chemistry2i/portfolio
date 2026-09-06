@@ -79,6 +79,14 @@ const About = () => {
                     exceptional user experience.
                   </p>
                   <p>
+                    Beyond building, I lead. I served as{' '}
+                    <strong className="text-foreground">Web Lead of KYUCSA</strong> (Kyambogo
+                    University Computing Students' Association) for 2025/2026, and I've been
+                    appointed{' '}
+                    <strong className="text-foreground">KYUCSA President for 2026/2027</strong> —
+                    spearheading ICT innovations with a community of student developers.
+                  </p>
+                  <p>
                     I believe in the power of clean code, intuitive interfaces,
                     and the magic that happens when technology meets
                     human-centered design.
