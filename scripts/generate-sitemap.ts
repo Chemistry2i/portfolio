@@ -13,12 +13,10 @@ interface SitemapEntry {
   priority?: string;
 }
 
-const today = new Date().toISOString().split("T")[0];
-
 const entries: SitemapEntry[] = [
-  { path: "/", changefreq: "weekly", priority: "1.0", lastmod: today },
-  { path: "/resume", changefreq: "monthly", priority: "0.9", lastmod: today },
-  { path: "/blog", changefreq: "weekly", priority: "0.9", lastmod: today },
+  { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/resume", changefreq: "monthly", priority: "0.9" },
+  { path: "/blog", changefreq: "weekly", priority: "0.9" },
   ...projects.map((p) => ({
     path: `/project/${p.slug}`,
     changefreq: "monthly" as const,
