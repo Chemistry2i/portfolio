@@ -8,7 +8,32 @@
     <language>en-us</language>
     <managingEditor>wambogohassan63@gmail.com (Wambogo Hassan Sadat)</managingEditor>
     <webMaster>wambogohassan63@gmail.com (Wambogo Hassan Sadat)</webMaster>
-    <lastBuildDate>Sun, 06 Sep 2026 13:48:20 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2026 14:07:42 GMT</lastBuildDate>
+    <item>
+      <title>Backend Concepts Explained: Load Balancing, Caching, Queues and More</title>
+      <link>https://wambogohassansadat.dev/blog/backend-concepts-explained</link>
+      <guid isPermaLink="true">https://wambogohassansadat.dev/blog/backend-concepts-explained</guid>
+      <pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
+      <description>A practical tour of the backend ideas behind fast, reliable apps — load balancing, caching, databases, queues, rate limiting, and how I apply them in Node.js and Spring Boot projects.</description>
+      <category>Backend</category>
+      <category>Load Balancing</category>
+      <category>Caching</category>
+      <category>Databases</category>
+      <category>Scalability</category>
+      <category>System Design</category>
+    </item>
+    <item>
+      <title>Organizing the Binance University Tour at Kyambogo University</title>
+      <link>https://wambogohassansadat.dev/blog/binance-university-tour-kyambogo</link>
+      <guid isPermaLink="true">https://wambogohassansadat.dev/blog/binance-university-tour-kyambogo</guid>
+      <pubDate>Sat, 05 Sep 2026 00:00:00 GMT</pubDate>
+      <description>How I organized the Binance &amp; Amplify Growth Africa University Tour stop at Kyambogo University — bringing blockchain education and Web3 opportunities to hundreds of students.</description>
+      <category>Binance</category>
+      <category>Web3</category>
+      <category>Community</category>
+      <category>Kyambogo University</category>
+      <category>Events</category>
+    </item>
     <item>
       <title>Shipping a Fast, Accessible React Portfolio</title>
       <link>https://wambogohassansadat.dev/blog/shipping-a-fast-accessible-react-portfolio</link>
