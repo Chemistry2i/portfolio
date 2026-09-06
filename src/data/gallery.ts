@@ -35,6 +35,15 @@ export const galleryCategories: ('All' | GalleryCategory)[] = [
  */
 export const galleryItems: GalleryItem[] = [
   {
+    id: 'binance-university-tour-2026',
+    title: 'Binance University Tour — Kyambogo University',
+    caption: 'Organized with Binance & Amplify Growth Africa — blockchain education for students',
+    category: 'Events',
+    src: binanceEvent,
+    shape: 'wide',
+    date: 'September 2026',
+  },
+  {
     id: 'ucc-cybersecurity-2026-1',
     title: 'Inaugural National Cyber Security Conference',
     caption: 'UCC / UgCERT — Securing Uganda: Culture, Collaboration, Resilience & Trust',
