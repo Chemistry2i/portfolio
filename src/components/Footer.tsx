@@ -5,7 +5,21 @@ import portraitImg from '@/assets/Wambogo.jpg';
 import AvailabilityBadge from '@/components/AvailabilityBadge';
 
 const BUILD_VERSION = 'v1.2';
-const LAST_UPDATED = 'May 2026';
+const LAST_UPDATED = 'September 2026';
+
+const CALENDLY_URL = 'https://calendly.com/wambogohassansadat/15min';
+
+const TECH_STACK = [
+  'React', 'Node.js', 'Express', 'MongoDB', 'MySQL', 'Java',
+  'Spring Boot', 'Bootstrap', 'UI/UX',
+];
+
+const SERVICES = [
+  'Web Development',
+  'UI/UX Design',
+  'API Integration',
+  'Consulting',
+];
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -91,12 +105,34 @@ const Footer = () => {
           <div className="space-y-4 lg:col-span-1">
             <div className="flex items-center gap-3">
               <img src={portraitImg} alt="Wambogo Hassan Sadat" className="w-10 h-10 rounded-full border border-primary object-cover" />
-              <h3 className="text-base md:text-lg font-bold gradient-text">Wambogo Hassan Sadat</h3>
+              <div>
+                <h3 className="text-base md:text-lg font-bold gradient-text leading-tight">Wambogo Hassan Sadat</h3>
+                <p className="text-xs text-muted-foreground">Full-Stack Engineer · Peculiar Technologies</p>
+              </div>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              MERN Stack Developer & UI/UX Designer crafting clean code and beautiful user experiences.
+              MERN Stack Developer & UI/UX Designer based in Kampala, with 3+ years crafting clean code and beautiful user experiences.
             </p>
+            <div className="flex flex-wrap gap-1.5">
+              {TECH_STACK.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2 py-0.5 text-[11px] rounded-full border border-border bg-secondary text-secondary-foreground"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
             <AvailabilityBadge compact />
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors w-fit"
+            >
+              <i className="fas fa-calendar-check" aria-hidden="true" />
+              Book a 15-min call
+            </a>
             <div className="flex flex-wrap gap-2 pt-1">
               {socialLinks.map((s) => (
                 <a
@@ -184,9 +220,23 @@ const Footer = () => {
                 </li>
                 <li className="flex items-center gap-2.5 text-muted-foreground">
                   <i className="fas fa-location-dot text-primary w-4" aria-hidden="true" />
-                  <span>Kampala, Uganda · UTC+3</span>
+                  <span>Banda, Kampala, Uganda · UTC+3 (EAT)</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-muted-foreground">
+                  <i className="fas fa-briefcase text-primary w-4" aria-hidden="true" />
+                  <span>Open to freelance & collaboration</span>
                 </li>
               </ul>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {SERVICES.map((svc) => (
+                  <span
+                    key={svc}
+                    className="px-2 py-0.5 text-[11px] rounded-full border border-border bg-secondary text-secondary-foreground"
+                  >
+                    {svc}
+                  </span>
+                ))}
+              </div>
             </div>
 
             <div>
