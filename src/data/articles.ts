@@ -96,6 +96,75 @@ You cannot fix what you cannot see:
 
 Hash passwords with bcrypt or Argon2, validate every input on the server, use parameterized queries, scope authorization checks server-side, keep secrets out of the repository, and serve everything over HTTPS.
 
+## 10. API Design: REST, GraphQL and Versioning
+
+A good API is a contract. REST stays the workhorse: nouns for resources (\`/users/42\`), HTTP verbs for actions (GET reads, POST creates, PUT/PATCH updates, DELETE removes), and status codes that actually mean something — 200 OK, 201 Created, 400 for bad input, 401 unauthenticated, 403 unauthorized, 404 not found, 409 conflict, 422 validation failed, 500 server error.
+
+GraphQL lets the client ask for exactly the fields it needs — great for complex dashboards with many related entities, at the cost of harder caching and the need for query-depth limits. **Versioning** (\`/api/v1/...\`) protects existing clients when you must make a breaking change. And never break a contract silently: deprecate, announce, then remove.
+
+## 11. Pagination
+
+Returning all rows is a bug waiting for growth. Two strategies:
+
+- **Offset pagination** (\`?page=3&limit=20\`) — simple, supports "jump to page", but slow and unstable on huge tables because the database still scans the skipped rows.
+- **Cursor pagination** (\`?cursor=abc123\`) — "give me the 20 rows after this ID." Fast at any depth and stable when rows are inserted while scrolling. This is what feeds and infinite scroll should use.
+
+Always set a maximum page size so a client cannot ask for a million rows.
+
+## 12. Authentication vs Authorization
+
+- **Authentication** answers "who are you?" — passwords, OAuth, magic links.
+- **Authorization** answers "what may you do?" — roles and permissions.
+
+**JWTs** are signed tokens carrying claims the server can verify without a database lookup; keep them short-lived and pair them with refresh tokens stored in httpOnly cookies. **OAuth 2.0** is what powers "Sign in with Google" — your app never sees the user's Google password. And always check authorization on the server for every request, never trust a flag sent from the client.
+
+## 13. Idempotency
+
+An operation is idempotent when doing it twice has the same effect as doing it once. GET and DELETE are naturally idempotent; POST is not. If a user double-clicks "Pay" or the network retries a request, you must not charge twice. The fix is an **idempotency key**: the client generates a unique key per operation, the server stores it, and a duplicate request returns the original result instead of re-executing.
+
+## 14. Connection Pooling
+
+Opening a database connection is expensive — TCP handshake, authentication, memory allocation. A **connection pool** keeps a set of open connections and hands them out to requests as they arrive, then returns them for reuse. Tools like HikariCP (Java) and PgBouncer (PostgreSQL) exist for exactly this. Size the pool deliberately: too small and requests queue, too large and the database drowns in idle connections.
+
+## 15. Consistency Models and the CAP Theorem
+
+- **Strong consistency**: every read sees the latest write. Simple to reason about, costs latency and availability.
+- **Eventual consistency**: replicas converge over time. Reads may briefly be stale, but the system stays available during network splits.
+
+The **CAP theorem** says that during a network partition you must choose between consistency and availability — you cannot have both. Financial balances favor consistency; social feeds and view counts happily accept eventual consistency.
+
+## 16. Microservices vs Monoliths
+
+A **monolith** is one deployable application — simple to develop, test, and deploy, and the right default for most teams. **Microservices** split the system into independently deployable services, which helps large teams scale but adds distributed-systems pain: network failures between services, distributed transactions, versioned contracts, and observability across boundaries. The honest advice: start with a well-modularized monolith and split out a service only when a concrete scaling or team need appears.
+
+## 17. WebSockets and Real-Time Communication
+
+HTTP is request/response — the server cannot push. **WebSockets** upgrade an HTTP connection into a persistent, two-way channel for chat, live scores, and collaborative editing. **Server-Sent Events** are a simpler one-way push from server to browser over plain HTTP, perfect for notifications and live feeds. For occasional updates, **polling** (the client asks every N seconds) is often good enough and far simpler.
+
+## 18. Webhooks
+
+Webhooks are "reverse APIs": instead of you polling a third party for changes, they POST an event to your endpoint the moment something happens — a payment succeeded, a repository was pushed to. Always verify the webhook signature (an HMAC over the body with a shared secret), respond quickly, and process the event asynchronously so retries cannot overwhelm you.
+
+## 19. Containerization and Orchestration
+
+**Docker** packages your app with its exact runtime and dependencies into an image, ending "works on my machine." The same image runs on your laptop, CI, and production. **Kubernetes** orchestrates many containers across machines: it restarts crashed containers, scales replicas up and down, rolls out new versions gradually, and routes traffic. For small projects, a plain VM, Render, or a managed platform is usually enough — adopt orchestration when you actually have many services.
+
+## 20. CI/CD
+
+**Continuous Integration**: every push builds the app and runs tests automatically, catching breakage in minutes instead of at release time. **Continuous Deployment**: merges to the main branch roll out to production automatically, usually through staged environments and health-checked rollbacks. The real benefit is not speed — it is that small, frequent, tested changes are far safer than rare, giant releases.
+
+## 21. Background Jobs, Cron and Scheduling
+
+Some work runs on a clock, not a request: nightly report generation, cleaning expired sessions, sending reminder emails. **Cron** schedules these, and job frameworks (node-cron, Quartz in Spring) manage them inside the app. Keep scheduled jobs short, log every run, and add a lock so two servers do not run the same job twice.
+
+## 22. Object Storage
+
+Files do not belong in your database or on your app server's disk — they disappear when the container restarts and make backups huge. **Object storage** (S3 and compatible services) stores files durably, serves them cheaply, and integrates with CDNs. Upload via short-lived **pre-signed URLs** so clients upload straight to storage without the file ever passing through your server.
+
+## 23. Environments and Configuration
+
+Keep development, staging, and production fully separate — separate databases, separate keys. Configuration lives in **environment variables**, never in the codebase: database URLs, API keys, and secrets. A leaked key in a git repository is compromised forever, even if you delete the commit.
+
 ## Putting It Together
 
 A typical request path in the systems I build looks like this:
@@ -110,9 +179,9 @@ Client → CDN → Load balancer → App servers (stateless)
 Start simple. Add a cache when you measure a slow read, a queue when a request does work the user should not wait for, and a second server when one is genuinely saturated. Every one of these tools solves a specific pain — adding them before you feel the pain just buys you complexity.
     `,
     date: '2026-09-06',
-    readTime: '9 min read',
+    readTime: '16 min read',
     category: 'Backend',
-    tags: ['Backend', 'Load Balancing', 'Caching', 'Databases', 'Scalability', 'System Design'],
+    tags: ['Backend', 'Load Balancing', 'Caching', 'Databases', 'Scalability', 'System Design', 'APIs', 'Databases', 'DevOps'],
     icon: 'fas fa-server',
   },
 
