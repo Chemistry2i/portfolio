@@ -5,7 +5,21 @@ import portraitImg from '@/assets/Wambogo.jpg';
 import AvailabilityBadge from '@/components/AvailabilityBadge';
 
 const BUILD_VERSION = 'v1.2';
-const LAST_UPDATED = 'May 2026';
+const LAST_UPDATED = 'September 2026';
+
+const CALENDLY_URL = 'https://calendly.com/wambogohassansadat/15min';
+
+const TECH_STACK = [
+  'React', 'Node.js', 'Express', 'MongoDB', 'MySQL', 'Java',
+  'Spring Boot', 'Bootstrap', 'UI/UX',
+];
+
+const SERVICES = [
+  'Web Development',
+  'UI/UX Design',
+  'API Integration',
+  'Consulting',
+];
 
 const Footer = () => {
   const navigate = useNavigate();
