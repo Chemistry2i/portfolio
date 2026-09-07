@@ -220,9 +220,23 @@ const Footer = () => {
                 </li>
                 <li className="flex items-center gap-2.5 text-muted-foreground">
                   <i className="fas fa-location-dot text-primary w-4" aria-hidden="true" />
-                  <span>Kampala, Uganda · UTC+3</span>
+                  <span>Banda, Kampala, Uganda · UTC+3 (EAT)</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-muted-foreground">
+                  <i className="fas fa-briefcase text-primary w-4" aria-hidden="true" />
+                  <span>Open to freelance & collaboration</span>
                 </li>
               </ul>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {SERVICES.map((svc) => (
+                  <span
+                    key={svc}
+                    className="px-2 py-0.5 text-[11px] rounded-full border border-border bg-secondary text-secondary-foreground"
+                  >
+                    {svc}
+                  </span>
+                ))}
+              </div>
             </div>
 
             <div>
