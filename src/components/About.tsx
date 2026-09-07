@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { fadeUp, revealProps } from '@/lib/motion';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
