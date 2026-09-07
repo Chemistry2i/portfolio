@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>wambogohassan63@gmail.com (Wambogo Hassan Sadat)</managingEditor>
     <webMaster>wambogohassan63@gmail.com (Wambogo Hassan Sadat)</webMaster>
-    <lastBuildDate>Sun, 06 Sep 2026 14:07:42 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 14:55:49 GMT</lastBuildDate>
     <item>
       <title>Backend Concepts Explained: Load Balancing, Caching, Queues and More</title>
       <link>https://wambogohassansadat.dev/blog/backend-concepts-explained</link>
@@ -21,6 +21,9 @@
       <category>Databases</category>
       <category>Scalability</category>
       <category>System Design</category>
+      <category>APIs</category>
+      <category>Databases</category>
+      <category>DevOps</category>
     </item>
     <item>
       <title>Organizing the Binance University Tour at Kyambogo University</title>
