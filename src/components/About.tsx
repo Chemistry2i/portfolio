@@ -3,6 +3,167 @@ import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { fadeUp, revealProps } from '@/lib/motion';
 
+type AccordionItem = {
+  id: string;
+  title: string;
+  icon: string;
+  content: React.ReactNode;
+};
+
+const aboutItems: AccordionItem[] = [
+  {
+    id: 'journey',
+    title: 'My Journey',
+    icon: 'fas fa-route',
+    content: (
+      <div className="space-y-3 md:space-y-4 text-sm md:text-base text-muted-foreground leading-relaxed">
+        <p>
+          As a passionate MERN Stack Developer and UI/UX Designer based
+          in Kampala, Uganda, I specialize in creating seamless
+          digital experiences that bridge the gap between beautiful
+          design and functional code.
+        </p>
+        <p>
+          At Peculiar Technologies, I've had the privilege of working on
+          diverse projects that challenge me to think creatively and
+          solve complex problems. My approach combines technical
+          expertise with a keen eye for design, ensuring every project
+          I work on not only functions flawlessly but also provides an
+          exceptional user experience.
+        </p>
+        <p>
+          Beyond building, I lead. I served as{' '}
+          <strong className="text-foreground">Web Lead of KYUCSA</strong> (Kyambogo
+          University Computing Students' Association) for 2025/2026, and I've been
+          appointed{' '}
+          <strong className="text-foreground">KYUCSA President for 2026/2027</strong> —
+          spearheading ICT innovations with a community of student developers.
+        </p>
+        <p>
+          I believe in the power of clean code, intuitive interfaces,
+          and the magic that happens when technology meets
+          human-centered design.
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: 'beliefs',
+    title: 'What I believe',
+    icon: 'fas fa-quote-left',
+    content: (
+      <ul className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
+        <li className="flex gap-3">
+          <i className="fas fa-check text-accent mt-1.5 text-xs shrink-0" />
+          <span>
+            <strong className="text-foreground">Boring tech wins.</strong> I'd
+            rather ship a stable MERN app today than chase a framework
+            that won't exist next year.
+          </span>
+        </li>
+        <li className="flex gap-3">
+          <i className="fas fa-check text-accent mt-1.5 text-xs shrink-0" />
+          <span>
+            <strong className="text-foreground">Design is part of engineering.</strong>{' '}
+            A bug-free product with bad UX is still broken.
+          </span>
+        </li>
+        <li className="flex gap-3">
+          <i className="fas fa-check text-accent mt-1.5 text-xs shrink-0" />
+          <span>
+            <strong className="text-foreground">Ship small, ship often.</strong>{' '}
+            Every Friday a real user should touch something I built that week.
+          </span>
+        </li>
+        <li className="flex gap-3">
+          <i className="fas fa-check text-accent mt-1.5 text-xs shrink-0" />
+          <span>
+            <strong className="text-foreground">Africa-first matters.</strong> I
+            build with low-bandwidth, mobile-first, and offline-friendly
+            defaults — because that's where my users are.
+          </span>
+        </li>
+      </ul>
+    ),
+  },
+  {
+    id: 'now',
+    title: 'Right now',
+    icon: 'fas fa-circle-notch fa-spin',
+    content: (
+      <div className="space-y-2.5 text-sm text-muted-foreground">
+        <p>
+          <span className="text-accent font-medium">Building:</span> A SaaS dashboard
+          template with role-based access and audit logs.
+        </p>
+        <p>
+          <span className="text-accent font-medium">Learning:</span> Edge runtimes,
+          Postgres internals, and shader-based UI animations.
+        </p>
+        <p>
+          <span className="text-accent font-medium">Reading:</span> "A Philosophy of
+          Software Design" by John Ousterhout.
+        </p>
+        <p>
+          <span className="text-accent font-medium">Listening to:</span> Lo-fi
+          beats and the Syntax podcast on repeat.
+        </p>
+      </div>
+    ),
+  },
+];
+
+const AboutAccordion = () => {
+  const [open, setOpen] = useState<string | null>('journey');
+
+  return (
+    <motion.div
+      className="space-y-3 md:space-y-4"
+      variants={fadeUp}
+      {...revealProps}
+    >
+      {aboutItems.map((item) => {
+        const isOpen = open === item.id;
+        return (
+          <div key={item.id} className="glass-card rounded-2xl overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setOpen(isOpen ? null : item.id)}
+              aria-expanded={isOpen}
+              className="w-full flex items-center gap-3 text-left px-5 py-4 md:px-6 md:py-5"
+            >
+              <i className={`${item.icon} text-primary text-base shrink-0`} aria-hidden="true" />
+              <span className="font-semibold text-foreground text-base md:text-lg flex-1">
+                {item.title}
+              </span>
+              <motion.i
+                className="fas fa-chevron-down text-primary text-sm flex-shrink-0"
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ duration: 0.25 }}
+                aria-hidden="true"
+              />
+            </button>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  key="content"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-5 pb-5 md:px-6 md:pb-6">{item.content}</div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </motion.div>
+  );
+};
+
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
