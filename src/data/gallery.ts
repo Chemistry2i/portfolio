@@ -38,6 +38,33 @@ export const galleryCategories: ('All' | GalleryCategory)[] = [
  */
 export const galleryItems: GalleryItem[] = [
   {
+    id: 'wordpress-campus-connect-session',
+    title: 'WordPress Campus Connect — Hands-on Session',
+    caption: 'Students diving into WordPress during our Campus Connect workshop at Kyambogo University',
+    category: 'Workshops',
+    src: wpSession,
+    shape: 'wide',
+    date: 'September 2026',
+  },
+  {
+    id: 'wordpress-campus-connect-logo',
+    title: 'WordPress Campus Connect — With the Community',
+    caption: 'KYUCSA WordPress & CMS community leads showcasing the WordPress brand at Kyambogo University',
+    category: 'Events',
+    src: wpLogo,
+    shape: 'tall',
+    date: 'September 2026',
+  },
+  {
+    id: 'wordpress-campus-connect-team',
+    title: 'WordPress Campus Connect — Coordination Desk',
+    caption: 'Coordinating the event with the School of Computing & Information Science team',
+    category: 'Behind the scenes',
+    src: wpTeam,
+    shape: 'square',
+    date: 'September 2026',
+  },
+  {
     id: 'binance-university-tour-2026',
     title: 'Binance University Tour — Kyambogo University',
     caption: 'Organized with Binance & Amplify Growth Africa — blockchain education for students',
