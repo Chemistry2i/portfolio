@@ -39,13 +39,13 @@ const GROUPS: StackGroup[] = [
     title: 'Design & Tooling',
     icon: 'fas fa-pen-nib',
     items: [
+      { name: 'Claude Code', icon: 'fas fa-terminal', years: 1, level: 70 },
       { name: 'Figma', icon: 'fab fa-figma', years: 3, level: 70 },
       { name: 'Adobe XD', icon: 'fas fa-palette', years: 2, level: 70 },
       { name: 'Git / GitHub', icon: 'fab fa-git-alt', years: 3, level: 70 },
       { name: 'Render', icon: 'fas fa-cloud', years: 2, level: 70 },
       { name: 'Vercel / Netlify', icon: 'fas fa-cloud-upload-alt', years: 2, level: 70 },
       { name: 'Vite', icon: 'fas fa-bolt', years: 2, level: 70 },
-      { name: 'Claude Code', icon: 'fas fa-terminal', years: 1, level: 70 },
     ],
   },
 ];
