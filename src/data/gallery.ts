@@ -5,6 +5,9 @@ import gaime from '@/assets/gallery/gaime.jpg';
 import gaimeFriends from '@/assets/gallery/gaime-friends.jpg';
 import campusChill from '@/assets/gallery/campus-chill.jpg';
 import binanceEvent from '@/assets/gallery/binance-event.jpeg';
+import wpSession from '@/assets/gallery/wordpress-connect-session.jpg';
+import wpLogo from '@/assets/gallery/wordpress-connect-logo.jpg';
+import wpTeam from '@/assets/gallery/wordpress-connect-team.jpg';
 
 export interface GalleryItem {
   id: string;
