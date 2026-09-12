@@ -45,6 +45,7 @@ const GROUPS: StackGroup[] = [
       { name: 'Render', icon: 'fas fa-cloud', years: 2, level: 70 },
       { name: 'Vercel / Netlify', icon: 'fas fa-cloud-upload-alt', years: 2, level: 70 },
       { name: 'Vite', icon: 'fas fa-bolt', years: 2, level: 70 },
+      { name: 'Claude Code', icon: 'fas fa-terminal', years: 1, level: 70 },
     ],
   },
 ];
