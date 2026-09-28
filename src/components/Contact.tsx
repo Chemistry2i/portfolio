@@ -90,8 +90,8 @@ const Contact = () => {
       name: 'LinkedIn',
       href: 'https://www.linkedin.com/in/wambogo-hassan-sadat-895544376',
     },
-    { icon: 'fab fa-dribbble', name: 'Dribbble', href: 'https://dribbble.com/' },
-    { icon: 'fab fa-twitter', name: 'Twitter', href: 'https://twitter.com/wambogohassan' },
+    { icon: 'fab fa-x-twitter', name: 'X (Twitter)', href: 'https://x.com/wambogohassan' },
+    { icon: 'fas fa-calendar-check', name: 'Book a call', href: 'https://calendly.com/wambogohassansadat/15min' },
   ];
 
   return (
@@ -246,7 +246,9 @@ const Contact = () => {
 
             {/* Location */}
             <a
-              href="#"
+              href="https://www.google.com/maps/search/?api=1&query=Banda%2C%20Kampala%2C%20Uganda"
+              target="_blank"
+              rel="noopener noreferrer"
               className="glass-card block p-4 sm:p-5 rounded-xl transition md:hover:scale-105"
             >
               <div className="flex items-center gap-4">

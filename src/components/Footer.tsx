@@ -1,6 +1,7 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 import portraitImg from '@/assets/Wambogo.jpg';
 import AvailabilityBadge from '@/components/AvailabilityBadge';
 
@@ -70,12 +71,16 @@ const Footer = () => {
       return;
     }
     setSubscribing(true);
-    // Placeholder — wire to backend later
-    setTimeout(() => {
-      setSubscribing(false);
-      setEmail('');
-      toast.success("Thanks for subscribing! I'll be in touch.");
-    }, 600);
+    const { error } = await supabase
+      .from('newsletter_subscribers')
+      .insert({ email: email.trim().toLowerCase() });
+    setSubscribing(false);
+    if (error && error.code !== '23505') {
+      toast.error('Could not subscribe. Please try again.');
+      return;
+    }
+    setEmail('');
+    toast.success(error ? "You're already subscribed — thank you!" : "Thanks for subscribing! I'll be in touch.");
   };
 
   return (
