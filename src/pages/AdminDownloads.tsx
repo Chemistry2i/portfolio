@@ -27,6 +27,7 @@ import {
   TrendingUp,
   Users,
   X,
+  Mail,
 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
@@ -333,6 +334,11 @@ const AdminDownloads = () => {
               <Button variant="outline" size="sm" asChild>
                 <Link to="/admin/roles">
                   <Users className="w-4 h-4 mr-2" /> Roles
+                </Link>
+              </Button>
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/admin/subscribers">
+                  <Mail className="w-4 h-4 mr-2" /> Subscribers
                 </Link>
               </Button>
               <Button variant="outline" size="sm" onClick={load} disabled={loading}>
