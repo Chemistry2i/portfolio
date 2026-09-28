@@ -335,6 +335,11 @@ const AdminDownloads = () => {
                   <Users className="w-4 h-4 mr-2" /> Roles
                 </Link>
               </Button>
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/admin/subscribers">
+                  <Mail className="w-4 h-4 mr-2" /> Subscribers
+                </Link>
+              </Button>
               <Button variant="outline" size="sm" onClick={load} disabled={loading}>
                 <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} /> Refresh
               </Button>
