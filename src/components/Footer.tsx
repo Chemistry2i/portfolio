@@ -193,7 +193,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/resume.pdf"
-                  download
+                  download="Wambogo_Hassan_Sadat_CV.pdf"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm inline-flex items-center gap-1.5"
                 >
                   Download CV
