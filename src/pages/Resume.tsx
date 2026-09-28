@@ -141,6 +141,14 @@ const Resume = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Education, certifications, languages, community, and volunteer work — the long-form story behind the portfolio.
             </p>
+            <a
+              href="/resume.pdf"
+              download="Wambogo_Hassan_Sadat_CV.pdf"
+              className="inline-flex items-center gap-2 mt-6 hero-btn text-primary-foreground"
+            >
+              <i className="fas fa-download" aria-hidden="true" />
+              Download CV (PDF)
+            </a>
           </header>
 
           {/* Education */}

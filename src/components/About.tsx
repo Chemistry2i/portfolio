@@ -249,10 +249,14 @@ const About = () => {
 
               {/* Download CV Button */}
               <div className="text-center lg:text-left px-4">
-                <button className="w-full sm:w-auto hero-btn text-primary-foreground">
+                <a
+                  href="/resume.pdf"
+                  download="Wambogo_Hassan_Sadat_CV.pdf"
+                  className="inline-block w-full sm:w-auto hero-btn text-primary-foreground text-center"
+                >
                   <i className="fas fa-download mr-2"></i>
                   Download CV
-                </button>
+                </a>
               </div>
             </div>
 
