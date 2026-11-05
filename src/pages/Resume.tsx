@@ -86,6 +86,7 @@ const volunteer = [
 ];
 
 const achievements = [
+  { title: 'GitHub Campus Expert (Trainee)', org: 'GitHub Education — selected in a highly competitive cycle', year: '2026', icon: 'fab fa-github' },
   { title: 'President — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2026/2027', icon: 'fas fa-crown' },
   { title: 'Winner — 5th STEAM Festival', org: 'Kyambogo University', year: '2025', icon: 'fas fa-trophy' },
   { title: 'Web Lead — KYUCSA', org: "Kyambogo University Computing Students' Association", year: '2025/2026', icon: 'fas fa-star' },

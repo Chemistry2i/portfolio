@@ -38,6 +38,9 @@ const aboutItems: AccordionItem[] = [
           appointed{' '}
           <strong className="text-foreground">KYUCSA President for 2026/2027</strong> —
           spearheading ICT innovations with a community of student developers.
+          In November 2026 I was also selected into the{' '}
+          <strong className="text-foreground">GitHub Campus Experts Program</strong>,
+          training to grow developer communities on campus.
         </p>
         <p>
           I believe in the power of clean code, intuitive interfaces,
