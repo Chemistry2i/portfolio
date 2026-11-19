@@ -44,7 +44,14 @@ const BlogArticle = () => {
             {line.replace('### ', '')}
           </h3>
         );
-      } else if (line.startsWith('- **')) {
+      } else if (line.startsWith('```')) {
+        const code: string[] = [];
+        i++;
+        while (i < lines.length && !lines[i].startsWith('```')) { code.push(lines[i]); i++; }
+        elements.push(
+          <pre key={i} className="my-6 overflow-x-auto rounded-lg bg-secondary p-4 text-sm text-foreground"><code>{code.join('\n')}</code></pre>
+        );
+      } else if (line.startsWith('- ')) {
         elements.push(
           <li key={i} className="text-muted-foreground ml-4 mb-1 list-disc">
             <span dangerouslySetInnerHTML={{
@@ -52,7 +59,7 @@ const BlogArticle = () => {
             }} />
           </li>
         );
-      } else if (line.startsWith('1. ') || line.startsWith(/\d/.test(line[0] || '') ? line[0] : '')) {
+      } else if (/^\d+\. /.test(line)) {
         const match = line.match(/^(\d+)\. (.*)$/);
         if (match) {
           elements.push(
