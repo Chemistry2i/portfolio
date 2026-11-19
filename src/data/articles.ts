@@ -20,7 +20,7 @@ export const articles: Article[] = [
   {
     id: 7,
     slug: 'backend-concepts-explained',
-    title: 'Backend Concepts Explained: Load Balancing, Caching, Queues and More',
+    title: 'Backend Concepts Explained: 30 Ideas Behind Fast, Reliable Apps',
     excerpt: 'A practical tour of the backend ideas behind fast, reliable apps — load balancing, caching, databases, queues, rate limiting, and how I apply them in Node.js and Spring Boot projects.',
     content: `
 ## Why These Concepts Matter
@@ -70,31 +70,53 @@ Benefits: the user gets an instant response, spikes are absorbed instead of drop
 
 ## 5. Rate Limiting and Throttling
 
-Rate limiting protects you from abuse and from accidental floods. The token bucket algorithm is the usual choice: each client gets tokens that refill over time, and a request costs one token. Return \`429 Too Many Requests\` with a \`Retry-After\` header so well-behaved clients back off politely.
+Rate limiting caps how many requests a client may make in a period of time. It protects you from abuse (brute-force logins, scrapers), from accidental floods (a buggy client in a loop), and keeps one heavy user from slowing everyone else down. **Throttling** is the softer cousin: instead of rejecting extra requests, it slows them down or queues them.
+
+Common algorithms:
+
+- **Fixed window** — count requests per minute; simple, but allows bursts at the window edges.
+- **Sliding window** — counts over a rolling period, which smooths those edge bursts.
+- **Token bucket** — each client has a bucket of tokens that refills at a steady rate; each request spends one. Allows short bursts while enforcing an average rate. This is the usual choice.
+- **Leaky bucket** — requests drain out at a constant rate, producing very even traffic.
+
+Limit per user, per API key, or per IP, and store counters in Redis so every server shares the same view. Return \`429 Too Many Requests\` with a \`Retry-After\` header so well-behaved clients back off politely.
 
 ## 6. Statelessness and Horizontal Scaling
 
-An application server should hold no user state in memory. Push sessions to Redis, files to object storage, and configuration to environment variables. Once servers are interchangeable, scaling out is just launching more of them.
+There are two ways to handle more traffic. **Vertical scaling** means a bigger machine — more CPU and RAM — which is easy but has a ceiling and a single point of failure. **Horizontal scaling** means more machines behind a load balancer, which is nearly unlimited but only works if servers are interchangeable.
+
+That is what **stateless** means: a server keeps nothing about a user in its own memory between requests. If user A logs in on server 1 and the next request hits server 2, it must still work. So push sessions to Redis or use tokens, files to object storage, and configuration to environment variables. Once servers hold no state, scaling out is just launching more of them, and a crashed server loses nothing.
 
 ## 7. Observability
 
-You cannot fix what you cannot see:
+Observability is how well you can understand what your system is doing from the outside, especially when something breaks in production. It rests on three pillars:
 
-- **Structured logs** with a request ID that follows a request through every service
-- **Metrics** — request rate, error rate, latency percentiles (p95 and p99 matter far more than the average)
-- **Tracing** to find which downstream call is actually slow
-- **Alerts** on symptoms users feel, not on CPU graphs
+- **Logs** — timestamped records of events. Make them **structured** (JSON with fields like \`userId\`, \`route\`, \`durationMs\`) so you can search and filter them, and attach a **request ID** that follows a request through every service.
+- **Metrics** — numbers over time: request rate, error rate, and latency. Watch **percentiles** (p95, p99), not averages; an average of 200 ms can hide 1 in 20 users waiting five seconds.
+- **Traces** — a timeline of one request across services and database calls, showing exactly which step was slow.
+
+Finally, **alerts** should fire on symptoms users actually feel (errors rising, checkout slow), not on noisy internals like a brief CPU spike. Tools: Grafana, Prometheus, Datadog, Sentry, OpenTelemetry.
 
 ## 8. Resilience Patterns
 
-- **Timeouts** on every network call — an unbounded wait ties up a thread forever
-- **Retries with exponential backoff and jitter**, never a tight retry loop
-- **Circuit breakers** that stop calling a failing dependency and fail fast instead
-- **Graceful degradation** — serve stale cached data rather than an error page
+Every network call can fail or hang. Resilience patterns keep one failure from becoming a total outage:
+
+- **Timeouts** — never wait forever. Without a timeout a slow dependency ties up threads until your whole server stops responding.
+- **Retries with exponential backoff and jitter** — retry temporary failures, but wait longer each time (1s, 2s, 4s…) and add randomness so thousands of clients do not retry at the same instant. Only retry idempotent operations.
+- **Circuit breakers** — after repeated failures, stop calling the broken service for a while and fail fast. Like an electrical breaker, it later lets a test request through to see if the service has recovered.
+- **Bulkheads** — isolate resources (separate thread or connection pools) so one overloaded feature cannot sink the rest of the app.
+- **Graceful degradation** — if recommendations are down, show the page without them, or serve stale cached data instead of an error page.
 
 ## 9. Security Basics That Are Non-Negotiable
 
-Hash passwords with bcrypt or Argon2, validate every input on the server, use parameterized queries, scope authorization checks server-side, keep secrets out of the repository, and serve everything over HTTPS.
+- **Hash passwords** with bcrypt or Argon2 — slow, salted hashes. Never store plain text or use fast hashes like MD5.
+- **Validate every input on the server** — client-side checks are for user experience only; attackers skip your frontend entirely.
+- **Parameterized queries** prevent **SQL injection**, where user input like \`' OR 1=1 --\` is executed as part of your SQL.
+- **Escape output** to prevent **XSS** (cross-site scripting), where an attacker injects a script that runs in other users' browsers.
+- **CSRF protection** — use SameSite cookies or tokens so other sites cannot submit requests on a logged-in user's behalf.
+- **Authorization on the server** for every request, checking that this user owns this resource.
+- **Secrets out of the repository**, in environment variables or a secret manager.
+- **HTTPS everywhere**, plus security headers (CSP, HSTS) and least-privilege database accounts.
 
 ## 10. API Design: REST, GraphQL and Versioning
 
@@ -165,6 +187,34 @@ Files do not belong in your database or on your app server's disk — they disap
 
 Keep development, staging, and production fully separate — separate databases, separate keys. Configuration lives in **environment variables**, never in the codebase: database URLs, API keys, and secrets. A leaked key in a git repository is compromised forever, even if you delete the commit.
 
+## 24. Content Delivery Networks (CDNs)
+
+A CDN is a network of servers spread around the world that keep copies of your static files — images, JavaScript, CSS, videos. A user in Kampala gets files from a nearby edge server instead of one in Europe, so pages load much faster, and your origin server handles far less traffic. CDNs also absorb traffic spikes and many DDoS attacks.
+
+## 25. DNS and How a Request Reaches You
+
+When someone types your domain, **DNS** translates the name into an IP address — like a phonebook for the internet. Records you will meet: **A** (name → IPv4 address), **CNAME** (name → another name), **MX** (mail servers) and **TXT** (verification and email security). DNS answers are cached for a **TTL**, which is why domain changes can take minutes or hours to appear everywhere.
+
+## 26. Reverse Proxies and API Gateways
+
+A **reverse proxy** (Nginx, Caddy) sits in front of your app and handles HTTPS, compression, caching and routing before requests reach your code. An **API gateway** is a reverse proxy with extra duties for many services: one entry point that handles authentication, rate limiting, logging and routes \`/users\` to one service and \`/orders\` to another.
+
+## 27. Database Locking and Race Conditions
+
+A **race condition** happens when two requests change the same data at once — two buyers grab the last ticket and both succeed. **Pessimistic locking** (\`SELECT ... FOR UPDATE\`) locks the row so the second request waits. **Optimistic locking** adds a \`version\` column; an update only succeeds if the version has not changed, otherwise the app retries. Use optimistic locking when conflicts are rare, pessimistic when they are common and costly.
+
+## 28. Serialization and Data Formats
+
+Data crossing the network must be turned into bytes — **serialization**. **JSON** is human-readable and universal, ideal for public APIs. **Protocol Buffers** (used by gRPC) are binary, smaller and faster, ideal between internal services. Whatever you pick, validate incoming data against a schema so malformed payloads are rejected at the door.
+
+## 29. Event-Driven Architecture and Pub/Sub
+
+Instead of service A calling B, C and D directly, A **publishes** an event like "OrderPlaced" and any interested service **subscribes** to it. The email, inventory and analytics services react independently, and adding a new one needs no change to A. Kafka, RabbitMQ and Redis Pub/Sub are common choices. The trade-off: flows become harder to follow, so good tracing matters.
+
+## 30. Backups and Disaster Recovery
+
+A backup you have never restored is only a hope. Take automatic, regular backups, store a copy in a different location, and **test restoring** them. Two numbers guide the plan: **RPO** — how much data you can afford to lose (e.g. the last hour) — and **RTO** — how long you can afford to be down while recovering.
+
 ## Putting It Together
 
 A typical request path in the systems I build looks like this:
@@ -179,7 +229,7 @@ Client → CDN → Load balancer → App servers (stateless)
 Start simple. Add a cache when you measure a slow read, a queue when a request does work the user should not wait for, and a second server when one is genuinely saturated. Every one of these tools solves a specific pain — adding them before you feel the pain just buys you complexity.
     `,
     date: '2026-09-06',
-    readTime: '16 min read',
+    readTime: '22 min read',
     category: 'Backend',
     tags: ['Backend', 'Load Balancing', 'Caching', 'Databases', 'Scalability', 'System Design', 'APIs', 'Databases', 'DevOps'],
     icon: 'fas fa-server',
